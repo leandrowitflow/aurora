@@ -68,11 +68,6 @@ export function Footer() {
                   somosaurora@gmail.com
                 </a>
               </p>
-              <p>
-                <a href="https://wa.me/351918221881" className="hover:text-white">
-                  +351 918 221 881
-                </a>
-              </p>
             </address>
             <div className="mt-8 flex gap-3 lg:justify-end">
               {SOCIAL_LINKS.map((social) => (
