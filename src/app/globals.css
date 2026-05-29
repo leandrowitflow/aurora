@@ -38,13 +38,13 @@ body {
 
 @layer components {
   .heading-section {
-    @apply text-[36px] font-bold leading-[100%] text-black;
+    @apply text-[28px] font-bold leading-[100%] text-black xl:text-[36px];
     font-family: var(--font-epilogue), Epilogue, sans-serif;
     font-style: normal;
   }
 
   .body-text {
-    @apply text-[20px] font-normal leading-[100%] text-black;
+    @apply text-[18px] font-normal leading-[100%] text-black lg:text-[17px] xl:text-[20px];
     font-family: var(--font-manrope), Manrope, sans-serif;
     font-style: normal;
   }

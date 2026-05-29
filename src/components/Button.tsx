@@ -15,7 +15,7 @@ export function Button({ href, label, variant = "olive" }: ButtonProps) {
   return (
     <Link
       href={href}
-      className={`group inline-flex h-[63px] items-center gap-3 border-2 px-8 font-[family-name:var(--font-manrope)] text-[20px] font-bold leading-normal transition-colors ${
+      className={`group inline-flex h-[56px] items-center gap-3 border-2 px-8 font-[family-name:var(--font-manrope)] text-[17px] font-bold leading-normal transition-colors xl:h-[63px] xl:text-[20px] ${
         isMustard
           ? "border-mustard text-mustard hover:bg-mustard/10"
           : "border-olive text-olive hover:bg-olive/5"

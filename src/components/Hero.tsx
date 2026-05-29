@@ -17,11 +17,11 @@ export function Hero() {
 
       <div className="relative mx-auto flex h-full min-h-[560px] max-w-[1920px] flex-col justify-center px-page pb-14 pt-28 sm:min-h-[640px] sm:pb-16 sm:pt-32 xl:min-h-[1018px] xl:pb-20 xl:pt-40">
         <h1
-          className={`${epilogue.className} max-w-[420px] text-4xl font-bold leading-[100%] text-white lg:text-5xl xl:text-[64px]`}
+          className={`${epilogue.className} max-w-[420px] text-4xl font-bold leading-[100%] text-white lg:text-[40px] xl:text-[64px]`}
         >
           Olá, Prima!
         </h1>
-        <p className="mt-5 max-w-[616px] font-[family-name:var(--font-manrope)] text-base leading-[100%] text-white lg:text-lg xl:text-xl">
+        <p className="mt-5 max-w-[616px] font-[family-name:var(--font-manrope)] text-base leading-[100%] text-white lg:text-[17px] xl:text-[20px]">
           A antiga escola primária de Olhão está a transformar-se numa casa de encontro aberta ao mundo.
         </p>
         <div className="mt-8">
