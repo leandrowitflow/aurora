@@ -7,10 +7,16 @@
   --mustard: #fdcd84;
   --footer-text-muted: rgba(255, 255, 255, 0.63);
   /*
-   * Fluid page margins: 24px on phones → 120px on 1280px laptop → 180px on 1920px.
-   * Formula: 180 / 1920 = 9.375vw, floor at 1.5rem so small phones stay readable.
+   * Page margins: 24px phones → ~84px laptop → 180px large desktop.
+   * Laptop uses a lower vw cap so content isn't squeezed by huge side padding.
    */
-  --page-px: clamp(1.5rem, 9.375vw, 11.25rem);
+  --page-px: clamp(1.5rem, 6.5vw, 7.5rem);
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --page-px: clamp(1.5rem, 9.375vw, 11.25rem);
+  }
 }
 
 /* Apply the fluid page margins — replaces lg:px-[180px] + px-6 combos */
@@ -38,15 +44,57 @@ body {
 
 @layer components {
   .heading-section {
-    @apply text-[28px] font-bold leading-[100%] text-black xl:text-[36px];
     font-family: var(--font-epilogue), Epilogue, sans-serif;
+    font-size: 28px;
     font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    color: #000;
+  }
+
+  @media (min-width: 1024px) {
+    .heading-section {
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .heading-section {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .heading-section {
+      font-size: 36px;
+    }
   }
 
   .body-text {
-    @apply text-[18px] font-normal leading-[100%] text-black lg:text-[17px] xl:text-[20px];
     font-family: var(--font-manrope), Manrope, sans-serif;
+    font-size: 18px;
     font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: #000;
+  }
+
+  @media (min-width: 1024px) {
+    .body-text {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .body-text {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .body-text {
+      font-size: 20px;
+    }
   }
 }
 
@@ -79,9 +127,19 @@ body {
   min-height: clamp(300px, 62vw, 520px);
 }
 
+/* Tablet: inset images — don't let them span the full viewport */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .torn-col {
+    width: min(82%, 640px);
+    margin-inline: auto;
+    min-height: clamp(240px, 34vw, 380px);
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .torn-col {
-    min-height: clamp(360px, 48vw, 560px);
+    width: min(78%, 600px);
+    min-height: clamp(220px, 30vw, 360px);
   }
 }
 
@@ -105,6 +163,22 @@ body {
  */
 .rect-img {
   max-width: min(100%, var(--rect-max-w));
+}
+
+/* Tablet: portrait photos scale down and centre within the content area */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .rect-img {
+    width: min(68%, var(--rect-max-w), 460px);
+    max-width: min(68%, var(--rect-max-w), 460px);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rect-img {
+    width: min(62%, var(--rect-max-w), 420px);
+    max-width: min(62%, var(--rect-max-w), 420px);
+  }
 }
 
 @media (min-width: 1024px) {

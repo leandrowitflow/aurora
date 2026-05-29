@@ -83,7 +83,7 @@ export function ContentSection({
         </div>
 
         {/* Text column — fills remaining width, centred vertically */}
-        <div className="flex flex-1 flex-col justify-center bg-white px-page py-10 sm:py-12 lg:py-16">
+        <div className="flex flex-1 flex-col justify-center bg-white px-page py-10 sm:py-12 lg:py-10 xl:py-12 2xl:py-16">
           <h2 className="heading-section max-w-[603px]">{title}</h2>
           <div className="body-text mt-6 max-w-[660px]">{description}</div>
           <div className="mt-8">
@@ -108,18 +108,18 @@ export function ContentSection({
   return (
     <section
       id={id}
-      className="relative w-full overflow-hidden pb-12 pt-0 lg:pb-20 lg:pt-0"
+      className="relative w-full overflow-hidden pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20"
     >
       <div
-        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page lg:flex-row lg:items-center ${
+        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page max-lg:items-center lg:flex-row lg:items-center ${
           imagePosition === "right"
-            ? "lg:flex-row-reverse lg:gap-16"
+            ? "lg:flex-row-reverse lg:gap-10 xl:gap-12 2xl:gap-16"
             : "rect-row-image-left"
         }`}
       >
         {/* Portrait photo — scales with viewport, caps at Figma pixel width */}
         <div
-          className="rect-img w-full overflow-hidden"
+          className="rect-img overflow-hidden"
           style={
             {
               "--rect-max-w": `${imageWidth}px`,

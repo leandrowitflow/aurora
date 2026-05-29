@@ -45,7 +45,7 @@ export function MobileNav() {
   }, []);
 
   return (
-    <div className="xl:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         className="flex h-11 w-11 items-center justify-center rounded-md transition-colors hover:bg-olive/5"
