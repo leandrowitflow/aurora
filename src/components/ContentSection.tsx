@@ -74,10 +74,7 @@ export function ContentSection({
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: imagePosition === "left" ? "left center" : "right center",
-            }}
+            className="absolute inset-0 h-full w-full"
           />
         </div>
 
