@@ -111,4 +111,13 @@ body {
   .rect-img {
     width: min(var(--rect-max-w), var(--rect-pct));
   }
+
+  /*
+   * Rect sections with image left: widen the gap so the text column starts
+   * where portrait images sit in image-right sections (e.g. Viver o Coletivo).
+   * gap = content − viverImg − thisImg (percentages match .rect-img sizing).
+   */
+  .rect-row-image-left {
+    gap: calc(100% - min(589px, 37.756%) - min(626px, 40.128%));
+  }
 }

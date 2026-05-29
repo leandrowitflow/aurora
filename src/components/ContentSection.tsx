@@ -111,8 +111,10 @@ export function ContentSection({
       className="relative w-full overflow-hidden pb-12 pt-0 lg:pb-20 lg:pt-0"
     >
       <div
-        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page lg:flex-row lg:items-center lg:gap-16 ${
-          imagePosition === "right" ? "lg:flex-row-reverse" : ""
+        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page lg:flex-row lg:items-center ${
+          imagePosition === "right"
+            ? "lg:flex-row-reverse lg:gap-16"
+            : "rect-row-image-left"
         }`}
       >
         {/* Portrait photo — scales with viewport, caps at Figma pixel width */}
