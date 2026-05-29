@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -36,14 +36,18 @@ body {
   font-family: var(--font-manrope), Manrope, sans-serif;
 }
 
-.heading-section {
-  color: #000;
-  font-family: var(--font-epilogue), Epilogue, sans-serif;
-  /* 24px on phones → 32px on 1280px laptop → 36px on 1440px+ */
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+@layer components {
+  .heading-section {
+    @apply text-[36px] font-bold leading-[100%] text-black;
+    font-family: var(--font-epilogue), Epilogue, sans-serif;
+    font-style: normal;
+  }
+
+  .body-text {
+    @apply text-[20px] font-normal leading-[100%] text-black;
+    font-family: var(--font-manrope), Manrope, sans-serif;
+    font-style: normal;
+  }
 }
 
 .text-nav {
@@ -58,16 +62,6 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
-
-.body-text {
-  color: #000;
-  font-family: var(--font-manrope), Manrope, sans-serif;
-  /* 16px on phones/small laptops → 20px on 1440px+ */
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.6;
 }
 
 /**

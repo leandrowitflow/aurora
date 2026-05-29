@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+﻿import { Button } from "@/components/Button";
 import { SECTION_IMAGES, type SectionImageKey } from "@/lib/section-images";
 import type { CSSProperties, ReactNode } from "react";
 

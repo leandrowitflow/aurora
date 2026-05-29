@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+﻿import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { ContentSection } from "@/components/ContentSection";
@@ -63,10 +63,7 @@ export default function Home() {
           <div className="mx-auto max-w-[1264px] px-page text-center">
             <h2 className="heading-section">O que nos move</h2>
             <p className="body-text mx-auto mt-6">
-              Guiados pelos ritmos orgânicos, pelas cem linguagens e pela permacultura, criámos um ponto de encontro comunitário para criar e trabalhar a terra livremente. Valorizamos a estética, a escuta e o manuseamento de materiais como formas de cuidado.
-              <br />
-              <br />
-              Aqui, pessoas de todas as idades e contextos partilham vivências, aprendem em conjunto e resgatam o sentido profundo de comunidade.
+              Guiados pelos ritmos orgânicos, pelas cem linguagens e pela permacultura, criámos um ponto de encontro comunitário para criar e trabalhar a terra livremente. Valorizamos a estética, a escuta e o manuseamento de materiais como formas de cuidado. Aqui, pessoas de todas as idades e contextos partilham vivências, aprendem em conjunto e resgatam o sentido profundo de comunidade.
             </p>
           </div>
         </section>
