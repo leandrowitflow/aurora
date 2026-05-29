@@ -1,0 +1,94 @@
+﻿@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --olive: #645f36;
+  --mustard: #fdcd84;
+  --footer-text-muted: rgba(255, 255, 255, 0.63);
+  /*
+   * Fluid page margins: 24px on phones → 120px on 1280px laptop → 180px on 1920px.
+   * Formula: 180 / 1920 = 9.375vw, floor at 1.5rem so small phones stay readable.
+   */
+  --page-px: clamp(1.5rem, 9.375vw, 11.25rem);
+}
+
+/* Apply the fluid page margins — replaces lg:px-[180px] + px-6 combos */
+.px-page {
+  padding-left: var(--page-px);
+  padding-right: var(--page-px);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-olive: var(--olive);
+  --color-mustard: var(--mustard);
+  --font-epilogue: var(--font-epilogue);
+  --font-manrope: var(--font-manrope);
+  --font-poppins: var(--font-poppins);
+  --font-roboto: var(--font-roboto);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), Manrope, sans-serif;
+}
+
+.heading-section {
+  color: #000;
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  /* 24px on phones → 32px on 1280px laptop → 36px on 1440px+ */
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-nav {
+  display: flex;
+  height: 23px;
+  flex-direction: column;
+  justify-content: center;
+  color: #645f36;
+  text-align: center;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.body-text {
+  color: #000;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  /* 16px on phones/small laptops → 20px on 1440px+ */
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/**
+ * Torn-section image column.
+ * Mobile (flex-col): width = 100vw; height driven by aspect-ratio inline style
+ *   set per section from Figma's imageWidth / sectionHeight values.
+ * Desktop (flex-row, lg+): width = explicit flex-basis (51% or 55%);
+ *   align-self: stretch makes height = section height so aspect-ratio is
+ *   overridden by the definite cross-size — both dimensions are explicitly set.
+ */
+.torn-col {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .torn-col {
+    align-self: stretch;
+  }
+  /* nature & corpo: 982/1920 ≈ 51% | cuidar: 1064/1920 ≈ 55% */
+  .torn-w-51 { flex: 0 0 51%; }
+  .torn-w-55 { flex: 0 0 55%; }
+}
