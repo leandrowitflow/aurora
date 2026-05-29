@@ -1,9 +1,9 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import { Button } from "@/components/Button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[600px] xl:min-h-[1018px]">
+    <section className="relative min-h-[560px] sm:min-h-[640px] xl:min-h-[1018px]">
       <Image
         src="/images/hero-bg.jpg"
         alt=""
@@ -14,7 +14,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.41)] from-40% to-[rgba(115,115,115,0)]" />
 
-      <div className="relative mx-auto flex h-full min-h-[600px] max-w-[1920px] flex-col justify-center px-page pb-16 pt-32 xl:min-h-[1018px] xl:pb-20 xl:pt-40">
+      <div className="relative mx-auto flex h-full min-h-[560px] max-w-[1920px] flex-col justify-center px-page pb-14 pt-28 sm:min-h-[640px] sm:pb-16 sm:pt-32 xl:min-h-[1018px] xl:pb-20 xl:pt-40">
         <h1 className="max-w-[420px] font-[family-name:var(--font-epilogue)] text-4xl font-bold leading-tight text-white lg:text-5xl xl:text-[64px]">
           Olá, Prima!
         </h1>

@@ -1,5 +1,6 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
+import { MobileNav } from "@/components/MobileNav";
 import { NAV_LINKS } from "@/lib/nav-links";
 
 export function Header() {
@@ -13,19 +14,23 @@ export function Header() {
             width={80}
             height={79}
             priority
+            className="h-auto w-[4.5rem] sm:w-20 lg:w-[80px]"
           />
         </Link>
-        <nav className="hidden items-center gap-8 xl:flex">
+
+        <nav className="hidden items-center gap-6 xl:flex xl:gap-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="whitespace-nowrap font-[family-name:var(--font-manrope)] text-xl font-bold text-olive transition-opacity hover:opacity-70"
+              className="whitespace-nowrap font-[family-name:var(--font-manrope)] text-lg font-bold text-olive transition-opacity hover:opacity-70 xl:text-xl"
             >
               {link.label}
             </Link>
           ))}
         </nav>
+
+        <MobileNav />
       </div>
     </header>
   );

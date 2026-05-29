@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -72,23 +72,49 @@ body {
 
 /**
  * Torn-section image column.
- * Mobile (flex-col): width = 100vw; height driven by aspect-ratio inline style
- *   set per section from Figma's imageWidth / sectionHeight values.
+ * Mobile/tablet (flex-col): full width with a taller min-height so photos
+ * feel impactful on small screens; aspect-ratio keeps proportions when wider.
  * Desktop (flex-row, lg+): width = explicit flex-basis (51% or 55%);
- *   align-self: stretch makes height = section height so aspect-ratio is
- *   overridden by the definite cross-size — both dimensions are explicitly set.
+ *   align-self: stretch makes height = section height.
  */
 .torn-col {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  width: 100%;
+  min-height: clamp(300px, 62vw, 520px);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .torn-col {
+    min-height: clamp(360px, 48vw, 560px);
+  }
 }
 
 @media (min-width: 1024px) {
   .torn-col {
     align-self: stretch;
+    width: auto;
+    min-height: 0;
   }
   /* nature & corpo: 982/1920 ≈ 51% | cuidar: 1064/1920 ≈ 55% */
   .torn-w-51 { flex: 0 0 51%; }
   .torn-w-55 { flex: 0 0 55%; }
+}
+
+/**
+ * Portrait (rect) section images.
+ * Mobile: full content width, capped at Figma frame width.
+ * Laptop+ (side-by-side): scale as % of content area (imageWidth / 1560)
+ *   so photos stay proportional and text keeps breathing room; caps at
+ *   Figma pixel width on large desktops.
+ */
+.rect-img {
+  max-width: min(100%, var(--rect-max-w));
+}
+
+@media (min-width: 1024px) {
+  .rect-img {
+    width: min(var(--rect-max-w), var(--rect-pct));
+  }
 }
