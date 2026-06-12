@@ -1569,6 +1569,102 @@ body {
   }
 }
 
+body.cookie-consent-visible .assistant-root {
+  bottom: calc(1.5rem + var(--cookie-consent-offset, 0px));
+}
+
+@media (max-width: 639px) {
+  body.cookie-consent-visible .assistant-root {
+    bottom: calc(1rem + var(--cookie-consent-offset, 0px));
+  }
+}
+
+.cookie-consent {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 55;
+  border-top: 1px solid rgba(100, 95, 54, 0.12);
+  background: var(--cream);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.cookie-consent-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-block: 1rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .cookie-consent-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.125rem 1.375rem;
+  }
+}
+
+.cookie-consent-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.cookie-consent-title {
+  margin: 0;
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--olive);
+}
+
+.cookie-consent-text {
+  margin: 0.375rem 0 0;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.cookie-consent-link {
+  font-weight: 700;
+  color: var(--olive);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cookie-consent-link:hover {
+  opacity: 0.75;
+}
+
+.cookie-consent-accept {
+  flex-shrink: 0;
+  align-self: flex-start;
+  border: 2px solid var(--olive);
+  background: var(--olive);
+  padding: 0.625rem 1.5rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cookie-consent-accept:hover {
+  opacity: 0.88;
+}
+
+@media (min-width: 768px) {
+  .cookie-consent-accept {
+    align-self: center;
+  }
+}
+
 /**
  * Portrait (rect) section images.
  * Mobile: full content width, capped at Figma frame width.
