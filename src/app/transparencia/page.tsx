@@ -6,36 +6,36 @@ import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Espaço Transparência | Coletivo Aurora",
+  title: "Espaço transparência | Coletivo Aurora",
   description:
     "Documentos legais, relatórios de atividades e políticas do Coletivo Aurora.",
 };
 
 const DOCUMENTS = [
   {
-    label: "Estatutos e Documentos Legais",
+    label: "Estatutos e documentos legais",
     type: "PDF",
     href: "#",
   },
   {
-    label: "Relatório Anual de Atividades",
+    label: "Relatório anual de atividades",
     type: "PDF",
     href: "#",
   },
 ];
 
 const POLICIES = [
-  { label: "Política de Privacidade", href: "#" },
-  { label: "Termos e Condições", href: "#" },
+  { label: "Política de privacidade", href: "#" },
+  { label: "Termos e condições", href: "#" },
 ];
 
 export default function TransparenciaPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Institucional"
-        title="Espaço Transparência"
+        title="Espaço transparência"
         subtitle="Documentação institucional e informação legal do Coletivo Aurora."
+        imageSrc="/images/hero-transparencia.png"
       />
 
       <PageSection narrow>

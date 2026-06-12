@@ -7,10 +7,10 @@ type FormId = "ateliers" | "aniversarios" | "ferias" | "projeto";
 
 const ATELIER_OPTIONS = [
   "Playgroups (0-2 anos)",
-  "Ateliers para Crianças (3-10 anos)",
-  "Ateliers para Famílias",
-  "Ateliers para Adultos",
-  "Festas para Crianças",
+  "Ateliers para crianças (3-10 anos)",
+  "Ateliers para famílias",
+  "Ateliers para adultos",
+  "Festas para crianças",
 ];
 
 const FERIAS_WEEKS = [
@@ -28,25 +28,25 @@ const FORM_OPTIONS: {
 }[] = [
   {
     id: "ateliers",
-    label: "Ateliers e Oficinas",
+    label: "Ateliers e oficinas",
     description: "Playgroups, crianças, famílias e adultos",
     hash: "ateliers",
   },
   {
     id: "aniversarios",
-    label: "Festas de Aniversário",
+    label: "Festas de aniversário",
     description: "Celebrações com atividades na natureza",
     hash: "aniversarios",
   },
   {
     id: "ferias",
-    label: "Campos de Férias",
+    label: "Campos de férias",
     description: "Semanas ao ar livre no Aurora",
     hash: "ferias",
   },
   {
     id: "projeto",
-    label: "Tecendo Gerações",
+    label: "Tecendo gerações",
     description: "Inscrição no projeto social",
     hash: "inscricao-projeto",
   },

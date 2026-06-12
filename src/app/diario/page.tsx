@@ -38,26 +38,31 @@ export default function DiarioPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Documentação"
         title="Diário do Aurora"
         subtitle="A vida que acontece no Coletivo — documentada com cuidado, escuta e presença."
+        imageSrc="/images/hero-diario.png"
       />
 
       <PageSection>
-        <div className="grid gap-12 lg:grid-cols-[1fr_380px] lg:items-start">
-          <div className="body-text space-y-6">
-            <p>
-              Aqui documentamos a vida que acontece no Coletivo. As perguntas
-              imprevistas que as crianças fizeram. A receita antiga que os
-              seniores nos ensinaram na cozinha comunitária. A história de
-              superação que um migrante partilhou à lareira.
-            </p>
-            <p>
-              O barro cru que ganhou forma pelas mãos de quem nunca o tinha
-              moldado. As nossas dificuldades, as aprendizagens e as pequenas
-              grandes alegrias diárias.
-            </p>
-          </div>
+        <SectionHeading
+          eyebrow="O registo"
+          title="Histórias do dia a dia"
+        />
+        <div className="body-text mt-6 max-w-[960px] space-y-6">
+          <p>
+            Aqui documentamos a vida que acontece no Coletivo. As perguntas
+            imprevistas que as crianças fizeram. A receita antiga que os
+            seniores nos ensinaram na cozinha comunitária. A história de
+            superação que um migrante partilhou à lareira.
+          </p>
+          <p>
+            O barro cru que ganhou forma pelas mãos de quem nunca o tinha
+            moldado. As nossas dificuldades, as aprendizagens e as pequenas
+            grandes alegrias diárias.
+          </p>
+        </div>
+
+        <div className="intro-quote-panel">
           <PullQuote>
             Guardamos os instantes sagrados — um primeiro rolar no chão, um
             objeto natural explorado com total concentração, um olhar de
@@ -66,7 +71,7 @@ export default function DiarioPage() {
         </div>
       </PageSection>
 
-      <PageSection>
+      <PageSection className="pt-0 lg:pt-0">
         <SectionHeading eyebrow="Histórias" title="Últimas publicações" />
         <div className="mt-10 max-w-[800px]">
           {PLACEHOLDER_POSTS.map((post) => (

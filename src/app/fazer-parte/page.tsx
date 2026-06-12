@@ -6,26 +6,25 @@ import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Fazer Parte | Coletivo Aurora",
+  title: "Fazer parte | Coletivo Aurora",
   description:
-    "Voluntariado, donativos, Amigos do Aurora e parcerias para sustentar o projeto.",
+    "Voluntariado, donativos, amigos do Aurora e parcerias para sustentar o projeto.",
 };
 
 export default function FazerPartePage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Comunidade"
-        title="Fazer Parte"
+        title="Fazer parte"
         subtitle="Com tempo, com recursos ou com uma parceria de longo prazo — há um lugar para si no Aurora."
-        imageSrc="/images/section-apoiar.png"
+        imageSrc="/images/hero-fazer-parte.png"
       />
 
       <PageSection tone="cream">
         <SectionHeading
           eyebrow="Pilares de apoio"
           title="Escolha a sua forma de contribuir"
-          description="Cada gesto — grande ou pequeno — ajuda a manter vivo o Tecendo Gerações e toda a comunidade que o sustenta."
+          description="Cada gesto — grande ou pequeno — ajuda a manter vivo o Tecendo gerações e toda a comunidade que o sustenta."
         />
         <FazerParteContent />
       </PageSection>

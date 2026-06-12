@@ -15,23 +15,26 @@ export function SectionHeading({
   align = "left",
   light = false,
 }: SectionHeadingProps) {
-  const alignClass = align === "center" ? "text-center mx-auto" : "";
+  const isCenter = align === "center";
 
   return (
-    <div className={`max-w-[800px] ${alignClass}`}>
+    <div className={isCenter ? "mx-auto max-w-[800px] text-center" : ""}>
       {eyebrow ? (
         <p className={`label-olive ${light ? "text-mustard" : ""}`}>{eyebrow}</p>
       ) : null}
       <h2
         className={`heading-section mt-3 ${light ? "text-white" : ""} ${
-          align === "center" ? "mx-auto" : ""
+          isCenter ? "mx-auto" : ""
         }`}
       >
         {title}
       </h2>
-      <div className={`accent-rule mt-5 ${light ? "bg-mustard" : ""}`} />
       {description ? (
-        <p className={`body-text mt-6 ${light ? "text-white/90" : ""}`}>
+        <p
+          className={`body-text mt-6 ${light ? "text-white/90" : ""} ${
+            isCenter ? "" : "max-w-[960px]"
+          }`}
+        >
           {description}
         </p>
       ) : null}

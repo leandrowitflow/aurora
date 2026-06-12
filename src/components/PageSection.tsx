@@ -27,7 +27,7 @@ export function PageSection({
   wide = false,
   tone = "white",
 }: PageSectionProps) {
-  const maxWidth = wide ? "max-w-[1920px]" : narrow ? "max-w-[900px]" : "max-w-[1264px]";
+  const maxWidth = narrow ? "max-w-[900px]" : "max-w-[1920px]";
 
   return (
     <section id={id} className={`py-20 lg:py-28 ${TONE_CLASS[tone]} ${className}`}>

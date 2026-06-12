@@ -21,14 +21,14 @@ const PILLAR_OPTIONS: {
   },
   {
     id: "donativos",
-    label: "Donativos Pontuais",
+    label: "Donativos pontuais",
     description: "Materiais pedagógicos e horta comunitária",
     hash: "donativos",
   },
   {
     id: "amigos",
     label: "Amigos do Aurora",
-    description: "Apoio mensal ao Tecendo Gerações",
+    description: "Apoio mensal ao Tecendo gerações",
     hash: "amigos",
     featured: true,
   },
@@ -117,7 +117,7 @@ export function FazerParteContent() {
           <aside className="registration-aside">
             <p className="registration-aside-label">Impacto</p>
             <p className="registration-aside-text">
-              Cada forma de apoio sustenta o Tecendo Gerações e mantém vivo o
+              Cada forma de apoio sustenta o Tecendo gerações e mantém vivo o
               encontro entre gerações no Aurora.
             </p>
           </aside>
@@ -133,7 +133,6 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Tempo e presença</p>
               <h3 className="heading-subsection mt-2">Voluntariado</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6 space-y-4">
                 <p>
                   A nossa comunidade cresce com a energia de quem chega. Se tem
@@ -150,7 +149,7 @@ export function FazerParteContent() {
               <div className="support-form-divider" />
               <ReservationForm
                 key="voluntariado"
-                title="Ficha de Voluntário"
+                title="Ficha de voluntário"
                 description="Conte-nos como gostaria de contribuir para o Coletivo Aurora."
                 fields={[
                   { name: "nome", label: "Nome", required: true },
@@ -176,7 +175,7 @@ export function FazerParteContent() {
                     required: true,
                   },
                 ]}
-                submitLabel="Enviar Ficha"
+                submitLabel="Enviar ficha"
               />
             </>
           ) : null}
@@ -184,8 +183,7 @@ export function FazerParteContent() {
           {active === "donativos" ? (
             <>
               <p className="label-olive">Contributo direto</p>
-              <h3 className="heading-subsection mt-2">Donativos Pontuais</h3>
-              <div className="accent-rule mt-4" />
+              <h3 className="heading-subsection mt-2">Donativos pontuais</h3>
               <div className="body-text mt-6">
                 <p>
                   Cada contributo direto é totalmente canalizado para a compra de
@@ -214,19 +212,18 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Apoio mensal</p>
               <h3 className="heading-subsection mt-2">Amigos do Aurora</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6">
                 <p>
                   Uma forma contínua e estruturada de apoiar o nosso projeto
                   social. Com um contributo fixo, ajuda-nos a planear o futuro do
-                  Tecendo Gerações com estabilidade.
+                  Tecendo gerações com estabilidade.
                 </p>
               </div>
 
               <p className="support-quota">10 euros / mês</p>
 
               <ul className="support-benefits-list">
-                <li>10% de desconto em ateliers pagos do Viver o Coletivo</li>
+                <li>10% de desconto em ateliers pagos do Viver o coletivo</li>
                 <li>Convite exclusivo ao evento anual do Aurora</li>
                 <li>
                   O seu nome na parede dos amigos do Aurora (se assim o desejar)
@@ -234,7 +231,7 @@ export function FazerParteContent() {
               </ul>
 
               <div className="mt-10">
-                <Button href="/contactos" label="Tornar-me Amigo do Aurora" />
+                <Button href="/contactos" label="Tornar-me amigo do Aurora" />
               </div>
             </>
           ) : null}
@@ -243,7 +240,6 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Rede e território</p>
               <h3 className="heading-subsection mt-2">Parcerias</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6">
                 <p>
                   Trabalhamos em rede com empresas, escolas, juntas de freguesia
@@ -254,7 +250,7 @@ export function FazerParteContent() {
               </div>
 
               <div className="mt-10">
-                <Button href="/contactos" label="Contactar para Parcerias" />
+                <Button href="/contactos" label="Contactar para parcerias" />
               </div>
             </>
           ) : null}

@@ -15,7 +15,7 @@ export default function Home() {
           imageSrc="/images/section-nature.png"
           imageAlt="Criança a regar plantas na horta"
           imageLayout="nature"
-          buttonLabel="Ver Atividades"
+          buttonLabel="Ver atividades"
           buttonHref="/viver-o-coletivo"
           imagePosition="left"
         />
@@ -39,7 +39,7 @@ export default function Home() {
           imageSrc="/images/section-cuidar-terra.png"
           imageAlt="Cesto de legumes frescos da horta"
           imageLayout="cuidar"
-          buttonLabel="Apoiar o Projeto"
+          buttonLabel="Apoiar o projeto"
           buttonHref="/fazer-parte"
           imagePosition="right"
         />
@@ -51,7 +51,7 @@ export default function Home() {
           imageSrc="/images/section-corpo.png"
           imageAlt="Criança a tecer uma cesta"
           imageLayout="corpo"
-          buttonLabel="Ver Atividades"
+          buttonLabel="Ver atividades"
           buttonHref="/viver-o-coletivo"
           imagePosition="left"
         />
@@ -76,7 +76,7 @@ export default function Home() {
         </section>
 
         <ContentSection
-          title="Viver o Coletivo"
+          title="Viver o coletivo"
           description={
             <>
               Ateliers criativos para bebés, crianças, famílias e adultos.
@@ -87,14 +87,14 @@ export default function Home() {
           imageSrc="/images/section-viver-coletivo.png"
           imageAlt="Criança a brincar na natureza"
           imageLayout="viver"
-          buttonLabel="Explorar Atividades"
+          buttonLabel="Explorar atividades"
           buttonHref="/viver-o-coletivo"
           imagePosition="right"
         />
 
         <ContentSection
           id="tecer-geracoes"
-          title="Tecendo Gerações"
+          title="Tecendo gerações"
           description={
             <>
               Todas as semanas, juntamos pessoas de diferentes gerações e percursos que a sociedade muitas vezes mantém separadas.
@@ -105,15 +105,15 @@ export default function Home() {
           imageSrc="/images/section-tecendo.png"
           imageAlt="Mulher idosa e criança a cozinhar juntas"
           imageLayout="tecendo"
-          buttonLabel="Conhecer o Projeto"
+          buttonLabel="Conhecer o projeto"
           buttonHref="/tecer-geracoes"
           imagePosition="left"
         />
 
         <ContentSection
           id="apoiar"
-          title="Como Apoiar?"
-          description="O Tecendo Gerações só é possível com o apoio da nossa rede de solidariedade. Seja através de voluntariado, de um donativo pontual ou tornando-se um parceiro do projeto — há um lugar para si no Aurora."
+          title="Como apoiar?"
+          description="O Tecendo gerações só é possível com o apoio da nossa rede de solidariedade. Seja através de voluntariado, de um donativo pontual ou tornando-se um parceiro do projeto — há um lugar para si no Aurora."
           imageSrc="/images/section-apoiar.png"
           imageAlt="Casa de pedra rústica do projeto Aurora"
           imageLayout="apoiar"

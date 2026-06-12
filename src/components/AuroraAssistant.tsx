@@ -126,7 +126,7 @@ export function AuroraAssistant() {
                   <h3 className="assistant-welcome-title">Como posso ajudar?</h3>
                   <div className="assistant-welcome-rule" aria-hidden="true" />
                   <p className="assistant-welcome-text">
-                    Pergunte sobre atividades, inscrições, Tecendo Gerações ou
+                    Pergunte sobre atividades, inscrições, Tecendo gerações ou
                     contactos — respondo com base no que o Aurora partilha
                     publicamente.
                   </p>

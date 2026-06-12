@@ -36,15 +36,15 @@ export function Footer() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2">
           <div>
             <h3 className="font-[family-name:var(--font-roboto)] text-[32px] font-medium leading-tight">
-              Não Perca Nenhuma Oportunidade.
+              Não perca nenhuma oportunidade.
             </h3>
             <p className="mt-3 font-[family-name:var(--font-roboto)] text-lg font-light">
-              Subscreve a nossa Newsletter
+              Subscreva a nossa newsletter
             </p>
             <form className="mt-6 flex max-w-[360px] items-center gap-2">
               <input
                 type="email"
-                placeholder="Enter email address"
+                placeholder="O seu e-mail"
                 className="h-12 flex-1 rounded-full bg-white px-5 font-[family-name:var(--font-roboto)] text-sm text-[#1c2544] outline-none"
               />
               <button
@@ -59,7 +59,7 @@ export function Footer() {
 
           <div className="lg:text-right">
             <h3 className="font-[family-name:var(--font-roboto)] text-[21px] font-medium tracking-tight">
-              Entre em contato
+              Entre em contacto
             </h3>
             <address className="mt-6 space-y-4 not-italic font-[family-name:var(--font-poppins)] text-base leading-[30px] text-[rgba(255,255,255,0.63)]">
               <p>Sítio do Pereiro nº 400F, Moncarapacho, 8700-073 Olhão</p>
@@ -91,8 +91,8 @@ export function Footer() {
           <div className="flex flex-wrap gap-x-8 gap-y-2">
             <Link href="/contactos" className="hover:opacity-70">Contactos</Link>
             <Link href="/transparencia" className="hover:opacity-70">Transparência</Link>
-            <Link href="/transparencia" className="hover:opacity-70">Política de Privacidade</Link>
-            <Link href="/transparencia" className="hover:opacity-70">Termos e Condições</Link>
+            <Link href="/transparencia" className="hover:opacity-70">Política de privacidade</Link>
+            <Link href="/transparencia" className="hover:opacity-70">Termos e condições</Link>
           </div>
         </div>
       </div>
