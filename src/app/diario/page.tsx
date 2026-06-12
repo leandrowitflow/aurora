@@ -10,27 +10,30 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Diário do Aurora | Coletivo Aurora",
   description:
-    "Documentação da vida comunitária no Coletivo Aurora — histórias, aprendizagens e instantes do dia a dia.",
+    "Documentação da vida comunitária no Coletivo Aurora: histórias, aprendizagens e instantes do dia a dia.",
 };
 
 const PLACEHOLDER_POSTS = [
   {
     title: "O primeiro rolar no chão",
     excerpt:
-      "Um instante sagrado dos nossos playgroups — um bebé a explorar texturas naturais com total concentração.",
+      "Um instante sagrado dos nossos playgroups: um bebé a explorar texturas naturais com total concentração.",
     date: "Em breve",
+    imageSrc: "/images/diario-primeiro-rolar.png",
   },
   {
     title: "A receita que os seniores nos ensinaram",
     excerpt:
       "Na cozinha comunitária, uma história antiga ganhou nova vida entre gerações.",
     date: "Em breve",
+    imageSrc: "/images/diario-receita-seniores.png",
   },
   {
     title: "Barro cru, mãos livres",
     excerpt:
-      "O barro que ganhou forma pelas mãos de quem nunca o tinha moldado — e as perguntas imprevistas das crianças.",
+      "O barro que ganhou forma pelas mãos de quem nunca o tinha moldado, e as perguntas imprevistas das crianças.",
     date: "Em breve",
+    imageSrc: "/images/diario-barro-maos.png",
   },
 ];
 
@@ -39,7 +42,7 @@ export default function DiarioPage() {
     <PageShell>
       <PageHero
         title="Diário do Aurora"
-        subtitle="A vida que acontece no Coletivo — documentada com cuidado, escuta e presença."
+        subtitle="A vida que acontece no Coletivo, documentada com cuidado, escuta e presença."
         imageSrc="/images/hero-diario.png"
       />
 
@@ -64,7 +67,7 @@ export default function DiarioPage() {
 
         <div className="intro-quote-panel">
           <PullQuote>
-            Guardamos os instantes sagrados — um primeiro rolar no chão, um
+            Guardamos os instantes sagrados: um primeiro rolar no chão, um
             objeto natural explorado com total concentração, um olhar de
             profundo encontro entre um pai e o seu filho.
           </PullQuote>
@@ -73,7 +76,7 @@ export default function DiarioPage() {
 
       <PageSection className="pt-0 lg:pt-0">
         <SectionHeading eyebrow="Histórias" title="Últimas publicações" />
-        <div className="mt-10 max-w-[800px]">
+        <div className="diario-grid mt-10">
           {PLACEHOLDER_POSTS.map((post) => (
             <DiarioCard key={post.title} {...post} />
           ))}

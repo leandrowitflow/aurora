@@ -29,7 +29,7 @@ const ACTIVITIES = [
   },
   {
     title: "Dança e movimento",
-    description: "O corpo em encontro — ritmo, presença e alegria partilhada.",
+    description: "O corpo em encontro: ritmo, presença e alegria partilhada.",
   },
   {
     title: "Histórias à lareira",
@@ -54,7 +54,7 @@ export default function TecerGeracoesPage() {
     <PageShell>
       <PageHero
         title="Tecendo gerações"
-        subtitle="O coração pulsante do Coletivo Aurora — gratuito, comunitário e aberto a quem a sociedade muitas vezes mantém separado."
+        subtitle="O coração pulsante do Coletivo Aurora, gratuito, comunitário e aberto a quem a sociedade muitas vezes mantém separado."
         imageSrc="/images/hero-tecer-geracoes.png"
       />
 
@@ -63,25 +63,33 @@ export default function TecerGeracoesPage() {
           eyebrow="O projeto"
           title="Um encontro gratuito entre gerações"
         />
-        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div className="body-text space-y-6">
-            <p>
-              O Tecendo gerações é o coração pulsante do Coletivo Aurora. Trata-se
-              de um projeto de base comunitária, inteiramente gratuito para os
-              seus participantes, que visa combater o isolamento e promover a
-              inclusão.
-            </p>
-            <p>
-              Todas as semanas, juntamos pessoas que a sociedade muitas vezes
-              mantém separadas: crianças e idosos, jovens com deficiência e a
-              comunidade migrante. Juntos, partilhamos o mesmo chão.
-            </p>
+        <div className="mt-6 grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <div>
+            <div className="body-text space-y-6">
+              <p>
+                O Tecendo gerações é o coração pulsante do Coletivo Aurora. Trata-se
+                de um projeto de base comunitária, inteiramente gratuito para os
+                seus participantes, que visa combater o isolamento e promover a
+                inclusão.
+              </p>
+              <p>
+                Todas as semanas, juntamos pessoas que a sociedade muitas vezes
+                mantém separadas: crianças e idosos, jovens com deficiência e a
+                comunidade migrante. Juntos, partilhamos o mesmo chão.
+              </p>
+            </div>
+            <div className="intro-quote-panel">
+              <PullQuote>
+                Juntos, partilhamos o mesmo chão através da horta, dos ateliês, da
+                cozinha comunitária e das histórias que tecem uma comunidade mais
+                justa.
+              </PullQuote>
+            </div>
           </div>
-          <PullQuote>
-            Juntos, partilhamos o mesmo chão através da horta, dos ateliês, da
-            cozinha comunitária e das histórias que tecem uma comunidade mais
-            justa.
-          </PullQuote>
+          <figure className="section-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/section-tecer-geracoes.png" alt="" />
+          </figure>
         </div>
       </PageSection>
 
@@ -95,7 +103,7 @@ export default function TecerGeracoesPage() {
             <SectionHeading
               eyebrow="Agenda"
               title="Calendário semanal"
-              description="Consulte as atividades desta semana — em breve com calendário interativo."
+              description="Consulte as atividades desta semana, em breve com calendário interativo."
             />
           </div>
           <aside className="schedule-panel-aside">

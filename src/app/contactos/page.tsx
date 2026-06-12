@@ -61,7 +61,7 @@ export default function ContactosPage() {
     <PageShell>
       <PageHero
         title="Contactos"
-        subtitle="Estamos em Moncarapacho, Olhão — numa antiga escola primária a transformar-se em casa de encontro."
+        subtitle="Estamos em Moncarapacho, Olhão, numa antiga escola primária a transformar-se em casa de encontro."
         imageSrc="/images/hero-contactos.png"
       />
 

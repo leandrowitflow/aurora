@@ -36,11 +36,7 @@ export function ActivityBlock({
       {imageSrc ? (
         <div className="activity-card-image">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={imageSrc}
-            alt=""
-            className="h-full w-full object-cover object-center"
-          />
+          <img src={imageSrc} alt="" />
         </div>
       ) : null}
 

@@ -13,7 +13,7 @@ export function PullQuote({ children, attribution }: PullQuoteProps) {
       </p>
       {attribution ? (
         <cite className="mt-4 block font-[family-name:var(--font-manrope)] text-sm font-bold not-italic text-olive/70">
-          — {attribution}
+          {attribution}
         </cite>
       ) : null}
     </blockquote>

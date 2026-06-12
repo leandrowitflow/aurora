@@ -14,10 +14,10 @@ const ATELIER_OPTIONS = [
 ];
 
 const FERIAS_WEEKS = [
-  "Semana 1 — Julho",
-  "Semana 2 — Julho",
-  "Semana 3 — Agosto",
-  "Semana 4 — Agosto",
+  "Semana 1, Julho",
+  "Semana 2, Julho",
+  "Semana 3, Agosto",
+  "Semana 4, Agosto",
 ];
 
 const FORM_OPTIONS: {

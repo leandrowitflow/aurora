@@ -18,7 +18,7 @@ const ETHICS = [
   },
   {
     title: "Cuidar das pessoas",
-    text: "Cada indivíduo é cidadão de pleno direito — com tempo, escuta e presença.",
+    text: "Cada indivíduo é cidadão de pleno direito, com tempo, escuta e presença.",
   },
   {
     title: "Partilhar a abundância",
@@ -40,17 +40,24 @@ export default function QuemSomosPage() {
           eyebrow="A nossa história"
           title="De jardim de infância a casa de encontro"
         />
-        <p className="body-text mt-6 max-w-[960px]">
-          O Coletivo Aurora nasceu em 2022 como um jardim de infância inspirado
-          na pedagogia Waldorf. Em 2025, encontrou morada num antigo edifício
-          escolar em Olhão — e floresceu como um lugar aberto a todas as idades.
-        </p>
-
-        <div className="intro-quote-panel">
-          <PullQuote>
-            Cada pessoa traz consigo cem linguagens para se expressar, cem formas
-            de manifestar a sua visão e cem histórias fundamentais para contar.
-          </PullQuote>
+        <div className="mt-6 grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <div>
+            <p className="body-text">
+              O Coletivo Aurora nasceu em 2022 como um jardim de infância inspirado
+              na pedagogia Waldorf. Em 2025, encontrou morada num antigo edifício
+              escolar em Olhão, e floresceu como um lugar aberto a todas as idades.
+            </p>
+            <div className="intro-quote-panel">
+              <PullQuote>
+                Cada pessoa traz consigo cem linguagens para se expressar, cem formas
+                de manifestar a sua visão e cem histórias fundamentais para contar.
+              </PullQuote>
+            </div>
+          </div>
+          <figure className="section-figure">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/section-quem-somos.png" alt="" />
+          </figure>
         </div>
       </PageSection>
 
@@ -59,7 +66,7 @@ export default function QuemSomosPage() {
         <p className="body-text mt-6 max-w-[960px]">
           Cruzamos design, permacultura, educação de infância, educação social e
           animação sociocultural. Inspiramo-nos nos ritmos orgânicos, nas cem
-          linguagens e na permacultura — e abrimo-nos a todos os públicos, no
+          linguagens e na permacultura, e abrimo-nos a todos os públicos, no
           mesmo chão.
         </p>
         <div className="ethic-flow mt-12">

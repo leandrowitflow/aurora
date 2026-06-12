@@ -16,7 +16,7 @@ export default function FazerPartePage() {
     <PageShell>
       <PageHero
         title="Fazer parte"
-        subtitle="Com tempo, com recursos ou com uma parceria de longo prazo — há um lugar para si no Aurora."
+        subtitle="Com tempo, com recursos ou com uma parceria de longo prazo, há um lugar para si no Aurora."
         imageSrc="/images/hero-fazer-parte.png"
       />
 
@@ -24,7 +24,7 @@ export default function FazerPartePage() {
         <SectionHeading
           eyebrow="Pilares de apoio"
           title="Escolha a sua forma de contribuir"
-          description="Cada gesto — grande ou pequeno — ajuda a manter vivo o Tecendo gerações e toda a comunidade que o sustenta."
+          description="Cada gesto, grande ou pequeno, ajuda a manter vivo o Tecendo gerações e toda a comunidade que o sustenta."
         />
         <FazerParteContent />
       </PageSection>
