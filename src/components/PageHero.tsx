@@ -20,15 +20,20 @@ export function PageHero({
     <section className="relative min-h-[480px] overflow-hidden lg:min-h-[600px] xl:min-h-[720px]">
       {hasImage ? (
         <>
-          <Image
-            src={imageSrc!}
-            alt=""
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={imageSrc!}
+              alt=""
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-r from-black/65 via-black/40 to-black/20"
+            aria-hidden
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[rgba(0,0,0,0.68)] from-20% via-[rgba(0,0,0,0.45)] to-[rgba(0,0,0,0.25)]" />
         </>
       ) : (
         <>
@@ -44,7 +49,7 @@ export function PageHero({
         </>
       )}
 
-      <div className="page-hero-content relative mx-auto flex min-h-[480px] max-w-[1920px] flex-col justify-center px-page py-28 lg:min-h-[600px] lg:py-32 xl:min-h-[720px]">
+      <div className="page-hero-content relative z-[2] mx-auto flex min-h-[480px] max-w-[1920px] flex-col justify-center px-page py-28 lg:min-h-[600px] lg:py-32 xl:min-h-[720px]">
         {eyebrow ? <p className="label-olive">{eyebrow}</p> : null}
         <h1 className={`heading-page max-w-[900px] ${eyebrow ? "mt-4" : ""}`}>
           {title}
