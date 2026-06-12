@@ -4,14 +4,12 @@ import type { ReactNode } from "react";
 interface PageHeroProps {
   title: ReactNode;
   subtitle?: ReactNode;
-  eyebrow?: string;
   imageSrc?: string;
 }
 
 export function PageHero({
   title,
   subtitle,
-  eyebrow,
   imageSrc,
 }: PageHeroProps) {
   const hasImage = Boolean(imageSrc);
@@ -50,11 +48,7 @@ export function PageHero({
       )}
 
       <div className="page-hero-content relative z-[2] mx-auto flex min-h-[480px] max-w-[1920px] flex-col justify-center px-page py-28 lg:min-h-[600px] lg:py-32 xl:min-h-[720px]">
-        {eyebrow ? <p className="label-olive">{eyebrow}</p> : null}
-        <h1 className={`heading-page max-w-[900px] ${eyebrow ? "mt-4" : ""}`}>
-          {title}
-        </h1>
-        <div className="accent-rule mt-6 bg-mustard" />
+        <h1 className="heading-page max-w-[900px]">{title}</h1>
         {subtitle ? (
           <p className="body-text mt-6 max-w-[640px] opacity-95">{subtitle}</p>
         ) : null}

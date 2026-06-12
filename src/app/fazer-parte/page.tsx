@@ -15,10 +15,9 @@ export default function FazerPartePage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Comunidade"
         title="Fazer Parte"
         subtitle="Com tempo, com recursos ou com uma parceria de longo prazo — há um lugar para si no Aurora."
-        imageSrc="/images/section-apoiar.png"
+        imageSrc="/images/hero-fazer-parte.png"
       />
 
       <PageSection tone="cream">

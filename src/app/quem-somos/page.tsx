@@ -30,10 +30,9 @@ export default function QuemSomosPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="A nossa história"
         title="Quem Somos"
         subtitle="Um lugar do mundo onde diferentes saberes, idades e histórias partilham o mesmo chão."
-        imageSrc="/images/section-cuidar-terra.png"
+        imageSrc="/images/hero-quem-somos.png"
       />
 
       <PageSection>

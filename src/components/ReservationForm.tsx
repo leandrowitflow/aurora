@@ -40,7 +40,6 @@ export function ReservationForm({
       <div className="form-panel-success">
         <p className="label-olive">Obrigado</p>
         <h3 className="heading-subsection mt-3">Pedido recebido</h3>
-        <div className="accent-rule mt-4" />
         <p className="body-text mt-4">
           Entraremos em contacto em breve através do e-mail indicado.
         </p>
@@ -51,7 +50,6 @@ export function ReservationForm({
   return (
     <form onSubmit={handleSubmit} className="form-panel">
       <h3 className="heading-subsection">{title}</h3>
-      <div className="accent-rule mt-4" />
       {description ? <p className="body-text mt-4">{description}</p> : null}
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">

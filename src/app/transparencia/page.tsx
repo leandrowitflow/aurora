@@ -33,9 +33,9 @@ export default function TransparenciaPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Institucional"
         title="Espaço Transparência"
         subtitle="Documentação institucional e informação legal do Coletivo Aurora."
+        imageSrc="/images/hero-transparencia.png"
       />
 
       <PageSection narrow>

@@ -36,10 +36,9 @@ export default function TecerGeracoesPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Projeto social"
         title="Tecendo Gerações"
         subtitle="O coração pulsante do Coletivo Aurora — gratuito, comunitário e aberto a quem a sociedade muitas vezes mantém separado."
-        imageSrc="/images/section-tecendo.png"
+        imageSrc="/images/hero-tecer-geracoes.png"
       />
 
       <PageSection>

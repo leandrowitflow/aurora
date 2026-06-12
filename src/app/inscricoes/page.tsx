@@ -15,9 +15,9 @@ export default function InscricoesPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Reservas"
         title="Inscrições"
         subtitle="Escolha o tipo de atividade e preencha o formulário. Entraremos em contacto para confirmar o seu lugar."
+        imageSrc="/images/hero-inscricoes.png"
       />
 
       <PageSection id="formularios" tone="cream">

@@ -133,7 +133,6 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Tempo e presença</p>
               <h3 className="heading-subsection mt-2">Voluntariado</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6 space-y-4">
                 <p>
                   A nossa comunidade cresce com a energia de quem chega. Se tem
@@ -185,7 +184,6 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Contributo direto</p>
               <h3 className="heading-subsection mt-2">Donativos Pontuais</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6">
                 <p>
                   Cada contributo direto é totalmente canalizado para a compra de
@@ -214,7 +212,6 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Apoio mensal</p>
               <h3 className="heading-subsection mt-2">Amigos do Aurora</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6">
                 <p>
                   Uma forma contínua e estruturada de apoiar o nosso projeto
@@ -243,7 +240,6 @@ export function FazerParteContent() {
             <>
               <p className="label-olive">Rede e território</p>
               <h3 className="heading-subsection mt-2">Parcerias</h3>
-              <div className="accent-rule mt-4" />
               <div className="body-text mt-6">
                 <p>
                   Trabalhamos em rede com empresas, escolas, juntas de freguesia

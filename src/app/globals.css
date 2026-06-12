@@ -177,12 +177,6 @@ body {
   text-transform: uppercase;
 }
 
-.accent-rule {
-  width: 64px;
-  height: 3px;
-  background: var(--mustard);
-}
-
 .surface-cream {
   background-color: var(--cream);
 }
@@ -211,7 +205,7 @@ body {
 .activity-card {
   position: relative;
   display: grid;
-  gap: 2.5rem;
+  gap: 3.5rem;
   padding-top: clamp(2.5rem, 5vw, 4rem);
 }
 
@@ -222,8 +216,8 @@ body {
 @media (min-width: 1024px) {
   .activity-card:not(.activity-card-text-only) {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: 3rem;
+    align-items: center;
+    gap: clamp(4rem, 6vw, 6.5rem);
   }
 
   .activity-card-reverse .activity-card-image {
@@ -243,7 +237,7 @@ body {
 }
 
 .activity-card-body {
-  align-self: start;
+  align-self: center;
 }
 
 .activity-card-tag {
@@ -493,10 +487,6 @@ body {
 
 .registration-form-area .form-panel .heading-subsection {
   margin-top: 0.5rem;
-}
-
-.registration-form-area .form-panel .accent-rule {
-  width: 48px;
 }
 
 .registration-nav-item-featured {

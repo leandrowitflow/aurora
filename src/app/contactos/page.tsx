@@ -60,9 +60,9 @@ export default function ContactosPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Encontro"
         title="Contactos"
         subtitle="Estamos em Moncarapacho, Olhão — numa antiga escola primária a transformar-se em casa de encontro."
+        imageSrc="/images/hero-contactos.png"
       />
 
       <PageSection>

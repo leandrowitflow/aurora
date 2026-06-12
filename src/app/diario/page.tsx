@@ -38,9 +38,9 @@ export default function DiarioPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Documentação"
         title="Diário do Aurora"
         subtitle="A vida que acontece no Coletivo — documentada com cuidado, escuta e presença."
+        imageSrc="/images/hero-diario.png"
       />
 
       <PageSection>
