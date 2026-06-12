@@ -173,8 +173,7 @@ body {
   font-family: var(--font-manrope), Manrope, sans-serif;
   font-size: clamp(0.875rem, 1.2vw, 1.125rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .surface-cream {
@@ -200,6 +199,58 @@ body {
 .pull-quote {
   padding-left: clamp(1.25rem, 2.5vw, 2rem);
   border-left: 3px solid var(--mustard);
+}
+
+.intro-quote-panel {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(2rem, 4vw, 3rem);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse 65% 50% at 100% 0%, rgba(253, 205, 132, 0.22), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 0% 100%, rgba(100, 95, 54, 0.05), transparent 50%);
+}
+
+.intro-quote-panel .pull-quote {
+  max-width: 40rem;
+  margin: 0;
+  padding-left: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.intro-quote-panel .pull-quote p {
+  font-size: clamp(1.375rem, 2.4vw, 2rem);
+  line-height: 1.35;
+}
+
+.schedule-panel {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  width: 100%;
+  background: #fff;
+}
+
+@media (min-width: 1024px) {
+  .schedule-panel {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 26rem);
+    align-items: center;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+}
+
+.schedule-panel-aside {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--cream);
+  box-shadow: 0 12px 32px rgba(100, 95, 54, 0.06);
+}
+
+.schedule-panel-badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  background: var(--mustard);
 }
 
 .activity-card {
@@ -244,7 +295,6 @@ body {
   font-family: var(--font-manrope), Manrope, sans-serif;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--olive);
 }
 
@@ -253,24 +303,99 @@ body {
 }
 
 .topic-tag-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, auto);
-  grid-auto-flow: column;
-  gap: 1.25rem 3rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  width: 100%;
 }
 
-@media (max-width: 639px) {
-  .topic-tag-list {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-    grid-auto-flow: row;
-    gap: 1rem;
+.topic-tag-list-header {
+  max-width: 42rem;
+}
+
+.topic-tag-list-rule {
+  width: 3rem;
+  height: 3px;
+  margin-top: 1rem;
+  background: var(--mustard);
+}
+
+.topic-tag-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .topic-tag-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.125rem;
   }
 }
+
+@media (min-width: 1024px) {
+  .topic-tag-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.topic-tag-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.375rem 1.25rem;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 1px 0 rgba(100, 95, 54, 0.08),
+    0 12px 32px rgba(100, 95, 54, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.topic-tag-card:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  box-shadow:
+    0 1px 0 rgba(100, 95, 54, 0.1),
+    0 16px 40px rgba(100, 95, 54, 0.1);
+}
+
+.topic-tag-card-index {
+  flex-shrink: 0;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(100, 95, 54, 0.38);
+  padding-top: 0.2rem;
+}
+
+.topic-tag-card-copy {
+  min-width: 0;
+}
+
+.topic-tag-card-title {
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--olive);
+}
+
+.topic-tag-card-desc {
+  margin-top: 0.5rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(100, 95, 54, 0.72);
+}
+
 
 .registration-layout {
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
@@ -291,7 +416,6 @@ body {
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   color: rgba(100, 95, 54, 0.45);
 }
 
@@ -459,7 +583,6 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--olive);
 }
 
@@ -504,7 +627,6 @@ body {
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  text-transform: uppercase;
   vertical-align: middle;
   color: var(--olive);
   background: var(--mustard);
@@ -525,7 +647,6 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--olive);
 }
 
@@ -844,14 +965,14 @@ body {
     color 0.25s ease;
   box-shadow:
     0 10px 28px rgba(100, 95, 54, 0.34),
-    0 0 0 3px rgba(253, 205, 132, 0.5);
+    0 0 0 3px var(--background);
 }
 
 .assistant-toggle-ring {
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  border: 2px solid rgba(253, 205, 132, 0.7);
+  border: 2px solid var(--background);
   animation: assistant-ring 3.5s ease-in-out infinite;
   pointer-events: none;
 }
@@ -878,7 +999,7 @@ body {
   transform: translateY(-3px) scale(1.03);
   box-shadow:
     0 16px 36px rgba(100, 95, 54, 0.38),
-    0 0 0 3px rgba(253, 205, 132, 0.65);
+    0 0 0 3px var(--background);
 }
 
 .assistant-toggle-open {
@@ -891,7 +1012,7 @@ body {
 }
 
 .assistant-toggle-open .assistant-toggle-ring {
-  border-color: rgba(100, 95, 54, 0.25);
+  border-color: var(--background);
   animation: none;
 }
 
@@ -964,7 +1085,6 @@ body {
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--mustard);
 }
 
@@ -1041,7 +1161,6 @@ body {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: rgba(100, 95, 54, 0.55);
 }
 
@@ -1153,7 +1272,6 @@ body {
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   opacity: 0.65;
 }
 

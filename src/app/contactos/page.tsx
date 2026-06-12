@@ -123,7 +123,7 @@ export default function ContactosPage() {
                 placeholder: "Como podemos ajudar?",
               },
             ]}
-            submitLabel="Enviar Mensagem"
+            submitLabel="Enviar mensagem"
           />
         </div>
       </PageSection>

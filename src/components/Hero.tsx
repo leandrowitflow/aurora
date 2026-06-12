@@ -27,7 +27,7 @@ export function Hero() {
           encontro aberta ao mundo.
         </p>
         <div className="mt-8">
-          <Button href="/quem-somos" label="Quem Somos" variant="mustard" />
+          <Button href="/quem-somos" label="Quem somos" variant="mustard" />
         </div>
       </div>
     </section>
