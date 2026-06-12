@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
+import { AuroraAssistant } from "@/components/AuroraAssistant";
 import { epilogue, manrope, poppins, roboto } from "@/lib/fonts";
 import "./globals.css";
 
@@ -18,7 +19,10 @@ export default function RootLayout({
       lang="pt"
       className={`${epilogue.variable} ${manrope.variable} ${poppins.variable} ${roboto.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+        <AuroraAssistant />
+      </body>
     </html>
   );
 }
