@@ -1,6 +1,6 @@
 "use client";
 
-import { AURORA_SUGGESTIONS } from "@/lib/aurora-assistant";
+import { ASSISTANT_AVATAR, AURORA_SUGGESTIONS } from "@/lib/aurora-assistant";
 import { useChat } from "@ai-sdk/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -10,6 +10,50 @@ function getMessageText(message: { parts: Array<{ type: string; text?: string }>
     .filter((part) => part.type === "text")
     .map((part) => part.text ?? "")
     .join("");
+}
+
+function renderBoldMarkdown(text: string) {
+  const parts: React.ReactNode[] = [];
+  const pattern = /\*\*(.+?)\*\*/g;
+  let lastIndex = 0;
+  let match = pattern.exec(text);
+  let key = 0;
+
+  while (match) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+
+    parts.push(<strong key={key}>{match[1]}</strong>);
+    key += 1;
+    lastIndex = pattern.lastIndex;
+    match = pattern.exec(text);
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
+
+function AssistantAvatar({
+  className = "",
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <Image
+      src={ASSISTANT_AVATAR}
+      alt=""
+      fill
+      sizes="80px"
+      className={`object-cover object-top ${className}`}
+      priority={priority}
+    />
+  );
 }
 
 export function AuroraAssistant() {
@@ -96,12 +140,7 @@ export function AuroraAssistant() {
             <header className="assistant-header">
               <div className="assistant-header-brand">
                 <div className="assistant-avatar" aria-hidden="true">
-                  <Image
-                    src="/images/logo.svg"
-                    alt=""
-                    width={36}
-                    height={36}
-                  />
+                  <AssistantAvatar />
                 </div>
                 <div>
                   <p className="assistant-eyebrow">Coletivo Aurora</p>
@@ -173,12 +212,7 @@ export function AuroraAssistant() {
                   >
                     {!isUser ? (
                       <div className="assistant-row-avatar" aria-hidden="true">
-                        <Image
-                          src="/images/logo.svg"
-                          alt=""
-                          width={28}
-                          height={28}
-                        />
+                        <AssistantAvatar />
                       </div>
                     ) : null}
 
@@ -190,7 +224,9 @@ export function AuroraAssistant() {
                       <p className="assistant-bubble-label">
                         {isUser ? "Você" : "Aurora"}
                       </p>
-                      <div className="assistant-bubble-text">{text}</div>
+                      <div className="assistant-bubble-text">
+                        {renderBoldMarkdown(text)}
+                      </div>
                     </div>
                   </div>
                 );
@@ -199,12 +235,7 @@ export function AuroraAssistant() {
               {status === "submitted" ? (
                 <div className="assistant-row assistant-row-assistant">
                   <div className="assistant-row-avatar" aria-hidden="true">
-                    <Image
-                      src="/images/logo.svg"
-                      alt=""
-                      width={28}
-                      height={28}
-                    />
+                    <AssistantAvatar />
                   </div>
                   <div className="assistant-bubble assistant-bubble-assistant">
                     <p className="assistant-bubble-label">Aurora</p>
@@ -219,8 +250,10 @@ export function AuroraAssistant() {
 
               {error ? (
                 <p className="assistant-error" role="alert">
-                  Não foi possível obter resposta. Tente novamente ou escreva para{" "}
-                  <a href="mailto:somosaurora@gmail.com">somosaurora@gmail.com</a>
+                  {error.message || "Não foi possível obter resposta. Tente novamente ou escreva para "}
+                  {!error.message ? (
+                    <a href="mailto:somosaurora@gmail.com">somosaurora@gmail.com</a>
+                  ) : null}
                 </p>
               ) : null}
 
@@ -276,14 +309,8 @@ export function AuroraAssistant() {
               ×
             </span>
           ) : (
-            <span className="assistant-toggle-logo">
-              <Image
-                src="/images/logo.svg"
-                alt=""
-                width={34}
-                height={34}
-                priority
-              />
+            <span className="assistant-toggle-avatar">
+              <AssistantAvatar priority />
             </span>
           )}
         </button>
