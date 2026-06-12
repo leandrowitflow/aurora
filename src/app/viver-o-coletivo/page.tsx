@@ -97,7 +97,7 @@ export default function ViverOColetivoPage() {
     <PageShell>
       <PageHero
         title="Viver o coletivo"
-        subtitle="Da infância à vida adulta — com a natureza como sala de aula e as mãos como ferramenta de descoberta."
+        subtitle="Da infância à vida adulta, com a natureza como sala de aula e as mãos como ferramenta de descoberta."
         imageSrc="/images/hero-viver-o-coletivo.png"
       />
 

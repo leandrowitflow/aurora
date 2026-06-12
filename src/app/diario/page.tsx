@@ -10,14 +10,14 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Diário do Aurora | Coletivo Aurora",
   description:
-    "Documentação da vida comunitária no Coletivo Aurora — histórias, aprendizagens e instantes do dia a dia.",
+    "Documentação da vida comunitária no Coletivo Aurora: histórias, aprendizagens e instantes do dia a dia.",
 };
 
 const PLACEHOLDER_POSTS = [
   {
     title: "O primeiro rolar no chão",
     excerpt:
-      "Um instante sagrado dos nossos playgroups — um bebé a explorar texturas naturais com total concentração.",
+      "Um instante sagrado dos nossos playgroups: um bebé a explorar texturas naturais com total concentração.",
     date: "Em breve",
   },
   {
@@ -29,7 +29,7 @@ const PLACEHOLDER_POSTS = [
   {
     title: "Barro cru, mãos livres",
     excerpt:
-      "O barro que ganhou forma pelas mãos de quem nunca o tinha moldado — e as perguntas imprevistas das crianças.",
+      "O barro que ganhou forma pelas mãos de quem nunca o tinha moldado, e as perguntas imprevistas das crianças.",
     date: "Em breve",
   },
 ];
@@ -39,7 +39,7 @@ export default function DiarioPage() {
     <PageShell>
       <PageHero
         title="Diário do Aurora"
-        subtitle="A vida que acontece no Coletivo — documentada com cuidado, escuta e presença."
+        subtitle="A vida que acontece no Coletivo, documentada com cuidado, escuta e presença."
         imageSrc="/images/hero-diario.png"
       />
 
@@ -64,7 +64,7 @@ export default function DiarioPage() {
 
         <div className="intro-quote-panel">
           <PullQuote>
-            Guardamos os instantes sagrados — um primeiro rolar no chão, um
+            Guardamos os instantes sagrados: um primeiro rolar no chão, um
             objeto natural explorado com total concentração, um olhar de
             profundo encontro entre um pai e o seu filho.
           </PullQuote>

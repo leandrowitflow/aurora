@@ -1,4 +1,4 @@
-﻿import { Hero } from "@/components/Hero";
+import { Hero } from "@/components/Hero";
 import { ContentSection } from "@/components/ContentSection";
 import { PartnersBar } from "@/components/PartnersBar";
 import { PageShell } from "@/components/PageShell";
@@ -113,7 +113,7 @@ export default function Home() {
         <ContentSection
           id="apoiar"
           title="Como apoiar?"
-          description="O Tecendo gerações só é possível com o apoio da nossa rede de solidariedade. Seja através de voluntariado, de um donativo pontual ou tornando-se um parceiro do projeto — há um lugar para si no Aurora."
+          description="O Tecendo gerações só é possível com o apoio da nossa rede de solidariedade. Seja através de voluntariado, de um donativo pontual ou tornando-se um parceiro do projeto, há um lugar para si no Aurora."
           imageSrc="/images/section-apoiar.png"
           imageAlt="Casa de pedra rústica do projeto Aurora"
           imageLayout="apoiar"

@@ -127,7 +127,7 @@ export function AuroraAssistant() {
                   <div className="assistant-welcome-rule" aria-hidden="true" />
                   <p className="assistant-welcome-text">
                     Pergunte sobre atividades, inscrições, Tecendo gerações ou
-                    contactos — respondo com base no que o Aurora partilha
+                    contactos. Respondo com base no que o Aurora partilha
                     publicamente.
                   </p>
                   <p className="assistant-suggestions-label">Sugestões</p>

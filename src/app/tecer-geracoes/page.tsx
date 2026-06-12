@@ -29,7 +29,7 @@ const ACTIVITIES = [
   },
   {
     title: "Dança e movimento",
-    description: "O corpo em encontro — ritmo, presença e alegria partilhada.",
+    description: "O corpo em encontro: ritmo, presença e alegria partilhada.",
   },
   {
     title: "Histórias à lareira",
@@ -54,7 +54,7 @@ export default function TecerGeracoesPage() {
     <PageShell>
       <PageHero
         title="Tecendo gerações"
-        subtitle="O coração pulsante do Coletivo Aurora — gratuito, comunitário e aberto a quem a sociedade muitas vezes mantém separado."
+        subtitle="O coração pulsante do Coletivo Aurora, gratuito, comunitário e aberto a quem a sociedade muitas vezes mantém separado."
         imageSrc="/images/hero-tecer-geracoes.png"
       />
 
@@ -95,7 +95,7 @@ export default function TecerGeracoesPage() {
             <SectionHeading
               eyebrow="Agenda"
               title="Calendário semanal"
-              description="Consulte as atividades desta semana — em breve com calendário interativo."
+              description="Consulte as atividades desta semana, em breve com calendário interativo."
             />
           </div>
           <aside className="schedule-panel-aside">

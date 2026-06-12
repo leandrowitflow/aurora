@@ -266,29 +266,44 @@ body {
 
 @media (min-width: 1024px) {
   .activity-card:not(.activity-card-text-only) {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: clamp(4rem, 6vw, 6.5rem);
   }
 
-  .activity-card-reverse .activity-card-image {
-    order: 2;
+  .activity-card:not(.activity-card-text-only).activity-card-reverse {
+    flex-direction: row-reverse;
   }
 
-  .activity-card-reverse .activity-card-body {
-    order: 1;
+  .activity-card:not(.activity-card-text-only) .activity-card-image,
+  .activity-card:not(.activity-card-text-only) .activity-card-body {
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
 
 .activity-card-image {
   position: relative;
+  width: 100%;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--sand);
 }
 
+.activity-card-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .activity-card-body {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .activity-card-tag {

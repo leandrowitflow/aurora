@@ -18,7 +18,7 @@ const ETHICS = [
   },
   {
     title: "Cuidar das pessoas",
-    text: "Cada indivíduo é cidadão de pleno direito — com tempo, escuta e presença.",
+    text: "Cada indivíduo é cidadão de pleno direito, com tempo, escuta e presença.",
   },
   {
     title: "Partilhar a abundância",
@@ -43,7 +43,7 @@ export default function QuemSomosPage() {
         <p className="body-text mt-6 max-w-[960px]">
           O Coletivo Aurora nasceu em 2022 como um jardim de infância inspirado
           na pedagogia Waldorf. Em 2025, encontrou morada num antigo edifício
-          escolar em Olhão — e floresceu como um lugar aberto a todas as idades.
+          escolar em Olhão, e floresceu como um lugar aberto a todas as idades.
         </p>
 
         <div className="intro-quote-panel">
@@ -59,7 +59,7 @@ export default function QuemSomosPage() {
         <p className="body-text mt-6 max-w-[960px]">
           Cruzamos design, permacultura, educação de infância, educação social e
           animação sociocultural. Inspiramo-nos nos ritmos orgânicos, nas cem
-          linguagens e na permacultura — e abrimo-nos a todos os públicos, no
+          linguagens e na permacultura, e abrimo-nos a todos os públicos, no
           mesmo chão.
         </p>
         <div className="ethic-flow mt-12">
