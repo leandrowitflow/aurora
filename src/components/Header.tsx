@@ -16,7 +16,7 @@ export function Header() {
         isHome ? "bg-transparent" : "bg-white"
       }`}
     >
-      <div className="relative mx-auto flex h-[80px] max-w-[1920px] items-center justify-between px-page lg:h-[100px] xl:h-[122px]">
+      <div className="relative mx-auto flex h-[80px] max-w-[1920px] items-center justify-between px-page lg:h-[88px] 2xl:h-[122px]">
         <Link href="/" className="shrink-0">
           <Image
             src="/images/logo.svg"
@@ -24,6 +24,7 @@ export function Header() {
             width={80}
             height={79}
             priority
+            className="h-auto w-[4.5rem] sm:w-20 lg:w-16 xl:w-[72px] 2xl:w-[80px]"
           />
         </Link>
 

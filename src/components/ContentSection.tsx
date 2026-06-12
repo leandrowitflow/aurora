@@ -1,6 +1,6 @@
 ﻿import { Button } from "@/components/Button";
 import { SECTION_IMAGES, type SectionImageKey } from "@/lib/section-images";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 interface ContentSectionProps {
   id?: string;
@@ -74,15 +74,16 @@ export function ContentSection({
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover lg:object-fill"
             style={{
-              objectPosition: imagePosition === "left" ? "left center" : "right center",
+              objectPosition:
+                imagePosition === "left" ? "left center" : "right center",
             }}
           />
         </div>
 
         {/* Text column — fills remaining width, centred vertically */}
-        <div className="flex flex-1 flex-col justify-center bg-white px-page py-12 lg:py-16">
+        <div className="flex flex-1 flex-col justify-center bg-white px-page py-10 sm:py-12 lg:py-10 xl:py-12 2xl:py-16">
           <h2 className="heading-section max-w-[603px]">{title}</h2>
           <div className="body-text mt-6 max-w-[660px]">{description}</div>
           <div className="mt-8">
@@ -102,27 +103,31 @@ export function ContentSection({
      width = 1920 − 2×180px margins).
      ───────────────────────────────────────────────────────────────────────── */
   const aspectRatio = imageHeight ? `${imageWidth} / ${imageHeight}` : undefined;
-  // percentage of content area at 1920px canvas
   const imgPct = `${((imageWidth / 1560) * 100).toFixed(1)}%`;
 
   return (
     <section
       id={id}
-      className="relative w-full overflow-hidden py-12 lg:py-20"
+      className="relative w-full overflow-hidden pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20"
     >
       <div
-        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page lg:flex-row lg:items-center lg:gap-16 ${
-          imagePosition === "right" ? "lg:flex-row-reverse" : ""
+        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page max-lg:items-center lg:flex-row lg:items-center ${
+          imagePosition === "right"
+            ? "lg:flex-row-reverse lg:gap-10 xl:gap-12 2xl:gap-16"
+            : "rect-row-image-left"
         }`}
       >
         {/* Portrait photo — scales with viewport, caps at Figma pixel width */}
         <div
-          className="w-full overflow-hidden"
-          style={{
-            width: `min(${imageWidth}px, ${imgPct})`,
-            flexShrink: 0,
-            aspectRatio,
-          }}
+          className="rect-img overflow-hidden"
+          style={
+            {
+              "--rect-max-w": `${imageWidth}px`,
+              "--rect-pct": imgPct,
+              flexShrink: 0,
+              aspectRatio,
+            } as CSSProperties
+          }
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
