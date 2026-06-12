@@ -19,18 +19,21 @@ const PLACEHOLDER_POSTS = [
     excerpt:
       "Um instante sagrado dos nossos playgroups: um bebé a explorar texturas naturais com total concentração.",
     date: "Em breve",
+    imageSrc: "/images/diario-primeiro-rolar.png",
   },
   {
     title: "A receita que os seniores nos ensinaram",
     excerpt:
       "Na cozinha comunitária, uma história antiga ganhou nova vida entre gerações.",
     date: "Em breve",
+    imageSrc: "/images/diario-receita-seniores.png",
   },
   {
     title: "Barro cru, mãos livres",
     excerpt:
       "O barro que ganhou forma pelas mãos de quem nunca o tinha moldado, e as perguntas imprevistas das crianças.",
     date: "Em breve",
+    imageSrc: "/images/diario-barro-maos.png",
   },
 ];
 
@@ -73,7 +76,7 @@ export default function DiarioPage() {
 
       <PageSection className="pt-0 lg:pt-0">
         <SectionHeading eyebrow="Histórias" title="Últimas publicações" />
-        <div className="mt-10 max-w-[800px]">
+        <div className="diario-grid mt-10">
           {PLACEHOLDER_POSTS.map((post) => (
             <DiarioCard key={post.title} {...post} />
           ))}
