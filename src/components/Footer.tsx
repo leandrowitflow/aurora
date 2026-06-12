@@ -93,10 +93,11 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-base font-[family-name:var(--font-roboto)] sm:flex-row sm:items-center sm:justify-between">
           <p>Copyright © FlowProduction 2026</p>
-          <div className="flex gap-8">
-            <Link href="#" className="hover:opacity-70">Privacy Policy</Link>
-            <Link href="#" className="hover:opacity-70">Terms of Service</Link>
-            <Link href="#" className="hover:opacity-70">Cookies</Link>
+          <div className="flex flex-wrap gap-x-8 gap-y-2">
+            <Link href="/contactos" className="hover:opacity-70">Contactos</Link>
+            <Link href="/transparencia" className="hover:opacity-70">Transparência</Link>
+            <Link href="/transparencia" className="hover:opacity-70">Política de Privacidade</Link>
+            <Link href="/transparencia" className="hover:opacity-70">Termos e Condições</Link>
           </div>
         </div>
       </div>

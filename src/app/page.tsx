@@ -1,14 +1,11 @@
-﻿import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
+﻿import { Hero } from "@/components/Hero";
 import { ContentSection } from "@/components/ContentSection";
 import { PartnersBar } from "@/components/PartnersBar";
+import { PageShell } from "@/components/PageShell";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main>
+    <PageShell>
         <Hero />
 
         <ContentSection
@@ -19,7 +16,7 @@ export default function Home() {
           imageAlt="Criança a regar plantas na horta"
           imageLayout="nature"
           buttonLabel="Ver Atividades"
-          buttonHref="#atividades"
+          buttonHref="/viver-o-coletivo"
           imagePosition="left"
         />
 
@@ -43,7 +40,7 @@ export default function Home() {
           imageAlt="Cesto de legumes frescos da horta"
           imageLayout="cuidar"
           buttonLabel="Apoiar o Projeto"
-          buttonHref="#apoiar"
+          buttonHref="/fazer-parte"
           imagePosition="right"
         />
 
@@ -55,7 +52,7 @@ export default function Home() {
           imageAlt="Criança a tecer uma cesta"
           imageLayout="corpo"
           buttonLabel="Ver Atividades"
-          buttonHref="#atividades"
+          buttonHref="/viver-o-coletivo"
           imagePosition="left"
         />
 
@@ -63,10 +60,17 @@ export default function Home() {
           <div className="mx-auto max-w-[1264px] px-page text-center">
             <h2 className="heading-section">O que nos move</h2>
             <p className="body-text mx-auto mt-6">
-              Guiados pelos ritmos orgânicos, pelas cem linguagens e pela permacultura, criámos um ponto de encontro comunitário para criar e trabalhar a terra livremente. Valorizamos a estética, a escuta e o manuseamento de materiais como formas de cuidado.
+              Inspirados pelo respeito aos ritmos orgânicos, pelo manifesto das cem
+              linguagens e pelos princípios da permacultura, cultivamos um lugar de
+              encontro onde as pessoas se juntam para pôr as mãos na terra, criar
+              livremente e partilhar a vida comunitária. Acreditamos que a beleza do
+              espaço, a escuta atenta e a liberdade de explorar os materiais com as
+              próprias mãos são puros atos de cuidado mútuo.
               <br />
               <br />
-              Aqui, pessoas de todas as idades e contextos partilham vivências, aprendem em conjunto e resgatam o sentido profundo de comunidade.
+              Aqui, diferentes idades, origens e contextos de vida partilham o mesmo
+              chão, aprendendo uns com os outros e resgatando o sentido profundo de
+              viver em comunidade.
             </p>
           </div>
         </section>
@@ -83,8 +87,8 @@ export default function Home() {
           imageSrc="/images/section-viver-coletivo.png"
           imageAlt="Criança a brincar na natureza"
           imageLayout="viver"
-          buttonLabel="Ver Atividades"
-          buttonHref="#atividades"
+          buttonLabel="Explorar Atividades"
+          buttonHref="/viver-o-coletivo"
           imagePosition="right"
         />
 
@@ -101,8 +105,8 @@ export default function Home() {
           imageSrc="/images/section-tecendo.png"
           imageAlt="Mulher idosa e criança a cozinhar juntas"
           imageLayout="tecendo"
-          buttonLabel="Saber Mais"
-          buttonHref="#tecendo-geracoes"
+          buttonLabel="Conhecer o Projeto"
+          buttonHref="/tecendo-geracoes"
           imagePosition="left"
         />
 
@@ -113,14 +117,12 @@ export default function Home() {
           imageSrc="/images/section-apoiar.png"
           imageAlt="Casa de pedra rústica do projeto Aurora"
           imageLayout="apoiar"
-          buttonLabel="Apoiar o Projeto"
-          buttonHref="#apoiar"
+          buttonLabel="Apoiar o Aurora"
+          buttonHref="/fazer-parte"
           imagePosition="right"
         />
 
         <PartnersBar />
-      </main>
-      <Footer />
-    </>
+    </PageShell>
   );
 }
