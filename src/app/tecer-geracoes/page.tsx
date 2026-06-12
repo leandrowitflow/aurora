@@ -32,7 +32,7 @@ const SUPPORT_LINKS = [
   { label: "Criar uma Parceria", href: "/fazer-parte#parcerias" },
 ];
 
-export default function TecendoGeracoesPage() {
+export default function TecerGeracoesPage() {
   return (
     <PageShell>
       <PageHero

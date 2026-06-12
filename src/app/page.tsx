@@ -56,7 +56,7 @@ export default function Home() {
           imagePosition="left"
         />
 
-        <section className="py-16 lg:py-24">
+        <section className="py-12 lg:py-14 xl:py-16 2xl:py-20">
           <div className="mx-auto max-w-[1264px] px-page text-center">
             <h2 className="heading-section">O que nos move</h2>
             <p className="body-text mx-auto mt-6">
@@ -93,7 +93,7 @@ export default function Home() {
         />
 
         <ContentSection
-          id="tecendo-geracoes"
+          id="tecer-geracoes"
           title="Tecendo Gerações"
           description={
             <>
@@ -106,7 +106,7 @@ export default function Home() {
           imageAlt="Mulher idosa e criança a cozinhar juntas"
           imageLayout="tecendo"
           buttonLabel="Conhecer o Projeto"
-          buttonHref="/tecendo-geracoes"
+          buttonHref="/tecer-geracoes"
           imagePosition="left"
         />
 

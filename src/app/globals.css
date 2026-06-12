@@ -9,10 +9,16 @@
   --sand: #ebe6d9;
   --footer-text-muted: rgba(255, 255, 255, 0.63);
   /*
-   * Fluid page margins: 24px on phones → 120px on 1280px laptop → 180px on 1920px.
-   * Formula: 180 / 1920 = 9.375vw, floor at 1.5rem so small phones stay readable.
+   * Page margins: 24px phones → ~84px laptop → 180px large desktop.
+   * Laptop uses a lower vw cap so content isn't squeezed by huge side padding.
    */
-  --page-px: clamp(1.5rem, 9.375vw, 11.25rem);
+  --page-px: clamp(1.5rem, 6.5vw, 7.5rem);
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --page-px: clamp(1.5rem, 9.375vw, 11.25rem);
+  }
 }
 
 /* Apply the fluid page margins — replaces lg:px-[180px] + px-6 combos */
@@ -38,14 +44,60 @@ body {
   font-family: var(--font-manrope), Manrope, sans-serif;
 }
 
-.heading-section {
-  color: #000;
-  font-family: var(--font-epilogue), Epilogue, sans-serif;
-  /* 24px on phones → 32px on 1280px laptop → 36px on 1440px+ */
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+@layer components {
+  .heading-section {
+    font-family: var(--font-epilogue), Epilogue, sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    color: #000;
+  }
+
+  @media (min-width: 1024px) {
+    .heading-section {
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .heading-section {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .heading-section {
+      font-size: 36px;
+    }
+  }
+
+  .body-text {
+    font-family: var(--font-manrope), Manrope, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #000;
+  }
+
+  @media (min-width: 1024px) {
+    .body-text {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .body-text {
+      font-size: 17px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .body-text {
+      font-size: 20px;
+    }
+  }
 }
 
 .text-nav {
@@ -62,22 +114,36 @@ body {
   line-height: normal;
 }
 
-.body-text {
-  color: #000;
-  font-family: var(--font-manrope), Manrope, sans-serif;
-  /* 16px on phones/small laptops → 20px on 1440px+ */
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
 .heading-page {
   color: #000;
   font-family: var(--font-epilogue), Epilogue, sans-serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
+}
+
+/* Homepage hero — force white text over global body color */
+.hero-content {
+  color: #fff;
+}
+
+.hero-title {
+  max-width: 24rem;
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: #fff;
+}
+
+.hero-lead {
+  max-width: 38.5rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: clamp(1.125rem, 1.6vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #fff;
 }
 
 /* Inner-page hero — force white text over global heading/body colors */
@@ -695,21 +761,40 @@ body {
 
 /**
  * Torn-section image column.
- * Mobile (flex-col): width = 100vw; height driven by aspect-ratio inline style
- *   set per section from Figma's imageWidth / sectionHeight values.
+ * Mobile/tablet (flex-col): full width with a taller min-height so photos
+ * feel impactful on small screens; aspect-ratio keeps proportions when wider.
  * Desktop (flex-row, lg+): width = explicit flex-basis (51% or 55%);
- *   align-self: stretch makes height = section height so aspect-ratio is
- *   overridden by the definite cross-size — both dimensions are explicitly set.
+ *   align-self: stretch makes height = section height.
  */
 .torn-col {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  width: 100%;
+  min-height: clamp(300px, 62vw, 520px);
+}
+
+/* Tablet: inset images — don't let them span the full viewport */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .torn-col {
+    width: min(82%, 640px);
+    margin-inline: auto;
+    min-height: clamp(240px, 34vw, 380px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .torn-col {
+    width: min(78%, 600px);
+    min-height: clamp(220px, 30vw, 360px);
+  }
 }
 
 @media (min-width: 1024px) {
   .torn-col {
     align-self: stretch;
+    width: auto;
+    min-height: 0;
   }
   /* nature & corpo: 982/1920 ≈ 51% | cuidar: 1064/1920 ≈ 55% */
   .torn-w-51 { flex: 0 0 51%; }
@@ -1258,5 +1343,47 @@ body {
 
   .assistant-toggle {
     align-self: flex-end;
+  }
+}
+
+/**
+ * Portrait (rect) section images.
+ * Mobile: full content width, capped at Figma frame width.
+ * Laptop+ (side-by-side): scale as % of content area (imageWidth / 1560)
+ *   so photos stay proportional and text keeps breathing room; caps at
+ *   Figma pixel width on large desktops.
+ */
+.rect-img {
+  max-width: min(100%, var(--rect-max-w));
+}
+
+/* Tablet: portrait photos scale down and centre within the content area */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .rect-img {
+    width: min(68%, var(--rect-max-w), 460px);
+    max-width: min(68%, var(--rect-max-w), 460px);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rect-img {
+    width: min(62%, var(--rect-max-w), 420px);
+    max-width: min(62%, var(--rect-max-w), 420px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .rect-img {
+    width: min(var(--rect-max-w), var(--rect-pct));
+  }
+
+  /*
+   * Rect sections with image left: widen the gap so the text column starts
+   * where portrait images sit in image-right sections (e.g. Viver o Coletivo).
+   * gap = content − viverImg − thisImg (percentages match .rect-img sizing).
+   */
+  .rect-row-image-left {
+    gap: calc(100% - min(589px, 37.756%) - min(626px, 40.128%));
   }
 }
