@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-base font-[family-name:var(--font-roboto)] sm:flex-row sm:items-center sm:justify-between">
-          <p>Copyright © FlowProduction 2026</p>
+          <p>Copyright © FlowProductions 2026</p>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
             <Link href="/contactos" className="hover:opacity-70">Contactos</Link>
             <Link href="/transparencia" className="hover:opacity-70">Transparência</Link>
