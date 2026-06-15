@@ -109,6 +109,7 @@ export default function ContactosPage() {
       <PageSection>
         <div className="mx-auto max-w-[800px]">
           <ReservationForm
+            formType="contacto"
             title="Contacto rápido"
             description="Envie-nos a sua mensagem e responderemos o mais breve possível."
             fields={[

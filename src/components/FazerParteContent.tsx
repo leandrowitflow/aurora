@@ -148,6 +148,7 @@ export function FazerParteContent() {
 
               <div className="support-form-divider" />
               <ReservationForm
+                formType="voluntariado"
                 key="voluntariado"
                 title="Ficha de voluntário"
                 description="Conte-nos como gostaria de contribuir para o Coletivo Aurora."

@@ -130,6 +130,7 @@ export function InscricoesContent() {
           <p className="label-olive">Formulário</p>
           {active === "ateliers" ? (
             <ReservationForm
+              formType="inscricao-ateliers"
               key="ateliers"
               title={activeOption.label}
               description="Para playgroups, ateliers de crianças, famílias e adultos."
@@ -157,6 +158,7 @@ export function InscricoesContent() {
 
           {active === "aniversarios" ? (
             <ReservationForm
+              formType="inscricao-aniversarios"
               key="aniversarios"
               title={activeOption.label}
               fields={[
@@ -183,6 +185,7 @@ export function InscricoesContent() {
 
           {active === "ferias" ? (
             <ReservationForm
+              formType="inscricao-ferias"
               key="ferias"
               title={activeOption.label}
               fields={[
@@ -209,6 +212,7 @@ export function InscricoesContent() {
 
           {active === "projeto" ? (
             <ReservationForm
+              formType="inscricao-projeto"
               key="projeto"
               title={activeOption.label}
               description="Para participantes dos públicos prioritários do projeto social."
