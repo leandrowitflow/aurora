@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import type { ContactFormType } from "@/lib/email";
 
 interface FormField {
   name: string;
@@ -13,6 +14,7 @@ interface FormField {
 }
 
 interface ReservationFormProps {
+  formType: ContactFormType;
   title: string;
   description?: string;
   fields: FormField[];
@@ -23,16 +25,47 @@ const inputClass =
   "w-full border-0 border-b border-olive/25 bg-transparent px-0 py-3 font-[family-name:var(--font-manrope)] text-base text-black outline-none transition-colors focus:border-olive";
 
 export function ReservationForm({
+  formType,
   title,
   description,
   fields,
   submitLabel = "Enviar",
 }: ReservationFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData.entries()) as Record<string, string>;
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType, data }),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error ?? "Não foi possível enviar o pedido.");
+      }
+
+      setSubmitted(true);
+    } catch (submitError) {
+      setError(
+        submitError instanceof Error
+          ? submitError.message
+          : "Não foi possível enviar o pedido.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -51,6 +84,15 @@ export function ReservationForm({
     <form onSubmit={handleSubmit} className="form-panel">
       <h3 className="heading-subsection">{title}</h3>
       {description ? <p className="body-text mt-4">{description}</p> : null}
+
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        className="sr-only"
+        aria-hidden
+      />
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
         {fields.map((field) => (
@@ -72,6 +114,7 @@ export function ReservationForm({
                 placeholder={field.placeholder}
                 rows={4}
                 className={inputClass}
+                disabled={submitting}
               />
             ) : field.type === "select" ? (
               <select
@@ -80,6 +123,7 @@ export function ReservationForm({
                 required={field.required}
                 className={inputClass}
                 defaultValue=""
+                disabled={submitting}
               >
                 <option value="" disabled>
                   Selecionar
@@ -98,17 +142,25 @@ export function ReservationForm({
                 required={field.required}
                 placeholder={field.placeholder}
                 className={inputClass}
+                disabled={submitting}
               />
             )}
           </div>
         ))}
       </div>
 
+      {error ? (
+        <p className="mt-6 text-sm font-bold text-red-700" role="alert">
+          {error}
+        </p>
+      ) : null}
+
       <button
         type="submit"
-        className="group mt-8 inline-flex h-[63px] items-center gap-3 border-2 border-olive px-8 font-[family-name:var(--font-manrope)] text-[20px] font-bold text-olive transition-colors hover:bg-olive/5"
+        disabled={submitting}
+        className="group mt-8 inline-flex h-[63px] items-center gap-3 border-2 border-olive px-8 font-[family-name:var(--font-manrope)] text-[20px] font-bold text-olive transition-colors hover:bg-olive/5 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        <span>{submitLabel}</span>
+        <span>{submitting ? "A enviar..." : submitLabel}</span>
         <Image
           src="/images/icon-arrow-olive.svg"
           alt=""

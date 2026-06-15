@@ -1,5 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { NAV_LINKS } from "@/lib/nav-links";
 
 const SOCIAL_LINKS = [
@@ -41,20 +42,7 @@ export function Footer() {
             <p className="mt-3 font-[family-name:var(--font-roboto)] text-lg font-light">
               Subscreva a nossa newsletter
             </p>
-            <form className="mt-6 flex max-w-[360px] items-center gap-2">
-              <input
-                type="email"
-                placeholder="O seu e-mail"
-                className="h-12 flex-1 rounded-full bg-white px-5 font-[family-name:var(--font-roboto)] text-sm text-[#1c2544] outline-none"
-              />
-              <button
-                type="submit"
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white transition-opacity hover:opacity-80"
-                aria-label="Subscrever newsletter"
-              >
-                <Image src="/images/icon-arrow-submit.svg" alt="" width={24} height={24} aria-hidden />
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
 
           <div className="lg:text-right">
