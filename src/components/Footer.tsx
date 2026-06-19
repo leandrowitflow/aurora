@@ -4,17 +4,20 @@ import { PartnersLogos } from "@/components/PartnersBar";
 import { NAV_LINKS } from "@/lib/nav-links";
 
 const SOCIAL_LINKS = [
-  { href: "#", icon: "/images/social-x.svg", label: "X" },
   {
-    href: "https://www.facebook.com/jardimauroraalgarve?locale=pt_PT",
+    href: "https://www.facebook.com/coletivoaurora.algarve/",
     icon: "/images/social-facebook.svg",
     label: "Facebook",
   },
-  { href: "#", icon: "/images/social-linkedin.svg", label: "LinkedIn" },
   {
     href: "https://www.instagram.com/coletivoaurora_algarve/",
     icon: "/images/social-instagram.svg",
     label: "Instagram",
+  },
+  {
+    href: "https://chat.whatsapp.com/FWHiBG8wt9UEq7CQACniRF",
+    icon: "/images/social-whatsapp.svg",
+    label: "WhatsApp",
   },
 ];
 
