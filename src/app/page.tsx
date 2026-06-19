@@ -1,63 +1,14 @@
-import { Hero } from "@/components/Hero";
+import { HomeBannerCarousel } from "@/components/HomeBannerCarousel";
 import { ContentSection } from "@/components/ContentSection";
-import { PartnersBar } from "@/components/PartnersBar";
 import { PageShell } from "@/components/PageShell";
 
 export default function Home() {
   return (
     <PageShell>
-        <Hero />
-
-        <ContentSection
-          id="viver-o-coletivo"
-          title="Onde a natureza e o brincar livre guiam a descoberta de cada dia."
-          description="Aqui, cada passo pequeno abre caminho a uma nova descoberta. Com os pés na terra e as mãos livres, aprendemos ao ritmo da natureza."
-          imageSrc="/images/section-nature.png"
-          imageAlt="Criança a regar plantas na horta"
-          imageLayout="nature"
-          buttonLabel="Ver atividades"
-          buttonHref="/viver-o-coletivo"
-          imagePosition="left"
-        />
-
-        <ContentSection
-          id="quem-somos"
-          title={
-            <>
-              Cuidar da terra, cuidar
-              <br />
-              das pessoas e partilhar.
-            </>
-          }
-          description={
-            <>
-              Acreditamos num ciclo que se renova todos os dias:
-              <br />
-              Da horta à mesa, do gesto ao encontro, para que a abundância seja vivida em comunidade.
-            </>
-          }
-          imageSrc="/images/section-cuidar-terra.png"
-          imageAlt="Cesto de legumes frescos da horta"
-          imageLayout="cuidar"
-          buttonLabel="Apoiar o projeto"
-          buttonHref="/fazer-parte"
-          imagePosition="right"
-        />
-
-        <ContentSection
-          id="corpo"
-          title="Um lugar para regressar ao corpo e abrandar o ritmo do dia."
-          description="Entre texturas, gestos calmos e tempo para sentir, cada descoberta convida o corpo a estar presente e a infância a seguir o seu próprio compasso."
-          imageSrc="/images/section-corpo.png"
-          imageAlt="Criança a tecer uma cesta"
-          imageLayout="corpo"
-          buttonLabel="Ver atividades"
-          buttonHref="/viver-o-coletivo"
-          imagePosition="left"
-        />
+        <HomeBannerCarousel />
 
         <section className="py-12 lg:py-14 xl:py-16 2xl:py-20">
-          <div className="mx-auto max-w-[1264px] px-page text-center">
+          <div className="site-container text-center">
             <h2 className="heading-section">O que nos move</h2>
             <p className="body-text mx-auto mt-6">
               Inspirados pelo respeito aos ritmos orgânicos, pelo manifesto das cem
@@ -121,8 +72,6 @@ export default function Home() {
           buttonHref="/fazer-parte"
           imagePosition="right"
         />
-
-        <PartnersBar />
     </PageShell>
   );
 }

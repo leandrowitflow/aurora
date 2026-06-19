@@ -9,22 +9,183 @@
   --sand: #ebe6d9;
   --footer-text-muted: rgba(255, 255, 255, 0.63);
   /*
-   * Page margins: 24px phones → ~84px laptop → 180px large desktop.
-   * Laptop uses a lower vw cap so content isn't squeezed by huge side padding.
+   * Site canvas: narrower than Figma 1920 for a tighter reading width.
+   * Page margins: 24px phones → ~64px laptop.
    */
-  --page-px: clamp(1.5rem, 6.5vw, 7.5rem);
+  --site-max-w: 1280px;
+  --page-px: clamp(1.5rem, 4vw, 4rem);
+  --site-header-h: 4rem;
+  /* Full viewport — navbar is absolute and overlays the banner, not stacked above it */
+  --banner-h: max(520px, 100svh);
+  --hero-h: var(--banner-h);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-header-h: 4.25rem;
+    --banner-h: max(480px, 100svh);
+    --hero-h: var(--banner-h);
+  }
 }
 
 @media (min-width: 1536px) {
   :root {
-    --page-px: clamp(1.5rem, 9.375vw, 11.25rem);
+    --site-header-h: 4.5rem;
+    --banner-h: max(480px, 100svh);
+    --hero-h: var(--banner-h);
+    --page-px: clamp(1.5rem, 4.5vw, 5rem);
   }
 }
 
-/* Apply the fluid page margins — replaces lg:px-[180px] + px-6 combos */
+/* Apply the fluid page margins where site-container is not used */
 .px-page {
   padding-left: var(--page-px);
   padding-right: var(--page-px);
+}
+
+.site-container {
+  width: 100%;
+  max-width: var(--site-max-w);
+  margin-inline: auto;
+  padding-inline: var(--page-px);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  border-bottom: 1px solid rgba(100, 95, 54, 0.08);
+}
+
+.site-header__inner {
+  display: flex;
+  height: var(--site-header-h);
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Pull first hero under the sticky header so banners stay one full viewport */
+main > .site-hero:first-child {
+  margin-top: calc(-1 * var(--site-header-h));
+}
+
+/* Full-bleed heroes — one viewport fold on large screens */
+.site-hero {
+  position: relative;
+  overflow: hidden;
+  height: var(--hero-h);
+  min-height: var(--hero-h);
+  max-height: var(--hero-h);
+}
+
+.site-hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 100%;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--site-header-h) + 0.75rem);
+  padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+@media (min-width: 1280px) {
+  .site-hero__content {
+    padding-top: calc(var(--site-header-h) + 0.5rem);
+    padding-bottom: clamp(1.25rem, 3vh, 2.5rem);
+  }
+}
+
+/* Homepage torn-edge content banners — one full viewport per section */
+.content-banner {
+  min-height: var(--banner-h);
+}
+
+@media (min-width: 1024px) {
+  .content-banner {
+    height: var(--banner-h);
+    min-height: var(--banner-h);
+    max-height: var(--banner-h);
+  }
+}
+
+.home-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-carousel__viewport {
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-carousel__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-carousel__slide {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  flex: 0 0 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.home-carousel__controls {
+  position: absolute;
+  right: var(--page-px);
+  bottom: clamp(1rem, 3vh, 1.75rem);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.home-carousel__arrow {
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.35);
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.home-carousel__arrow:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.home-carousel__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-carousel__dot {
+  height: 0.625rem;
+  width: 0.625rem;
+  border: 2px solid #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.home-carousel__dot-active {
+  background: #fff;
+  transform: scale(1.15);
 }
 
 @theme inline {
@@ -122,31 +283,7 @@ body {
   line-height: 1.1;
 }
 
-/* Homepage hero — force white text over global body color */
-.hero-content {
-  color: #fff;
-}
-
-.hero-title {
-  max-width: 24rem;
-  font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.08;
-  color: #fff;
-}
-
-.hero-lead {
-  max-width: 38.5rem;
-  margin-top: 1.5rem;
-  font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1.125rem, 1.6vw, 1.25rem);
-  font-weight: 400;
-  line-height: 1.55;
-  color: #fff;
-}
-
-/* Inner-page hero — force white text over global heading/body colors */
+/* Hero banners — force white text over global heading/body colors */
 .page-hero-content {
   color: #fff;
 }
@@ -154,6 +291,10 @@ body {
 .page-hero-content .heading-page,
 .page-hero-content .body-text {
   color: #fff;
+}
+
+.page-hero-content .heading-page {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
 }
 
 .page-hero-content .label-olive {
@@ -1594,7 +1735,7 @@ body.cookie-consent-visible .assistant-root {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 1920px;
+  max-width: var(--site-max-w);
   margin-inline: auto;
   padding-block: 1rem 1.25rem;
 }

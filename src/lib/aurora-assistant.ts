@@ -3,7 +3,9 @@ export const ASSISTANT_AVATAR = "/images/assistant-avatar.png";
 /** Google Gemini model for the site assistant (GA, June 2026). */
 export const ASSISTANT_MODEL = "gemini-3.1-flash-lite";
 
-export const AURORA_SYSTEM_PROMPT = `És o assistente do site do Coletivo Aurora, uma casa de encontro comunitário em Moncarapacho, Olhão, Algarve.
+export const ASSISTANT_NAME = "Aurora";
+
+export const AURORA_SYSTEM_PROMPT = `És a ${ASSISTANT_NAME}, assistente do site do Coletivo Aurora, uma casa de encontro comunitário em Moncarapacho, Olhão, Algarve.
 
 ## O teu papel
 - Responde em português de Portugal, de forma acolhedora, clara e concisa.

@@ -68,9 +68,10 @@ export function MobileNav() {
 
       <nav
         id="mobile-nav"
-        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-[min(100%,20rem)] flex-col bg-white px-page pb-10 pt-24 shadow-xl transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-[min(100%,20rem)] flex-col bg-white px-page pb-10 shadow-xl transition-transform duration-300 ease-out ${
           open ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}
+        style={{ paddingTop: "calc(var(--site-header-h) + 1.5rem)" }}
         aria-hidden={!open}
       >
         <ul className="flex flex-col gap-1">

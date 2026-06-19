@@ -3,7 +3,6 @@ import { InscricoesContent } from "@/components/InscricoesContent";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
-import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Inscrições | Coletivo Aurora",
@@ -21,11 +20,6 @@ export default function InscricoesPage() {
       />
 
       <PageSection id="formularios" tone="cream">
-        <SectionHeading
-          eyebrow="Como funciona"
-          title="Escolha a atividade e envie o pedido"
-          description="Selecione o tipo de reserva à esquerda e preencha apenas o formulário correspondente. Confirmamos disponibilidade por e-mail ou telefone."
-        />
         <InscricoesContent />
       </PageSection>
     </PageShell>
