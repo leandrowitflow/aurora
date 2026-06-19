@@ -15,7 +15,7 @@ export function PageHero({
   const hasImage = Boolean(imageSrc);
 
   return (
-    <section className="relative min-h-[700px] overflow-hidden lg:min-h-[1018px]">
+    <section className="site-hero">
       {hasImage ? (
         <>
           <div className="absolute inset-0 z-0">
@@ -47,10 +47,10 @@ export function PageHero({
         </>
       )}
 
-      <div className="page-hero-content relative z-[2] mx-auto flex min-h-[700px] max-w-[1920px] flex-col justify-center px-6 pb-20 pt-32 lg:min-h-[1018px] lg:px-[180px] lg:pt-40">
+      <div className="page-hero-content site-hero__content site-container">
         <h1 className="heading-page max-w-[900px]">{title}</h1>
         {subtitle ? (
-          <p className="body-text mt-6 max-w-[640px] opacity-95">{subtitle}</p>
+          <p className="body-text mt-5 max-w-[640px] opacity-95 lg:mt-6">{subtitle}</p>
         ) : null}
       </div>
     </section>

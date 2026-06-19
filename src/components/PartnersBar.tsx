@@ -1,7 +1,7 @@
 export function PartnersBar() {
   return (
     <section className="pb-10 pt-0 sm:pb-14 lg:pb-16">
-      <div className="mx-auto max-w-[1840px] px-page">
+      <div className="site-container">
         <div className="overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-visible">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

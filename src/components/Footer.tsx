@@ -21,7 +21,7 @@ const SOCIAL_LINKS = [
 export function Footer() {
   return (
     <footer className="bg-olive text-white">
-      <div className="mx-auto max-w-[1920px] px-page py-16">
+      <div className="site-container py-16">
         <nav className="flex flex-wrap gap-x-10 gap-y-3">
           {NAV_LINKS.map((link) => (
             <Link

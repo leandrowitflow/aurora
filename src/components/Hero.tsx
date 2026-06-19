@@ -3,7 +3,7 @@ import { Button } from "@/components/Button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[700px] overflow-hidden lg:min-h-[1018px]">
+    <section className="site-hero">
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg.jpg"
@@ -20,13 +20,13 @@ export function Hero() {
         aria-hidden
       />
 
-      <div className="hero-content relative z-[2] mx-auto flex min-h-[700px] max-w-[1920px] flex-col justify-center px-6 pb-20 pt-32 lg:min-h-[1018px] lg:px-[180px] lg:pt-40">
-        <h1 className="hero-title">Olá, Prima!</h1>
-        <p className="hero-lead">
+      <div className="page-hero-content site-hero__content site-container">
+        <h1 className="heading-page max-w-[900px]">Olá, Prima!</h1>
+        <p className="body-text mt-5 max-w-[640px] opacity-95 lg:mt-6">
           A antiga escola primária de Olhão está a transformar-se numa casa de
           encontro aberta ao mundo.
         </p>
-        <div className="mt-8">
+        <div className="mt-6 lg:mt-7">
           <Button href="/quem-somos" label="Quem somos" variant="mustard" />
         </div>
       </div>

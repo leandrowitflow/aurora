@@ -27,11 +27,13 @@ export function PageSection({
   wide = false,
   tone = "white",
 }: PageSectionProps) {
-  const maxWidth = narrow ? "max-w-[900px]" : "max-w-[1920px]";
+  const containerClass = narrow
+    ? "mx-auto max-w-[900px] px-page"
+    : "site-container";
 
   return (
     <section id={id} className={`py-20 lg:py-28 ${TONE_CLASS[tone]} ${className}`}>
-      <div className={`mx-auto px-page ${maxWidth}`}>{children}</div>
+      <div className={containerClass}>{children}</div>
     </section>
   );
 }

@@ -39,10 +39,6 @@ export function ContentSection({
   const config = SECTION_IMAGES[imageLayout];
   const { sectionHeight, imageWidth, imageHeight } = config;
 
-  // Section min-height scales with viewport but caps at the Figma pixel height.
-  // Extra 5vw budget gives headroom so the image always fills on common screens.
-  const minH = `clamp(380px, ${Math.round((sectionHeight / 1920) * 100) + 5}vw, ${sectionHeight}px)`;
-
   /* ─────────────────────────────────────────────────────────────────────────
      TORN sections
      The section element IS the flex container so h-full propagates correctly
@@ -57,10 +53,9 @@ export function ContentSection({
       // Section is the flex row — this lets torn-col height = section height
       <section
         id={id}
-        className={`flex w-full overflow-hidden flex-col ${
+        className={`content-banner flex w-full overflow-hidden flex-col ${
           imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row"
         }`}
-        style={{ minHeight: minH }}
       >
         {/* Image column — tears in from the page edge, fills full section height.
             aspectRatio drives height on mobile (flex-col, width = 100vw).
@@ -83,7 +78,7 @@ export function ContentSection({
         </div>
 
         {/* Text column — fills remaining width, centred vertically */}
-        <div className="flex flex-1 flex-col justify-center bg-white px-page py-10 sm:py-12 lg:py-10 xl:py-12 2xl:py-16">
+        <div className="flex flex-1 flex-col justify-center bg-white px-page py-8 sm:py-10 lg:py-8 xl:py-10">
           <h2 className="heading-section max-w-[603px]">{title}</h2>
           <div className="body-text mt-6 max-w-[660px]">{description}</div>
           <div className="mt-8">
@@ -111,7 +106,7 @@ export function ContentSection({
       className="relative w-full overflow-hidden pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20"
     >
       <div
-        className={`mx-auto flex max-w-[1920px] flex-col items-start gap-8 px-page max-lg:items-center lg:flex-row lg:items-center ${
+        className={`site-container flex flex-col items-start gap-8 max-lg:items-center lg:flex-row lg:items-center ${
           imagePosition === "right"
             ? "lg:flex-row-reverse lg:gap-10 xl:gap-12 2xl:gap-16"
             : "rect-row-image-left"

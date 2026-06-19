@@ -57,7 +57,7 @@ export default function Home() {
         />
 
         <section className="py-12 lg:py-14 xl:py-16 2xl:py-20">
-          <div className="mx-auto max-w-[1264px] px-page text-center">
+          <div className="site-container text-center">
             <h2 className="heading-section">O que nos move</h2>
             <p className="body-text mx-auto mt-6">
               Inspirados pelo respeito aos ritmos orgânicos, pelo manifesto das cem
