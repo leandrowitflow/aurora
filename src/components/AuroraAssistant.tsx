@@ -1,6 +1,6 @@
 "use client";
 
-import { ASSISTANT_AVATAR, AURORA_SUGGESTIONS } from "@/lib/aurora-assistant";
+import { ASSISTANT_AVATAR, ASSISTANT_NAME, AURORA_SUGGESTIONS } from "@/lib/aurora-assistant";
 import { useChat } from "@ai-sdk/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -124,7 +124,7 @@ export function AuroraAssistant() {
         <button
           type="button"
           className="assistant-backdrop"
-          aria-label="Fechar assistente"
+          aria-label={`Fechar ${ASSISTANT_NAME}`}
           onClick={() => setOpen(false)}
         />
       ) : null}
@@ -145,7 +145,7 @@ export function AuroraAssistant() {
                 <div>
                   <p className="assistant-eyebrow">Coletivo Aurora</p>
                   <h2 id="assistant-title" className="assistant-title">
-                    Assistente
+                    {ASSISTANT_NAME}
                   </h2>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export function AuroraAssistant() {
                 type="button"
                 className="assistant-close"
                 onClick={() => setOpen(false)}
-                aria-label="Fechar assistente"
+                aria-label={`Fechar ${ASSISTANT_NAME}`}
               >
                 <span aria-hidden="true">×</span>
               </button>
@@ -222,7 +222,7 @@ export function AuroraAssistant() {
                       }`}
                     >
                       <p className="assistant-bubble-label">
-                        {isUser ? "Você" : "Aurora"}
+                        {isUser ? "Você" : ASSISTANT_NAME}
                       </p>
                       <div className="assistant-bubble-text">
                         {renderBoldMarkdown(text)}
@@ -238,7 +238,7 @@ export function AuroraAssistant() {
                     <AssistantAvatar />
                   </div>
                   <div className="assistant-bubble assistant-bubble-assistant">
-                    <p className="assistant-bubble-label">Aurora</p>
+                    <p className="assistant-bubble-label">{ASSISTANT_NAME}</p>
                     <div className="assistant-typing" aria-label="A responder">
                       <span />
                       <span />
@@ -301,7 +301,7 @@ export function AuroraAssistant() {
           onClick={() => setOpen((current) => !current)}
           aria-expanded={open}
           aria-controls={open ? "assistant-title" : undefined}
-          aria-label={open ? "Fechar assistente Aurora" : "Abrir assistente Aurora"}
+          aria-label={open ? `Fechar ${ASSISTANT_NAME}` : `Abrir ${ASSISTANT_NAME}`}
         >
           <span className="assistant-toggle-ring" aria-hidden="true" />
           {open ? (
