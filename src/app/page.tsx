@@ -1,6 +1,5 @@
 import { HomeBannerCarousel } from "@/components/HomeBannerCarousel";
 import { ContentSection } from "@/components/ContentSection";
-import { PartnersBar } from "@/components/PartnersBar";
 import { PageShell } from "@/components/PageShell";
 
 export default function Home() {
@@ -73,8 +72,6 @@ export default function Home() {
           buttonHref="/fazer-parte"
           imagePosition="right"
         />
-
-        <PartnersBar />
     </PageShell>
   );
 }

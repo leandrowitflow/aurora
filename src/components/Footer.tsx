@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { NewsletterForm } from "@/components/NewsletterForm";
+import { PartnersLogos } from "@/components/PartnersBar";
 import { NAV_LINKS } from "@/lib/nav-links";
 
 const SOCIAL_LINKS = [
@@ -34,15 +34,23 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-2">
-          <div>
-            <h3 className="font-[family-name:var(--font-roboto)] text-[32px] font-medium leading-tight">
-              Não perca nenhuma oportunidade.
-            </h3>
-            <p className="mt-3 font-[family-name:var(--font-roboto)] text-lg font-light">
-              Subscreva a nossa newsletter
-            </p>
-            <NewsletterForm />
+        <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="flex min-w-0 flex-col items-start gap-8">
+            <Link
+              href="/"
+              className="inline-block w-full max-w-[200px] transition-opacity hover:opacity-80 sm:max-w-[240px]"
+            >
+              <Image
+                src="/images/footer-logo.png"
+                alt="Coletivo Aurora"
+                width={2335}
+                height={1006}
+                className="h-auto w-full"
+              />
+            </Link>
+            <div className="w-full origin-left scale-[1.15] sm:scale-[1.2]">
+              <PartnersLogos className="w-full" />
+            </div>
           </div>
 
           <div className="lg:text-right">
