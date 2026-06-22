@@ -5,6 +5,12 @@ import { PageShell } from "@/components/PageShell";
 export default function Home() {
   return (
     <PageShell>
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hero-bg.webp"
+        fetchPriority="high"
+      />
         <HomeBannerCarousel />
 
         <section className="py-12 lg:py-14 xl:py-16 2xl:py-20">
@@ -35,7 +41,7 @@ export default function Home() {
               Semanas de férias na horta e celebrações inesquecíveis, construídas pelas mãos das crianças onde a natureza é a melhor sala de aula.
             </>
           }
-          imageSrc="/images/section-viver-coletivo.png"
+          imageSrc="/images/section-viver-coletivo.webp"
           imageAlt="Criança a brincar na natureza"
           imageLayout="viver"
           buttonLabel="Explorar atividades"
@@ -53,7 +59,7 @@ export default function Home() {
               Cozinhamos, pintamos, plantamos, partilhamos histórias e tecemos uma comunidade mais justa e acolhedora.
             </>
           }
-          imageSrc="/images/section-tecendo.png"
+          imageSrc="/images/section-tecendo.webp"
           imageAlt="Mulher idosa e criança a cozinhar juntas"
           imageLayout="tecendo"
           buttonLabel="Conhecer o projeto"
@@ -65,7 +71,7 @@ export default function Home() {
           id="apoiar"
           title="Como apoiar?"
           description="O Tecendo gerações só é possível com o apoio da nossa rede de solidariedade. Seja através de voluntariado, de um donativo pontual ou tornando-se um parceiro do projeto, há um lugar para si no Aurora."
-          imageSrc="/images/section-apoiar.png"
+          imageSrc="/images/section-apoiar.webp"
           imageAlt="Casa de pedra rústica do projeto Aurora"
           imageLayout="apoiar"
           buttonLabel="Apoiar o Aurora"

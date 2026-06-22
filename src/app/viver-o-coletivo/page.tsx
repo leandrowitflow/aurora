@@ -17,63 +17,63 @@ const ACTIVITIES = [
     index: 1,
     tag: "0–2 anos",
     title: "Playgroups",
-    imageSrc: "/images/activity-playgroups.png",
+    imageSrc: "/images/activity-playgroups.webp",
     description:
       "Um porto de abrigo para abrandar, observar e confiar no tempo de cada bebé. Inspirados pela abordagem Pikler, criamos um ambiente sereno onde os mais pequenos se movem livremente e exploram texturas seguras e naturais. Enquanto eles descobrem o mundo ao seu próprio ritmo, as mães e os pais ganham espaço para partilhar dúvidas, trocar experiências e respirar. Terminamos sempre aconchegados com uma roda de conversa e um chá.",
     buttonLabel: "Reservar vaga",
-    buttonHref: "/inscricoes#ateliers",
+    buttonHref: "/inscricoes#playgroups",
   },
   {
     id: "ateliers-criancas",
     index: 2,
     tag: "3–10 anos",
     title: "Ateliers para crianças",
-    imageSrc: "/images/activity-ateliers-criancas.png",
+    imageSrc: "/images/activity-ateliers-criancas.webp",
     description:
       "Não temos aulas, temos caminhos de descoberta. Exploramos o mundo através de tintas da natureza, argila, luz, sombra e tesouros da horta e do mar. Inspirados na abordagem Reggio Emilia, partimos de provocações que convidam a criar sem pressões. O adulto acompanha e documenta o percurso, permitindo que as crianças deem voz às suas cem linguagens.",
     buttonLabel: "Reservar vaga",
-    buttonHref: "/inscricoes#ateliers",
+    buttonHref: "/inscricoes#atelier-criancas",
   },
   {
     id: "ateliers-familias",
     index: 3,
     tag: "Famílias",
     title: "Ateliers para famílias",
-    imageSrc: "/images/activity-ateliers-familias.png",
+    imageSrc: "/images/activity-ateliers-familias.webp",
     description:
       "Um sábado por mês para deixar a rotina lá fora e criar em conjunto. Seja numa pintura de grandes dimensões ou a explorar a horta, a regra é só uma: todos fazem, todos sujam as mãos. Não há quem ensina nem quem aprende; o adulto volta a experimentar a liberdade de criar e a criança lidera o processo.",
     buttonLabel: "Reservar vaga",
-    buttonHref: "/inscricoes#ateliers",
+    buttonHref: "/inscricoes#atelier-criancas",
   },
   {
     id: "ateliers-adultos",
     index: 4,
     tag: "Adultos",
     title: "Ateliers para adultos",
-    imageSrc: "/images/activity-ateliers-adultos.png",
+    imageSrc: "/images/activity-ateliers-adultos.webp",
     description:
       "Um convite para regressar às mãos, sentir o corpo e desacelerar da correria diária. Não precisa de ter qualquer experiência, apenas vontade de experimentar e explorar diferentes materiais. É um tempo dedicado a concentrar-se num só gesto e a experimentar a liberdade de criar sem regras.",
     buttonLabel: "Reservar vaga",
-    buttonHref: "/inscricoes#ateliers",
+    buttonHref: "/inscricoes#atelier-adultos",
   },
   {
     id: "horta",
     index: 5,
     tag: "Comunidade",
     title: "Horta comunitária e permacultura",
-    imageSrc: "/images/activity-horta.png",
+    imageSrc: "/images/activity-horta.webp",
     description:
       "A nossa horta não é apenas um espaço de cultivo, é um lugar aberto à partilha de saberes e à experimentação prática. Organizamos dias de horta aberta onde vizinhos, amigos, voluntários e curiosos de todas as idades se juntam para semear com respeito e cuidar do espaço em conjunto.",
     note: "Valor: Participação livre / Contributo voluntário",
-    buttonLabel: "Datas em breve",
-    buttonHref: "/contactos",
+    buttonLabel: "Reservar vaga",
+    buttonHref: "/inscricoes#horta",
   },
   {
     id: "festas",
     index: 6,
     tag: "Celebrações",
     title: "Festas para crianças",
-    imageSrc: "/images/activity-festas.png",
+    imageSrc: "/images/activity-festas.webp",
     description:
       "Para celebrar a vida com os pés na terra e de forma ativa. Aqui, quem faz anos e os amigos partem à descoberta através de atividades artísticas, exploração na horta e brincadeiras ao ar livre. Nós preparamos o espaço com carinho e organizamos todos os materiais naturais.",
     buttonLabel: "Reservar vaga",
@@ -84,7 +84,7 @@ const ACTIVITIES = [
     index: 7,
     tag: "Férias",
     title: "Férias no Aurora",
-    imageSrc: "/images/activity-ferias.png",
+    imageSrc: "/images/activity-ferias.webp",
     description:
       "Semanas passadas ao ar livre para explorar a horta, construir cabanas com ramos, cozinhar o que colhemos da terra e refrescar o calor com brincadeiras com água. Não há a obrigação de produzir um objeto final; saímos sempre com amizades novas e a certeza de que a natureza é a melhor sala de aula.",
     buttonLabel: "Reservar vaga",
@@ -98,7 +98,7 @@ export default function ViverOColetivoPage() {
       <PageHero
         title="Viver o coletivo"
         subtitle="Da infância à vida adulta, com a natureza como sala de aula e as mãos como ferramenta de descoberta."
-        imageSrc="/images/hero-viver-o-coletivo.png"
+        imageSrc="/images/hero-viver-o-coletivo.webp"
       />
 
       <PageSection>

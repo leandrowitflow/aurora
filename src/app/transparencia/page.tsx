@@ -35,7 +35,7 @@ export default function TransparenciaPage() {
       <PageHero
         title="Espaço transparência"
         subtitle="Documentação institucional e informação legal do Coletivo Aurora."
-        imageSrc="/images/hero-transparencia.png"
+        imageSrc="/images/hero-transparencia.webp"
       />
 
       <PageSection narrow>

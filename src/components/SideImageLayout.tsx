@@ -1,4 +1,5 @@
 import { SECTION_IMAGES, type SectionImageKey } from "@/lib/section-images";
+import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
 interface SideImageLayoutProps {
@@ -39,11 +40,12 @@ export function SideImageLayout({
           } as CSSProperties
         }
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={imageSrc}
           alt={imageAlt}
-          className="h-full w-full object-cover object-top"
+          fill
+          className="object-cover object-top"
+          sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 88vw"
         />
       </div>
 

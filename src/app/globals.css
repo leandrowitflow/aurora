@@ -116,15 +116,16 @@ main > .site-hero:first-child {
   overflow: hidden;
 }
 
-.home-carousel__viewport {
-  height: 100%;
-  overflow: hidden;
+.home-carousel__viewport-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
-.home-carousel__track {
-  display: flex;
+.home-carousel__viewport {
+  position: relative;
   height: 100%;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
 .home-carousel__slide {
@@ -133,9 +134,22 @@ main > .site-hero:first-child {
   height: 100%;
   min-height: 100%;
   width: 100%;
-  flex: 0 0 100%;
   flex-direction: column;
   overflow: hidden;
+}
+
+.home-carousel__slide-active {
+  animation: home-carousel-fade-in 0.45s ease;
+}
+
+@keyframes home-carousel-fade-in {
+  from {
+    opacity: 0.92;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .home-carousel__controls {
@@ -1814,6 +1828,7 @@ body.cookie-consent-visible .assistant-root {
  *   Figma pixel width on large desktops.
  */
 .rect-img {
+  position: relative;
   max-width: min(100%, var(--rect-max-w));
 }
 

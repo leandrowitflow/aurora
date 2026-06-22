@@ -62,7 +62,7 @@ export default function ContactosPage() {
       <PageHero
         title="Contactos"
         subtitle="Estamos em Moncarapacho, Olhão, numa antiga escola primária a transformar-se em casa de encontro."
-        imageSrc="/images/hero-contactos.png"
+        imageSrc="/images/hero-contactos.webp"
       />
 
       <PageSection>

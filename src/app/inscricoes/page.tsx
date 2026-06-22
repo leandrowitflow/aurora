@@ -5,18 +5,18 @@ import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
-  title: "Inscrições | Coletivo Aurora",
+  title: "Calendário | Coletivo Aurora",
   description:
-    "Agenda geral e formulários de reserva para ateliers, festas e campos de férias.",
+    "Agenda e formulários de reserva para playgroups, ateliers, horta, férias e festas no Coletivo Aurora.",
 };
 
 export default function InscricoesPage() {
   return (
     <PageShell>
       <PageHero
-        title="Inscrições"
+        title="Calendário"
         subtitle="Escolha o tipo de atividade e preencha o formulário. Entraremos em contacto para confirmar o seu lugar."
-        imageSrc="/images/hero-inscricoes.png"
+        imageSrc="/images/hero-inscricoes.webp"
       />
 
       <PageSection id="formularios" tone="cream">

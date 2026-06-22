@@ -1,17 +1,43 @@
 "use client";
 
 import { ReservationForm } from "@/components/ReservationForm";
+import type { ContactFormType } from "@/lib/email";
 import { useEffect, useState } from "react";
 
-type FormId = "ateliers" | "aniversarios" | "ferias" | "projeto";
+type FormId =
+  | "playgroups"
+  | "atelier-criancas"
+  | "atelier-adultos"
+  | "tecedo-geracoes"
+  | "horta"
+  | "ferias"
+  | "aniversarios";
 
-const ATELIER_OPTIONS = [
-  "Playgroups (0-2 anos)",
-  "Ateliers para crianças (3-10 anos)",
-  "Ateliers para famílias",
-  "Ateliers para adultos",
-  "Festas para crianças",
-];
+type FormField = {
+  name: string;
+  label: string;
+  type?: "text" | "email" | "tel" | "number" | "date" | "textarea" | "select";
+  required?: boolean;
+  placeholder?: string;
+  options?: string[];
+};
+
+const LOCALIDADE_FIELD: FormField = {
+  name: "localidade",
+  label: "Localidade",
+  placeholder: "Ex.: Olhão, Moncarapacho",
+  required: true,
+};
+
+function contactFields(...extra: FormField[]): FormField[] {
+  return [
+    { name: "nome", label: "Nome", required: true },
+    { name: "contacto", label: "Contacto", type: "tel", required: true },
+    { name: "email", label: "E-mail", type: "email", required: true },
+    LOCALIDADE_FIELD,
+    ...extra,
+  ];
+}
 
 const FERIAS_WEEKS = [
   "Semana 1, Julho",
@@ -20,45 +46,152 @@ const FERIAS_WEEKS = [
   "Semana 4, Agosto",
 ];
 
-const FORM_OPTIONS: {
+type FormConfig = {
   id: FormId;
   label: string;
-  description: string;
   hash: string;
-}[] = [
+  formType: ContactFormType;
+  fields: FormField[];
+  submitLabel: string;
+  description?: string;
+};
+
+const FORM_CONFIGS: FormConfig[] = [
   {
-    id: "ateliers",
-    label: "Ateliers e oficinas",
-    description: "Playgroups, crianças, famílias e adultos",
-    hash: "ateliers",
+    id: "playgroups",
+    label: "Playgroups",
+    hash: "playgroups",
+    formType: "inscricao-playgroups",
+    fields: contactFields({
+      name: "idade",
+      label: "Idade do bebé",
+      type: "number",
+      placeholder: "Ex.: 1",
+      required: true,
+    }),
+    submitLabel: "Enviar inscrição",
+  },
+  {
+    id: "atelier-criancas",
+    label: "Atelier crianças",
+    hash: "atelier-criancas",
+    formType: "inscricao-atelier-criancas",
+    fields: contactFields({
+      name: "idade",
+      label: "Idade da criança",
+      type: "number",
+      placeholder: "Ex.: 6",
+    }),
+    submitLabel: "Enviar inscrição",
+  },
+  {
+    id: "atelier-adultos",
+    label: "Atelier adultos",
+    hash: "atelier-adultos",
+    formType: "inscricao-atelier-adultos",
+    fields: contactFields(),
+    submitLabel: "Enviar inscrição",
+  },
+  {
+    id: "tecedo-geracoes",
+    label: "Tecendo Gerações — projeto intergeracional",
+    hash: "inscricao-projeto",
+    formType: "inscricao-projeto",
+    description: "Para participantes dos públicos prioritários do projeto social.",
+    fields: contactFields({
+      name: "motivo",
+      label: "Motivo de inscrição",
+      type: "textarea",
+      placeholder: "Conte-nos um pouco sobre si e o seu interesse no projeto",
+      required: true,
+    }),
+    submitLabel: "Inscrição no projeto",
+  },
+  {
+    id: "horta",
+    label: "Horta Permacultura",
+    hash: "horta",
+    formType: "inscricao-horta",
+    fields: contactFields({
+      name: "mensagem",
+      label: "Mensagem (opcional)",
+      type: "textarea",
+      placeholder: "Interesse, disponibilidade ou dúvidas",
+    }),
+    submitLabel: "Enviar inscrição",
+  },
+  {
+    id: "ferias",
+    label: "Férias no Aurora",
+    hash: "ferias",
+    formType: "inscricao-ferias",
+    fields: [
+      { name: "crianca", label: "Nome da criança", required: true },
+      { name: "idade", label: "Idade", type: "number", required: true },
+      LOCALIDADE_FIELD,
+      {
+        name: "semanas",
+        label: "Semanas escolhidas",
+        type: "select",
+        required: true,
+        options: FERIAS_WEEKS,
+      },
+      {
+        name: "encarregado",
+        label: "Contacto do encarregado de educação",
+        type: "tel",
+        required: true,
+      },
+      { name: "email", label: "E-mail", type: "email", required: true },
+    ],
+    submitLabel: "Inscrição nas férias",
   },
   {
     id: "aniversarios",
     label: "Festas de aniversário",
-    description: "Celebrações com atividades na natureza",
     hash: "aniversarios",
-  },
-  {
-    id: "ferias",
-    label: "Campos de férias",
-    description: "Semanas ao ar livre no Aurora",
-    hash: "ferias",
-  },
-  {
-    id: "projeto",
-    label: "Tecendo gerações",
-    description: "Inscrição no projeto social",
-    hash: "inscricao-projeto",
+    formType: "inscricao-aniversarios",
+    fields: [
+      { name: "responsavel", label: "Nome do responsável", required: true },
+      { name: "contacto", label: "Contacto", type: "tel", required: true },
+      { name: "email", label: "E-mail", type: "email", required: true },
+      LOCALIDADE_FIELD,
+      { name: "data", label: "Data pretendida", type: "date", required: true },
+      {
+        name: "num_criancas",
+        label: "Número de crianças",
+        type: "number",
+        required: true,
+      },
+      {
+        name: "atividade",
+        label: "Atividade ou tema",
+        type: "textarea",
+        placeholder: "Descreva a atividade ou tema pretendido",
+      },
+    ],
+    submitLabel: "Reservar aniversário",
   },
 ];
 
+const HASH_ALIASES: Record<string, FormId> = {
+  ateliers: "playgroups",
+  "tecer-geracoes": "tecedo-geracoes",
+};
+
 function hashToFormId(hash: string): FormId {
-  const match = FORM_OPTIONS.find((option) => option.hash === hash.replace("#", ""));
-  return match?.id ?? "ateliers";
+  const normalized = hash.replace("#", "");
+  const alias = HASH_ALIASES[normalized];
+  if (alias) {
+    return alias;
+  }
+
+  const match = FORM_CONFIGS.find((option) => option.hash === normalized);
+  return match?.id ?? "playgroups";
 }
 
 export function InscricoesContent() {
-  const [active, setActive] = useState<FormId>("ateliers");
+  const [active, setActive] = useState<FormId>("playgroups");
 
   useEffect(() => {
     const syncFromHash = () => {
@@ -75,7 +208,7 @@ export function InscricoesContent() {
     window.history.replaceState(null, "", `#${hash}`);
   }
 
-  const activeOption = FORM_OPTIONS.find((option) => option.id === active)!;
+  const activeConfig = FORM_CONFIGS.find((option) => option.id === active)!;
 
   return (
     <div className="registration-layout">
@@ -95,7 +228,7 @@ export function InscricoesContent() {
         <nav className="registration-nav" aria-label="Tipo de inscrição">
           <p className="label-olive registration-nav-heading">Tipo de reserva</p>
           <ul className="registration-nav-list">
-            {FORM_OPTIONS.map((option, index) => (
+            {FORM_CONFIGS.map((option, index) => (
               <li key={option.id}>
                 <button
                   type="button"
@@ -110,7 +243,6 @@ export function InscricoesContent() {
                   </span>
                   <span className="registration-nav-copy">
                     <span className="registration-nav-label">{option.label}</span>
-                    <span className="registration-nav-desc">{option.description}</span>
                   </span>
                 </button>
               </li>
@@ -126,111 +258,16 @@ export function InscricoesContent() {
           </aside>
         </nav>
 
-        <div id={activeOption.hash} className="registration-form-area">
+        <div id={activeConfig.hash} className="registration-form-area">
           <p className="label-olive">Formulário</p>
-          {active === "ateliers" ? (
-            <ReservationForm
-              formType="inscricao-ateliers"
-              key="ateliers"
-              title={activeOption.label}
-              description="Para playgroups, ateliers de crianças, famílias e adultos."
-              fields={[
-                { name: "nome", label: "Nome", required: true },
-                { name: "contacto", label: "Contacto", type: "tel", required: true },
-                { name: "email", label: "E-mail", type: "email", required: true },
-                {
-                  name: "atividade",
-                  label: "Atividade escolhida",
-                  type: "select",
-                  required: true,
-                  options: ATELIER_OPTIONS,
-                },
-                {
-                  name: "idade",
-                  label: "Idade (se aplicável)",
-                  type: "number",
-                  placeholder: "Ex.: 4",
-                },
-              ]}
-              submitLabel="Enviar inscrição"
-            />
-          ) : null}
-
-          {active === "aniversarios" ? (
-            <ReservationForm
-              formType="inscricao-aniversarios"
-              key="aniversarios"
-              title={activeOption.label}
-              fields={[
-                { name: "responsavel", label: "Nome do responsável", required: true },
-                { name: "contacto", label: "Contacto", type: "tel", required: true },
-                { name: "email", label: "E-mail", type: "email", required: true },
-                { name: "data", label: "Data pretendida", type: "date", required: true },
-                {
-                  name: "num_criancas",
-                  label: "Número de crianças",
-                  type: "number",
-                  required: true,
-                },
-                {
-                  name: "atividade",
-                  label: "Atividade ou tema",
-                  type: "textarea",
-                  placeholder: "Descreva a atividade ou tema pretendido",
-                },
-              ]}
-              submitLabel="Reservar aniversário"
-            />
-          ) : null}
-
-          {active === "ferias" ? (
-            <ReservationForm
-              formType="inscricao-ferias"
-              key="ferias"
-              title={activeOption.label}
-              fields={[
-                { name: "crianca", label: "Nome da criança", required: true },
-                { name: "idade", label: "Idade", type: "number", required: true },
-                {
-                  name: "semanas",
-                  label: "Semanas escolhidas",
-                  type: "select",
-                  required: true,
-                  options: FERIAS_WEEKS,
-                },
-                {
-                  name: "encarregado",
-                  label: "Contacto do encarregado de educação",
-                  type: "tel",
-                  required: true,
-                },
-                { name: "email", label: "E-mail", type: "email", required: true },
-              ]}
-              submitLabel="Inscrição nas férias"
-            />
-          ) : null}
-
-          {active === "projeto" ? (
-            <ReservationForm
-              formType="inscricao-projeto"
-              key="projeto"
-              title={activeOption.label}
-              description="Para participantes dos públicos prioritários do projeto social."
-              fields={[
-                { name: "nome", label: "Nome", required: true },
-                { name: "contacto", label: "Contacto", type: "tel", required: true },
-                { name: "email", label: "E-mail", type: "email", required: true },
-                {
-                  name: "motivo",
-                  label: "Motivo de inscrição",
-                  type: "textarea",
-                  placeholder: "Conte-nos um pouco sobre si e o seu interesse no projeto",
-                  required: true,
-                },
-              ]}
-              submitLabel="Inscrição no projeto"
-            />
-          ) : null}
+          <ReservationForm
+            key={activeConfig.id}
+            formType={activeConfig.formType}
+            title={activeConfig.label}
+            description={activeConfig.description}
+            fields={activeConfig.fields}
+            submitLabel={activeConfig.submitLabel}
+          />
         </div>
       </div>
     </div>

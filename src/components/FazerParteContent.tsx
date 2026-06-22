@@ -113,14 +113,6 @@ export function FazerParteContent() {
               </li>
             ))}
           </ul>
-
-          <aside className="registration-aside">
-            <p className="registration-aside-label">Impacto</p>
-            <p className="registration-aside-text">
-              Cada forma de apoio sustenta o Tecendo gerações e mantém vivo o
-              encontro entre gerações no Aurora.
-            </p>
-          </aside>
         </nav>
 
         <div
@@ -182,31 +174,20 @@ export function FazerParteContent() {
           ) : null}
 
           {active === "donativos" ? (
-            <>
-              <p className="label-olive">Contributo direto</p>
-              <h3 className="heading-subsection mt-2">Donativos pontuais</h3>
-              <div className="body-text mt-6">
-                <p>
-                  Cada contributo direto é totalmente canalizado para a compra de
-                  materiais pedagógicos e ferramentas para a horta comunitária.
-                </p>
+            <dl className="support-detail-list">
+              <div>
+                <dt>N.º da conta</dt>
+                <dd>40399640371</dd>
               </div>
-
-              <dl className="support-detail-list">
-                <div>
-                  <dt>MBWay</dt>
-                  <dd>A definir</dd>
-                </div>
-                <div>
-                  <dt>IBAN</dt>
-                  <dd>A definir</dd>
-                </div>
-              </dl>
-
-              <p className="support-detail-note">
-                Emitimos recibo de donativo para valores superiores a 100 euros.
-              </p>
-            </>
+              <div>
+                <dt>IBAN</dt>
+                <dd>PT50 0045 7100 40399640371 88</dd>
+              </div>
+              <div>
+                <dt>BIC/SWIFT</dt>
+                <dd>CCCMPTPL</dd>
+              </div>
+            </dl>
           ) : null}
 
           {active === "amigos" ? (

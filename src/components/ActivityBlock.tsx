@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 interface ActivityBlockProps {
@@ -35,8 +36,13 @@ export function ActivityBlock({
     >
       {imageSrc ? (
         <div className="activity-card-image">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imageSrc} alt="" />
+          <Image
+            src={imageSrc}
+            alt=""
+            fill
+            className="object-cover object-center"
+            sizes="(min-width: 1024px) 560px, 100vw"
+          />
         </div>
       ) : null}
 

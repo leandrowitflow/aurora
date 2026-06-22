@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
@@ -32,7 +33,7 @@ export default function QuemSomosPage() {
       <PageHero
         title="Quem somos"
         subtitle="Um lugar do mundo onde diferentes saberes, idades e histórias partilham o mesmo chão."
-        imageSrc="/images/hero-quem-somos.png"
+        imageSrc="/images/hero-quem-somos.webp"
       />
 
       <PageSection>
@@ -55,8 +56,13 @@ export default function QuemSomosPage() {
             </div>
           </div>
           <figure className="section-figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/section-quem-somos.png" alt="" />
+            <Image
+              src="/images/section-quem-somos.webp"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
           </figure>
         </div>
       </PageSection>

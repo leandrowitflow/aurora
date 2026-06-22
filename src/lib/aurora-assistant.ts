@@ -1,4 +1,4 @@
-export const ASSISTANT_AVATAR = "/images/assistant-avatar.png";
+export const ASSISTANT_AVATAR = "/images/assistant-avatar.webp";
 
 /** Google Gemini model for the site assistant (GA, June 2026). */
 export const ASSISTANT_MODEL = "gemini-3.1-flash-lite";
@@ -31,28 +31,31 @@ Inspiram-se ritmos orgânicos, manifesto das cem linguagens, permacultura (cuida
 ## Viver o coletivo (atividades pagas / reservas em /inscricoes)
 Participar nas atividades sustenta o Coletivo e o projeto social Tecendo gerações.
 
-- **Playgroups (0–2 anos)**: ambiente sereno Pikler, movimento livre, roda de conversa e chá para pais. Reserva: /inscricoes#ateliers
-- **Ateliers para crianças (3–10 anos)**: descoberta com materiais naturais, inspiração Reggio Emilia. Reserva: /inscricoes#ateliers
-- **Ateliers para famílias**: um sábado por mês, criação em conjunto. Reserva: /inscricoes#ateliers
-- **Ateliers para adultos**: regressar às mãos, desacelerar, sem experiência necessária. Reserva: /inscricoes#ateliers
-- **Horta comunitária e permacultura**: dias de horta aberta, participação livre / contributo voluntário. Calendário em breve.
-- **Festas para crianças**: aniversários com atividades artísticas e na natureza. Reserva: /inscricoes#aniversarios
+- **Playgroups (0–2 anos)**: ambiente sereno Pikler, movimento livre, roda de conversa e chá para pais. Reserva: /inscricoes#playgroups
+- **Ateliers para crianças (3–10 anos)**: descoberta com materiais naturais, inspiração Reggio Emilia. Reserva: /inscricoes#atelier-criancas
+- **Ateliers para famílias**: um sábado por mês, criação em conjunto. Reserva: /inscricoes#atelier-criancas
+- **Ateliers para adultos**: regressar às mãos, desacelerar, sem experiência necessária. Reserva: /inscricoes#atelier-adultos
+- **Horta Permacultura**: dias de horta aberta, participação livre / contributo voluntário. Reserva: /inscricoes#horta
+- **Festas de aniversário**: celebrações com atividades artísticas e na natureza. Reserva: /inscricoes#aniversarios
 - **Férias no Aurora**: semanas ao ar livre, horta, cabanas, cozinha. Reserva: /inscricoes#ferias
 
 ## Tecendo gerações (projeto social gratuito)
 Coração do Aurora. Projeto comunitário gratuito para públicos prioritários: crianças e idosos, jovens com deficiência, comunidade migrante. Atividades: horta de permacultura, ateliês expressivos, jogos tradicionais, dança e movimento, histórias à lareira, cozinha comunitária. Calendário semanal em breve. Inscrição: /inscricoes#inscricao-projeto
 
-## Inscrições (/inscricoes)
-Calendário interativo em breve. Formulários disponíveis:
-- Ateliers e oficinas (#ateliers)
+## Calendário (/inscricoes)
+Calendário interativo em breve. Formulários disponíveis (todos pedem localidade para fins estatísticos):
+- Playgroups (#playgroups)
+- Atelier crianças (#atelier-criancas)
+- Atelier adultos (#atelier-adultos)
+- Tecendo Gerações — projeto intergeracional (#inscricao-projeto)
+- Horta Permacultura (#horta)
+- Férias no Aurora (#ferias)
 - Festas de aniversário (#aniversarios)
-- Campos de férias (#ferias)
-- Tecendo gerações (#inscricao-projeto)
 A equipa confirma disponibilidade por e-mail ou telefone.
 
 ## Fazer parte (/fazer-parte)
 - **Voluntariado**: mínimo 3h/semana ou ocasional em eventos. Áreas: ateliês, horta, documentação, apoio administrativo. Ficha: /fazer-parte#ficha-voluntario
-- **Donativos pontuais**: materiais pedagógicos e horta. MBWay e IBAN a definir. Recibo para donativos >100€.
+- **Donativos pontuais**: materiais pedagógicos e horta. IBAN PT50 0045 7100 40399640371 88 (conta 40399640371, BIC/SWIFT CCCMPTPL).
 - **Amigos do Aurora**: 10€/mês. Benefícios: 10% desconto em ateliers pagos, convite ao evento anual, nome na parede dos amigos (opcional). Contacto: /contactos
 - **Parcerias**: empresas, escolas, juntas, fundações. Contacto: /contactos
 

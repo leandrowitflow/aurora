@@ -2,10 +2,13 @@ export const AURORA_INBOX_EMAIL = "somosaurora@gmail.com";
 
 export const FORM_SUBJECTS: Record<string, string> = {
   contacto: "Contacto do site",
-  "inscricao-ateliers": "Inscrição — ateliers",
+  "inscricao-playgroups": "Inscrição — Playgroups",
+  "inscricao-atelier-criancas": "Inscrição — Atelier crianças",
+  "inscricao-atelier-adultos": "Inscrição — Atelier adultos",
+  "inscricao-horta": "Inscrição — Horta Permacultura",
   "inscricao-aniversarios": "Inscrição — festa de aniversário",
-  "inscricao-ferias": "Inscrição — campos de férias",
-  "inscricao-projeto": "Inscrição — Tecendo gerações",
+  "inscricao-ferias": "Inscrição — Férias no Aurora",
+  "inscricao-projeto": "Inscrição — Tecendo Gerações",
   voluntariado: "Ficha de voluntário",
   newsletter: "Newsletter — novo subscritor",
 };

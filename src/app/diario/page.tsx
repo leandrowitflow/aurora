@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { DiarioCard } from "@/components/DiarioCard";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
@@ -16,24 +15,18 @@ export const metadata: Metadata = {
 const PLACEHOLDER_POSTS = [
   {
     title: "O primeiro rolar no chão",
-    excerpt:
-      "Um instante sagrado dos nossos playgroups: um bebé a explorar texturas naturais com total concentração.",
     date: "Em breve",
-    imageSrc: "/images/diario-primeiro-rolar.png",
+    imageSrc: "/images/diario-primeiro-rolar.webp",
   },
   {
     title: "A receita que os seniores nos ensinaram",
-    excerpt:
-      "Na cozinha comunitária, uma história antiga ganhou nova vida entre gerações.",
     date: "Em breve",
-    imageSrc: "/images/diario-receita-seniores.png",
+    imageSrc: "/images/diario-receita-seniores.webp",
   },
   {
     title: "Barro cru, mãos livres",
-    excerpt:
-      "O barro que ganhou forma pelas mãos de quem nunca o tinha moldado, e as perguntas imprevistas das crianças.",
     date: "Em breve",
-    imageSrc: "/images/diario-barro-maos.png",
+    imageSrc: "/images/diario-barro-maos.webp",
   },
 ];
 
@@ -43,7 +36,7 @@ export default function DiarioPage() {
       <PageHero
         title="Diário do Aurora"
         subtitle="A vida que acontece no Coletivo, documentada com cuidado, escuta e presença."
-        imageSrc="/images/hero-diario.png"
+        imageSrc="/images/hero-diario.webp"
       />
 
       <PageSection>
@@ -81,18 +74,6 @@ export default function DiarioPage() {
             <DiarioCard key={post.title} {...post} />
           ))}
         </div>
-        <p className="body-text mt-12 max-w-[700px]">
-          O blog estará disponível em breve. Entretanto, siga-nos no{" "}
-          <Link
-            href="https://www.instagram.com/coletivoaurora_algarve/"
-            className="font-bold text-olive underline transition-opacity hover:opacity-70"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </Link>{" "}
-          para acompanhar o dia a dia do Aurora.
-        </p>
       </PageSection>
     </PageShell>
   );

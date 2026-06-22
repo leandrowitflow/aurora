@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/Button";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
@@ -55,7 +56,7 @@ export default function TecerGeracoesPage() {
       <PageHero
         title="Tecendo gerações"
         subtitle="O coração pulsante do Coletivo Aurora, gratuito, comunitário e aberto a quem a sociedade muitas vezes mantém separado."
-        imageSrc="/images/hero-tecer-geracoes.png"
+        imageSrc="/images/hero-tecer-geracoes.webp"
       />
 
       <PageSection>
@@ -87,8 +88,13 @@ export default function TecerGeracoesPage() {
             </div>
           </div>
           <figure className="section-figure">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/section-tecer-geracoes.png" alt="" />
+            <Image
+              src="/images/section-tecer-geracoes.webp"
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
           </figure>
         </div>
       </PageSection>
