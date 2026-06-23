@@ -1,7 +1,6 @@
-import Image from "next/image";
+import { CmsImage } from "@/components/CmsImage";
 import Link from "next/link";
 import type { CmsAuthor } from "@/lib/cms/types";
-import { isRemoteCmsImage } from "@/lib/cms/posts";
 import Markdown from "react-markdown";
 
 interface DiarioPostContentProps {
@@ -36,17 +35,15 @@ export function DiarioPostContent({ content, author }: DiarioPostContentProps) {
                 return null;
               }
 
-              const remote = isRemoteCmsImage(src);
               return (
                 <span className="diario-prose-image">
-                  <Image
+                  <CmsImage
                     src={src}
                     alt={alt ?? ""}
                     width={1200}
                     height={675}
                     className="h-auto w-full"
                     sizes="(min-width: 900px) 760px, 100vw"
-                    unoptimized={remote}
                   />
                 </span>
               );
@@ -60,13 +57,12 @@ export function DiarioPostContent({ content, author }: DiarioPostContentProps) {
       {author ? (
         <footer className="diario-author">
           {author.avatarUrl ? (
-            <Image
+            <CmsImage
               src={author.avatarUrl}
               alt=""
               width={64}
               height={64}
               className="diario-author-avatar"
-              unoptimized={isRemoteCmsImage(author.avatarUrl)}
             />
           ) : null}
           <div>

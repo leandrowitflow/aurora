@@ -1,5 +1,5 @@
+import { CmsImage } from "@/components/CmsImage";
 import { DiarioPostContent } from "@/components/DiarioPostContent";
-import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
 import { CMS_BLOG_BASE_PATH, getSiteUrl, isCmsConfigured } from "@/lib/cms/config";
@@ -8,10 +8,9 @@ import {
   getPostCoverImage,
   getPublishedPostBySlug,
   getSitemapEntries,
-  isRemoteCmsImage,
+  stripDuplicateCoverFromContent,
 } from "@/lib/cms/posts";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -76,7 +75,7 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
   }
 
   const coverImage = getPostCoverImage(post);
-  const remoteCover = isRemoteCmsImage(coverImage);
+  const content = stripDuplicateCoverFromContent(post.content, post.coverImageUrl);
   const canonical = `${getSiteUrl()}${CMS_BLOG_BASE_PATH}/${post.slug}`;
   const structuredData =
     post.structuredData && typeof post.structuredData === "object"
@@ -105,34 +104,35 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <PageHero title={post.title} subtitle={post.excerpt} />
-
-      <PageSection narrow className="pt-0 lg:pt-0">
-        <div className="diario-article-meta">
-          <Link href={CMS_BLOG_BASE_PATH} className="diario-back-link">
-            ← Voltar ao Diário
-          </Link>
-          <time className="diario-article-date" dateTime={post.publishedAt ?? post.updatedAt}>
-            {formatPostDate(post.publishedAt)}
-          </time>
-        </div>
+      <PageSection narrow className="diario-article-section">
+        <Link href={CMS_BLOG_BASE_PATH} className="diario-back-link">
+          ← Voltar ao Diário
+        </Link>
 
         {post.coverImageUrl ? (
           <figure className="diario-article-cover">
-            <Image
+            <CmsImage
               src={coverImage}
               alt={post.coverImageAlt || post.title}
-              width={1280}
-              height={720}
+              fill
               priority
-              className="h-auto w-full object-cover"
+              className="object-cover"
               sizes="(min-width: 900px) 760px, 100vw"
-              unoptimized={remoteCover}
             />
           </figure>
         ) : null}
 
-        <DiarioPostContent content={post.content} author={post.author} />
+        <header className="diario-article-header">
+          <time
+            className="diario-article-date"
+            dateTime={post.publishedAt ?? post.updatedAt}
+          >
+            {formatPostDate(post.publishedAt)}
+          </time>
+          <h1 className="heading-section diario-article-title">{post.title}</h1>
+        </header>
+
+        <DiarioPostContent content={content} author={post.author} />
       </PageSection>
     </PageShell>
   );
