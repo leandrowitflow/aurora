@@ -13,7 +13,7 @@ export type HomeCarouselSlide = {
 
 export const HOME_CAROUSEL_SLIDES: HomeCarouselSlide[] = [
   {
-    title: "Olá, Prima!",
+    title: "Olá, comunidade",
     description:
       "A antiga escola primária de Olhão está a transformar-se numa casa de encontro aberta ao mundo.",
     imageSrc: "/images/hero-bg.webp",
