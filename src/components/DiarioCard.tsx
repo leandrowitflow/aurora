@@ -1,6 +1,6 @@
-import Image from "next/image";
+import { CmsImage } from "@/components/CmsImage";
 import Link from "next/link";
-import { formatPostDate, getPostCoverImage, isRemoteCmsImage } from "@/lib/cms/posts";
+import { formatPostDate, getPostCoverImage } from "@/lib/cms/posts";
 
 interface DiarioCardProps {
   slug: string;
@@ -10,25 +10,22 @@ interface DiarioCardProps {
 }
 
 export function DiarioCard({ slug, date, title, imageSrc }: DiarioCardProps) {
-  const remote = isRemoteCmsImage(imageSrc);
-
   return (
     <article className="diario-card">
       <Link href={`/diario/${slug}`} className="group block w-full">
         <figure className="diario-card-media">
-          <Image
+          <CmsImage
             src={imageSrc}
             alt=""
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 88vw"
-            unoptimized={remote}
           />
-          <figcaption className="diario-card-overlay">
-            <span className="diario-card-date">{date}</span>
-            <h3 className="diario-card-title">{title}</h3>
-          </figcaption>
         </figure>
+        <div className="diario-card-caption">
+          <time className="diario-card-date">{date}</time>
+          <h3 className="diario-card-title">{title}</h3>
+        </div>
       </Link>
     </article>
   );
