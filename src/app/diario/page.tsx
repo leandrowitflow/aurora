@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { DiarioCard } from "@/components/DiarioCard";
+import Link from "next/link";
+import { DiarioCard, DiarioCardFromPost } from "@/components/DiarioCard";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
 import { PullQuote } from "@/components/PullQuote";
 import { SectionHeading } from "@/components/SectionHeading";
+import { isCmsConfigured } from "@/lib/cms/config";
+import { getPublishedPosts } from "@/lib/cms/posts";
 
 export const metadata: Metadata = {
   title: "Diário do Aurora | Coletivo Aurora",
@@ -14,23 +17,30 @@ export const metadata: Metadata = {
 
 const PLACEHOLDER_POSTS = [
   {
+    slug: "o-primeiro-rolar-no-chao",
     title: "O primeiro rolar no chão",
     date: "Em breve",
     imageSrc: "/images/diario-primeiro-rolar.webp",
   },
   {
+    slug: "a-receita-que-os-seniores-nos-ensinaram",
     title: "A receita que os seniores nos ensinaram",
     date: "Em breve",
     imageSrc: "/images/diario-receita-seniores.webp",
   },
   {
+    slug: "barro-cru-maos-livres",
     title: "Barro cru, mãos livres",
     date: "Em breve",
     imageSrc: "/images/diario-barro-maos.webp",
   },
 ];
 
-export default function DiarioPage() {
+export default async function DiarioPage() {
+  const cmsReady = isCmsConfigured();
+  const { posts } = cmsReady ? await getPublishedPosts() : { posts: [] };
+  const hasCmsPosts = posts.length > 0;
+
   return (
     <PageShell>
       <PageHero
@@ -40,10 +50,7 @@ export default function DiarioPage() {
       />
 
       <PageSection>
-        <SectionHeading
-          eyebrow="O registo"
-          title="Histórias do dia a dia"
-        />
+        <SectionHeading eyebrow="O registo" title="Histórias do dia a dia" />
         <div className="body-text mt-6 max-w-[960px] space-y-6">
           <p>
             Aqui documentamos a vida que acontece no Coletivo. As perguntas
@@ -70,10 +77,27 @@ export default function DiarioPage() {
       <PageSection className="pt-0 lg:pt-0">
         <SectionHeading eyebrow="Histórias" title="Últimas publicações" />
         <div className="diario-grid mt-10">
-          {PLACEHOLDER_POSTS.map((post) => (
-            <DiarioCard key={post.title} {...post} />
-          ))}
+          {hasCmsPosts
+            ? posts.map((post) => (
+                <DiarioCardFromPost
+                  key={post.id}
+                  slug={post.slug}
+                  title={post.title}
+                  publishedAt={post.publishedAt}
+                  coverImageUrl={post.coverImageUrl}
+                />
+              ))
+            : PLACEHOLDER_POSTS.map((post) => (
+                <DiarioCard key={post.slug} {...post} />
+              ))}
         </div>
+
+        {cmsReady && !hasCmsPosts ? (
+          <p className="body-text mt-10 text-center text-olive/70">
+            Ainda não há publicações. As histórias aparecerão aqui assim que forem
+            publicadas no CMS.
+          </p>
+        ) : null}
       </PageSection>
     </PageShell>
   );

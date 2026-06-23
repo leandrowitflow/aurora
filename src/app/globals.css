@@ -1066,6 +1066,151 @@ body {
   color: var(--olive);
 }
 
+.diario-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.diario-back-link {
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--olive);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: opacity 0.2s ease;
+}
+
+.diario-back-link:hover {
+  opacity: 0.7;
+}
+
+.diario-article-date {
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(100, 95, 54, 0.72);
+}
+
+.diario-article-cover {
+  margin: 0 0 clamp(2rem, 4vw, 2.75rem);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.diario-article-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diario-prose {
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.0625rem);
+  line-height: 1.75;
+  color: var(--olive);
+}
+
+.diario-prose > * + * {
+  margin-top: 1.25rem;
+}
+
+.diario-prose h2,
+.diario-prose h3,
+.diario-prose h4 {
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--olive);
+}
+
+.diario-prose h2 {
+  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  margin-top: 2.5rem;
+}
+
+.diario-prose h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  margin-top: 2rem;
+}
+
+.diario-prose a {
+  font-weight: 700;
+  color: var(--olive);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.diario-prose ul,
+.diario-prose ol {
+  padding-left: 1.25rem;
+}
+
+.diario-prose li + li {
+  margin-top: 0.5rem;
+}
+
+.diario-prose blockquote {
+  margin: 2rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--mustard);
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.diario-prose-image {
+  display: block;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+
+.diario-author {
+  display: flex;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid rgba(100, 95, 54, 0.14);
+}
+
+.diario-author-avatar {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.diario-author-name {
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--olive);
+}
+
+.diario-author-role {
+  margin-top: 0.25rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgba(100, 95, 54, 0.72);
+}
+
+.diario-author-bio {
+  margin-top: 0.75rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(100, 95, 54, 0.88);
+}
+
 .form-panel {
   padding: 0;
 }
