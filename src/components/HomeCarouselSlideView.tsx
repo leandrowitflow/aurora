@@ -12,7 +12,7 @@ export function HomeCarouselSlideView({
   return (
     <article
       id={slide.id}
-      className="home-carousel__slide home-carousel__slide-active"
+      className="home-carousel__slide"
       aria-roledescription="slide"
     >
       <div className="absolute inset-0 z-0">

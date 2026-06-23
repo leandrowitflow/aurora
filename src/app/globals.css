@@ -116,16 +116,32 @@ main > .site-hero:first-child {
   overflow: hidden;
 }
 
-.home-carousel__viewport-overlay {
+.home-carousel__viewport {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-carousel__slide-layer {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.home-carousel__viewport {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
+.home-carousel__slide-layer-enter {
+  z-index: 2;
+  animation: home-carousel-crossfade-in var(--home-carousel-transition, 900ms)
+    cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.home-carousel__slide-layer-exit {
+  animation: home-carousel-crossfade-out var(--home-carousel-transition, 900ms)
+    cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.home-carousel__slide-layer-enter .page-hero-content {
+  animation: home-carousel-content-in var(--home-carousel-transition, 900ms)
+    cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .home-carousel__slide {
@@ -138,17 +154,43 @@ main > .site-hero:first-child {
   overflow: hidden;
 }
 
-.home-carousel__slide-active {
-  animation: home-carousel-fade-in 0.45s ease;
-}
-
-@keyframes home-carousel-fade-in {
+@keyframes home-carousel-crossfade-in {
   from {
-    opacity: 0.92;
+    opacity: 0;
   }
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes home-carousel-crossfade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes home-carousel-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-carousel__slide-layer-enter,
+  .home-carousel__slide-layer-exit,
+  .home-carousel__slide-layer-enter .page-hero-content {
+    animation: none;
   }
 }
 
