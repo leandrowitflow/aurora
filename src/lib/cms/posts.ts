@@ -1,5 +1,6 @@
 import { isCmsConfigured, getCmsLocale } from "@/lib/cms/config";
 import { cmsFetch } from "@/lib/cms/client";
+import { sanitizePostContent } from "@/lib/cms/content";
 import type {
   CmsPost,
   CmsPostListItem,
@@ -78,39 +79,4 @@ export function isRemoteCmsImage(src: string): boolean {
   return src.startsWith("http://") || src.startsWith("https://");
 }
 
-/** Remove a leading markdown image when it duplicates the post cover. */
-export function stripDuplicateCoverFromContent(
-  content: string,
-  coverImageUrl: string | null,
-): string {
-  if (!coverImageUrl?.trim() || !content.trim()) {
-    return content;
-  }
-
-  let trimmed = content.trimStart();
-  const imagePattern = /^!\[[^\]]*]\(([^)]+)\)\s*/;
-  const match = trimmed.match(imagePattern);
-
-  if (!match) {
-    return content;
-  }
-
-  const markdownUrl = match[1]?.trim();
-  if (!markdownUrl) {
-    return content;
-  }
-
-  try {
-    const cover = new URL(coverImageUrl);
-    const embedded = new URL(markdownUrl, coverImageUrl);
-    if (cover.pathname === embedded.pathname) {
-      return trimmed.slice(match[0].length).trimStart();
-    }
-  } catch {
-    if (markdownUrl === coverImageUrl) {
-      return trimmed.slice(match[0].length).trimStart();
-    }
-  }
-
-  return content;
-}
+export { sanitizePostContent, stripAuthorBlocksFromContent, stripDuplicateCoverFromContent } from "@/lib/cms/content";

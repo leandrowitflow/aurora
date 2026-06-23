@@ -1,5 +1,5 @@
-import { CmsImage } from "@/components/CmsImage";
 import { DiarioPostContent } from "@/components/DiarioPostContent";
+import { DiarioPostHero } from "@/components/DiarioPostHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
 import { CMS_BLOG_BASE_PATH, getSiteUrl, isCmsConfigured } from "@/lib/cms/config";
@@ -8,7 +8,7 @@ import {
   getPostCoverImage,
   getPublishedPostBySlug,
   getSitemapEntries,
-  stripDuplicateCoverFromContent,
+  sanitizePostContent,
 } from "@/lib/cms/posts";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -75,7 +75,7 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
   }
 
   const coverImage = getPostCoverImage(post);
-  const content = stripDuplicateCoverFromContent(post.content, post.coverImageUrl);
+  const content = sanitizePostContent(post.content, post.coverImageUrl);
   const canonical = `${getSiteUrl()}${CMS_BLOG_BASE_PATH}/${post.slug}`;
   const structuredData =
     post.structuredData && typeof post.structuredData === "object"
@@ -104,24 +104,12 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
+      <DiarioPostHero
+        imageSrc={coverImage}
+        imageAlt={post.coverImageAlt || post.title}
+      />
+
       <PageSection narrow className="diario-article-section">
-        <Link href={CMS_BLOG_BASE_PATH} className="diario-back-link">
-          ← Voltar ao Diário
-        </Link>
-
-        {post.coverImageUrl ? (
-          <figure className="diario-article-cover">
-            <CmsImage
-              src={coverImage}
-              alt={post.coverImageAlt || post.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(min-width: 900px) 760px, 100vw"
-            />
-          </figure>
-        ) : null}
-
         <header className="diario-article-header">
           <time
             className="diario-article-date"
@@ -133,6 +121,12 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
         </header>
 
         <DiarioPostContent content={content} author={post.author} />
+
+        <div className="diario-article-footer">
+          <Link href={CMS_BLOG_BASE_PATH} className="diario-back-link">
+            ← Voltar ao Diário
+          </Link>
+        </div>
       </PageSection>
     </PageShell>
   );
