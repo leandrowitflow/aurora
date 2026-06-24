@@ -43,7 +43,7 @@ const ACTIVITIES = [
 ];
 
 const SUPPORT_LINKS = [
-  { label: "Inscrição no projeto", href: "/inscricoes#inscricao-projeto" },
+  { label: "Inscrição e Calendarização", href: "/inscricoes#inscricao-projeto" },
   { label: "Quero ser voluntário", href: "/fazer-parte#voluntariado" },
   { label: "Fazer um donativo", href: "/fazer-parte#donativos" },
   { label: "Tornar-me amigo do Aurora", href: "/fazer-parte#amigos" },

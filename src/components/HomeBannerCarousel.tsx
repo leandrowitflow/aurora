@@ -146,22 +146,13 @@ export function HomeBannerCarousel() {
       </div>
 
       <div className="home-carousel__controls">
-        <button
-          type="button"
-          className="home-carousel__arrow"
-          onClick={() => goTo(index - 1)}
-          aria-label="Slide anterior"
-        >
-          <span aria-hidden="true">‹</span>
-        </button>
-
         <div className="home-carousel__dots" role="tablist" aria-label="Slides">
           {HOME_CAROUSEL_SLIDES.map((slide, slideIndex) => (
             <button
               key={slide.id ?? `slide-${slideIndex}`}
               type="button"
               role="tab"
-              className={`home-carousel__dot ${
+              className={`home-carousel__dot rounded-full ${
                 slideIndex === index ? "home-carousel__dot-active" : ""
               }`}
               aria-label={`Ir para slide ${slideIndex + 1}`}
@@ -170,15 +161,6 @@ export function HomeBannerCarousel() {
             />
           ))}
         </div>
-
-        <button
-          type="button"
-          className="home-carousel__arrow"
-          onClick={() => goTo(index + 1)}
-          aria-label="Slide seguinte"
-        >
-          <span aria-hidden="true">›</span>
-        </button>
       </div>
     </section>
   );

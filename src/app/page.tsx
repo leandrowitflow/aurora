@@ -42,7 +42,7 @@ export default function Home() {
             </>
           }
           imageSrc="/images/section-viver-coletivo.webp"
-          imageAlt="Criança a brincar na natureza"
+          imageAlt="Famílias e crianças num atelier criativo ao ar livre com materiais naturais"
           imageLayout="viver"
           buttonLabel="Explorar atividades"
           buttonHref="/viver-o-coletivo"
@@ -60,7 +60,7 @@ export default function Home() {
             </>
           }
           imageSrc="/images/section-tecendo.webp"
-          imageAlt="Mulher idosa e criança a cozinhar juntas"
+          imageAlt="Pessoas de diferentes gerações a cozinhar, pintar e plantar juntas"
           imageLayout="tecendo"
           buttonLabel="Conhecer o projeto"
           buttonHref="/tecer-geracoes"

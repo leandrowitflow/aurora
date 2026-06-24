@@ -38,24 +38,22 @@ export function Footer() {
         </nav>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="flex min-w-0 flex-col items-start gap-8">
+          <div className="footer-brand flex min-w-0 flex-col items-start gap-6">
             <Link
               href="/"
-              className="inline-block w-full max-w-[200px] transition-opacity hover:opacity-80 sm:max-w-[240px]"
+              className="footer-brand__logo inline-block transition-opacity hover:opacity-80"
             >
               <Image
                 src="/images/footer-logo.png"
                 alt="Coletivo Aurora"
                 width={2335}
                 height={1006}
-                sizes="(max-width: 640px) 200px, 240px"
+                sizes="(max-width: 640px) 120px, 140px"
                 loading="lazy"
-                className="h-auto w-full"
+                className="h-auto w-full object-left"
               />
             </Link>
-            <div className="w-full origin-left scale-[1.15] sm:scale-[1.2]">
-              <PartnersLogos className="w-full" />
-            </div>
+            <PartnersLogos className="footer-brand__partners w-full" />
           </div>
 
           <div className="lg:text-right">
