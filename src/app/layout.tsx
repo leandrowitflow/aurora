@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { ConsentGoogleAnalytics } from "@/components/ConsentGoogleAnalytics";
 import { LazyAuroraAssistant } from "@/components/LazyAuroraAssistant";
 import { LazyCookieConsent } from "@/components/LazyCookieConsent";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { epilogue, manrope } from "@/lib/fonts";
 import "./globals.css";
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -23,7 +23,9 @@ export default function RootLayout({
       className={`${epilogue.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {gaMeasurementId ? <GoogleAnalytics measurementId={gaMeasurementId} /> : null}
+        {gaMeasurementId ? (
+          <ConsentGoogleAnalytics measurementId={gaMeasurementId} />
+        ) : null}
         {children}
         <LazyCookieConsent />
         <LazyAuroraAssistant />

@@ -43,6 +43,7 @@ export function CookieConsent() {
   function accept() {
     setCookieConsent("accepted");
     setVisible(false);
+    window.dispatchEvent(new Event("aurora-cookie-consent"));
   }
 
   if (!visible) {

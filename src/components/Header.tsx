@@ -15,7 +15,7 @@ export function Header() {
             alt="Coletivo Aurora"
             width={80}
             height={79}
-            priority
+            loading="eager"
             className="h-auto w-[3.75rem] sm:w-16 lg:w-[3.5rem] xl:w-14 2xl:w-16"
           />
         </Link>

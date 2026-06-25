@@ -122,6 +122,17 @@ main > .site-hero:first-child {
   overflow: hidden;
 }
 
+.home-carousel__ssr-fallback {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.home-carousel__viewport:has(.home-carousel__slide-layer) .home-carousel__ssr-fallback {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .home-carousel__slide-layer {
   position: absolute;
   inset: 0;

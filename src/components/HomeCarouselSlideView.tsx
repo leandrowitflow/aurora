@@ -21,6 +21,7 @@ export function HomeCarouselSlideView({
           alt={slide.imageAlt}
           fill
           priority={isPriority}
+          fetchPriority={isPriority ? "high" : undefined}
           loading={isPriority ? "eager" : "lazy"}
           className="object-cover"
           sizes="100vw"

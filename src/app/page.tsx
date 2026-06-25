@@ -5,12 +5,6 @@ import { PageShell } from "@/components/PageShell";
 export default function Home() {
   return (
     <PageShell>
-      <link
-        rel="preload"
-        as="image"
-        href="/images/hero-bg.webp"
-        fetchPriority="high"
-      />
         <HomeBannerCarousel />
 
         <section className="py-12 lg:py-14 xl:py-16 2xl:py-20">
