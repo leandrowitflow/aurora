@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DecoratedPage } from "@/components/DecoratedPage";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
@@ -32,47 +33,49 @@ const POLICIES = [
 export default function TransparenciaPage() {
   return (
     <PageShell>
-      <PageHero
-        title="Espaço transparência"
-        subtitle="Documentação institucional e informação legal do Coletivo Aurora."
-        imageSrc="/images/hero-transparencia.webp"
-      />
-
-      <PageSection narrow>
-        <SectionHeading
-          eyebrow="Documentos"
-          title="Arquivo institucional"
-          description="Consulte os documentos oficiais do Coletivo Aurora."
+      <DecoratedPage>
+        <PageHero
+          title="Espaço transparência"
+          subtitle="Documentação institucional e informação legal do Coletivo Aurora."
+          imageSrc="/images/hero-transparencia.webp"
         />
 
-        <ul className="mt-10 list-none p-0">
-          {DOCUMENTS.map((doc) => (
-            <li key={doc.label}>
-              <Link href={doc.href} className="doc-link">
-                <span>{doc.label}</span>
-                <span className="label-olive text-sm">{doc.type}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PageSection narrow>
+          <SectionHeading
+            eyebrow="Documentos"
+            title="Arquivo institucional"
+            description="Consulte os documentos oficiais do Coletivo Aurora."
+          />
 
-        <div className="organic-divider mt-16" />
-
-        <div className="mt-12">
-          <SectionHeading eyebrow="Legal" title="Políticas" />
-          <div className="body-text mt-8 flex flex-col gap-4 sm:flex-row sm:gap-10">
-            {POLICIES.map((policy) => (
-              <Link
-                key={policy.label}
-                href={policy.href}
-                className="font-bold text-olive underline transition-opacity hover:opacity-70"
-              >
-                {policy.label}
-              </Link>
+          <ul className="mt-10 list-none p-0">
+            {DOCUMENTS.map((doc) => (
+              <li key={doc.label}>
+                <Link href={doc.href} className="doc-link">
+                  <span>{doc.label}</span>
+                  <span className="label-olive text-sm">{doc.type}</span>
+                </Link>
+              </li>
             ))}
+          </ul>
+
+          <div className="organic-divider mt-16" />
+
+          <div className="mt-12">
+            <SectionHeading eyebrow="Legal" title="Políticas" />
+            <div className="body-text mt-8 flex flex-col gap-4 sm:flex-row sm:gap-10">
+              {POLICIES.map((policy) => (
+                <Link
+                  key={policy.label}
+                  href={policy.href}
+                  className="font-bold text-olive underline transition-opacity hover:opacity-70"
+                >
+                  {policy.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </PageSection>
+        </PageSection>
+      </DecoratedPage>
     </PageShell>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { DecoratedPage } from "@/components/DecoratedPage";
 import { InscricoesContent } from "@/components/InscricoesContent";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
+import { ShapeGap } from "@/components/PageDecorations";
 
 export const metadata: Metadata = {
   title: "Calendário | Coletivo Aurora",
@@ -13,15 +15,19 @@ export const metadata: Metadata = {
 export default function InscricoesPage() {
   return (
     <PageShell>
-      <PageHero
-        title="Calendário"
-        subtitle="Escolha o tipo de atividade e preencha o formulário. Entraremos em contacto para confirmar o seu lugar."
-        imageSrc="/images/hero-inscricoes.webp"
-      />
+      <DecoratedPage>
+        <PageHero
+          title="Calendário"
+          subtitle="Escolha o tipo de atividade e preencha o formulário. Entraremos em contacto para confirmar o seu lugar."
+          imageSrc="/images/hero-inscricoes.webp"
+        />
 
-      <PageSection id="formularios" tone="cream">
-        <InscricoesContent />
-      </PageSection>
+        <ShapeGap preset="dotsLeft" />
+
+        <PageSection id="formularios" tone="cream">
+          <InscricoesContent />
+        </PageSection>
+      </DecoratedPage>
     </PageShell>
   );
 }

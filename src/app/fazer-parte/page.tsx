@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DecoratedPage } from "@/components/DecoratedPage";
 import { FazerParteContent } from "@/components/FazerParteContent";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
@@ -13,15 +14,17 @@ export const metadata: Metadata = {
 export default function FazerPartePage() {
   return (
     <PageShell>
-      <PageHero
-        title="Fazer parte"
-        subtitle="Cada gesto, grande ou pequeno, ajuda a manter vivo o Tecendo gerações e toda a comunidade que o sustenta."
-        imageSrc="/images/hero-fazer-parte.webp"
-      />
+      <DecoratedPage>
+        <PageHero
+          title="Fazer parte"
+          subtitle="Cada gesto, grande ou pequeno, ajuda a manter vivo o Tecendo gerações e toda a comunidade que o sustenta."
+          imageSrc="/images/hero-fazer-parte.webp"
+        />
 
-      <PageSection tone="cream">
-        <FazerParteContent />
-      </PageSection>
+        <PageSection tone="cream">
+          <FazerParteContent />
+        </PageSection>
+      </DecoratedPage>
     </PageShell>
   );
 }

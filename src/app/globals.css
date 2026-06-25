@@ -111,9 +111,137 @@ main > .site-hero:first-child {
   }
 }
 
+/* Homepage — decorative shapes sit on section boundaries */
+.home-page,
+.decorated-page {
+  position: relative;
+  overflow-x: clip;
+}
+
+.section-shape-gap {
+  position: relative;
+  z-index: 3;
+  height: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.section-shape-gap__shape {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
+
+.section-shape-gap__shape--left {
+  left: clamp(-1rem, 3vw, 2.5rem);
+  transform: translateY(-50%);
+}
+
+.section-shape-gap__shape--right {
+  right: clamp(-1rem, 3vw, 2.5rem);
+  transform: translateY(-50%);
+}
+
+.section-shape-gap__shape--center {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.section-shape-gap__shape--loop {
+  width: clamp(7.5rem, 14vw, 16.625rem);
+  height: clamp(5rem, 11vh, 11.125rem);
+  transform: translateY(-50%) rotate(18deg);
+}
+
+.section-shape-gap__shape--dots {
+  width: clamp(8rem, 13vw, 16rem);
+  height: clamp(6rem, 10vh, 12rem);
+}
+
+.section-shape-gap__shape--blob {
+  width: clamp(6.5rem, 10vw, 12.125rem);
+  height: clamp(7rem, 11vh, 13.375rem);
+}
+
+.section-shape-gap__shape--wave {
+  width: min(92vw, 42rem);
+  height: clamp(2.25rem, 4vh, 4.75rem);
+}
+
+@media (max-width: 767px) {
+  .section-shape-gap__shape--loop,
+  .section-shape-gap__shape--blob {
+    opacity: 0.7;
+    transform: translateY(-50%) scale(0.85);
+  }
+
+  .section-shape-gap__shape--loop {
+    transform: translateY(-50%) rotate(18deg) scale(0.85);
+  }
+
+  .section-shape-gap__shape--wave {
+    width: min(88vw, 22rem);
+    opacity: 0.75;
+  }
+}
+
 .home-carousel {
   position: relative;
   overflow: hidden;
+  --hero-blob-w: clamp(5.5rem, 10vw, 12.125rem);
+  --hero-blob-gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.hero-blob-decoration {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  bottom: 0;
+  right: 0;
+  width: var(--hero-blob-w, clamp(5.5rem, 10vw, 12.125rem));
+  height: clamp(7rem, 15vh, 16.5rem);
+  opacity: 0.95;
+}
+
+.home-carousel .hero-blob-decoration {
+  z-index: 4;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .home-carousel .hero-blob-decoration {
+    display: block;
+  }
+}
+
+.site-hero--decorated .hero-blob-decoration {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .site-hero--decorated .hero-blob-decoration {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home-carousel {
+    --hero-blob-w: 0px;
+    --hero-blob-gap: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-carousel {
+    --hero-blob-w: clamp(4.5rem, 16vw, 7.5rem);
+  }
+
+  .home-carousel .hero-blob-decoration,
+  .site-hero--decorated .hero-blob-decoration {
+    display: block;
+    height: clamp(5.5rem, 12vh, 10rem);
+    opacity: 0.85;
+  }
 }
 
 .home-carousel__viewport {
@@ -226,9 +354,12 @@ main > .site-hero:first-child {
 
 .home-carousel__controls {
   position: absolute;
-  right: var(--page-px);
+  right: max(
+    var(--page-px),
+    calc(var(--hero-blob-w) + var(--hero-blob-gap))
+  );
   bottom: clamp(1rem, 3vh, 1.75rem);
-  z-index: 3;
+  z-index: 5;
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -444,6 +575,18 @@ body {
   background: var(--sand);
 }
 
+.section-figure-stack {
+  overflow: visible;
+}
+
+.section-figure__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--sand);
+}
+
 .section-figure img {
   position: absolute;
   inset: 0;
@@ -516,6 +659,18 @@ body {
 }
 
 .activity-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.activity-card-image-stack {
+  overflow: visible;
+}
+
+.activity-card-image__frame {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
@@ -2022,6 +2177,49 @@ body.cookie-consent-visible .assistant-root {
 .rect-img {
   position: relative;
   max-width: min(100%, var(--rect-max-w));
+}
+
+.rect-img-stack {
+  overflow: visible;
+}
+
+.rect-img__frame {
+  position: relative;
+  width: 100%;
+}
+
+.section-image-shape {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  pointer-events: none;
+  width: 118%;
+  height: clamp(2rem, 4.5vw, 3.25rem);
+}
+
+.section-image-shape--wave-top {
+  top: 0;
+  transform: translate(-50%, -58%);
+}
+
+.section-image-shape--wave-bottom {
+  bottom: 0;
+  height: clamp(2.25rem, 5vw, 3.5rem);
+  transform: translate(-50%, 58%);
+}
+
+@media (max-width: 767px) {
+  .section-image-shape {
+    width: 108%;
+  }
+
+  .section-image-shape--wave-top {
+    transform: translate(-50%, -50%);
+  }
+
+  .section-image-shape--wave-bottom {
+    transform: translate(-50%, 52%);
+  }
 }
 
 /* Tablet: portrait photos scale down and centre within the content area */

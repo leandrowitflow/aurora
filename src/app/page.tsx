@@ -1,10 +1,15 @@
 import { HomeBannerCarousel } from "@/components/HomeBannerCarousel";
+import {
+  HOME_SHAPES,
+  SectionShapeGap,
+} from "@/components/HomeDecorations";
 import { ContentSection } from "@/components/ContentSection";
 import { PageShell } from "@/components/PageShell";
 
 export default function Home() {
   return (
     <PageShell>
+      <div className="home-page">
         <HomeBannerCarousel />
 
         <section className="py-12 lg:py-14 xl:py-16 2xl:py-20">
@@ -26,6 +31,13 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionShapeGap
+          src={HOME_SHAPES.oliveLoop}
+          sizes="(min-width: 1280px) 266px, 200px"
+          align="left"
+          kind="loop"
+        />
+
         <ContentSection
           title="Viver o coletivo"
           description={
@@ -41,6 +53,13 @@ export default function Home() {
           buttonLabel="Explorar atividades"
           buttonHref="/viver-o-coletivo"
           imagePosition="right"
+        />
+
+        <SectionShapeGap
+          src={HOME_SHAPES.peachDots}
+          sizes="(min-width: 1280px) 256px, 180px"
+          align="right"
+          kind="dots"
         />
 
         <ContentSection
@@ -59,6 +78,7 @@ export default function Home() {
           buttonLabel="Conhecer o projeto"
           buttonHref="/tecer-geracoes"
           imagePosition="left"
+          imageShapeOverlay="terracotta-wave-top"
         />
 
         <ContentSection
@@ -71,7 +91,9 @@ export default function Home() {
           buttonLabel="Apoiar o Aurora"
           buttonHref="/fazer-parte"
           imagePosition="right"
+          imageShapeOverlay="olive-wave-bottom"
         />
+      </div>
     </PageShell>
   );
 }

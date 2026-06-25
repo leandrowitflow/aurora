@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { ActivityBlock } from "@/components/ActivityBlock";
+import { DecoratedPage } from "@/components/DecoratedPage";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
+import { ShapeGap } from "@/components/PageDecorations";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
@@ -40,6 +42,7 @@ const ACTIVITIES = [
     tag: "Famílias",
     title: "Ateliers para famílias",
     imageSrc: "/images/activity-ateliers-familias.webp",
+    imageShapeOverlay: "terracotta-wave-top" as const,
     description:
       "Um sábado por mês para deixar a rotina lá fora e criar em conjunto. Seja numa pintura de grandes dimensões ou a explorar a horta, a regra é só uma: todos fazem, todos sujam as mãos. Não há quem ensina nem quem aprende; o adulto volta a experimentar a liberdade de criar e a criança lidera o processo.",
     buttonLabel: "Reservar vaga",
@@ -85,6 +88,7 @@ const ACTIVITIES = [
     tag: "Férias",
     title: "Férias no Aurora",
     imageSrc: "/images/activity-ferias.webp",
+    imageShapeOverlay: "olive-wave-bottom" as const,
     description:
       "Semanas passadas ao ar livre para explorar a horta, construir cabanas com ramos, cozinhar o que colhemos da terra e refrescar o calor com brincadeiras com água. Não há a obrigação de produzir um objeto final; saímos sempre com amizades novas e a certeza de que a natureza é a melhor sala de aula.",
     buttonLabel: "Reservar vaga",
@@ -95,31 +99,34 @@ const ACTIVITIES = [
 export default function ViverOColetivoPage() {
   return (
     <PageShell>
-      <PageHero
-        title="Viver o coletivo"
-        subtitle="Da infância à vida adulta, com a natureza como sala de aula e as mãos como ferramenta de descoberta."
-        imageSrc="/images/hero-viver-o-coletivo.webp"
-      />
-
-      <PageSection>
-        <SectionHeading
-          eyebrow="Porquê participar"
-          title="Cada inscrição sustenta a comunidade"
-          description="Participar nas nossas atividades é a forma mais significativa de sustentar o Coletivo e viabilizar o projeto social Tecendo gerações. Ao escolher um atelier para si ou para a sua família, ajuda a manter viva uma comunidade onde todas as pessoas têm um lugar de pertença."
+      <DecoratedPage>
+        <PageHero
+          title="Viver o coletivo"
+          subtitle="Da infância à vida adulta, com a natureza como sala de aula e as mãos como ferramenta de descoberta."
+          imageSrc="/images/hero-viver-o-coletivo.webp"
         />
-      </PageSection>
 
-      <PageSection wide className="pt-0 lg:pt-0">
-        <SectionHeading
-          eyebrow="Programa"
-          title="As nossas atividades"
-        />
-        <div className="mt-12">
-          {ACTIVITIES.map((activity) => (
-            <ActivityBlock key={activity.id} {...activity} />
-          ))}
-        </div>
-      </PageSection>
+        <ShapeGap preset="loopLeft" />
+
+        <PageSection>
+          <SectionHeading
+            eyebrow="Porquê participar"
+            title="Cada inscrição sustenta a comunidade"
+            description="Participar nas nossas atividades é a forma mais significativa de sustentar o Coletivo e viabilizar o projeto social Tecendo gerações. Ao escolher um atelier para si ou para a sua família, ajuda a manter viva uma comunidade onde todas as pessoas têm um lugar de pertença."
+          />
+        </PageSection>
+
+        <ShapeGap preset="dotsRight" />
+
+        <PageSection wide className="pt-0 lg:pt-0">
+          <SectionHeading eyebrow="Programa" title="As nossas atividades" />
+          <div className="mt-12">
+            {ACTIVITIES.map((activity) => (
+              <ActivityBlock key={activity.id} {...activity} />
+            ))}
+          </div>
+        </PageSection>
+      </DecoratedPage>
     </PageShell>
   );
 }

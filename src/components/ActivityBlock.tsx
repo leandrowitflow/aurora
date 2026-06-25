@@ -1,4 +1,8 @@
 import { Button } from "@/components/Button";
+import {
+  SectionImageShape,
+  type SectionImageShapeOverlay,
+} from "@/components/PageDecorations";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
@@ -9,6 +13,7 @@ interface ActivityBlockProps {
   tag?: string;
   description: ReactNode;
   imageSrc?: string;
+  imageShapeOverlay?: SectionImageShapeOverlay;
   buttonLabel?: string;
   buttonHref?: string;
   note?: string;
@@ -21,6 +26,7 @@ export function ActivityBlock({
   tag,
   description,
   imageSrc,
+  imageShapeOverlay,
   buttonLabel,
   buttonHref,
   note,
@@ -35,15 +41,30 @@ export function ActivityBlock({
       }`}
     >
       {imageSrc ? (
-        <div className="activity-card-image">
-          <Image
-            src={imageSrc}
-            alt=""
-            fill
-            className="object-cover object-center"
-            sizes="(min-width: 1024px) 560px, 100vw"
-          />
-        </div>
+        imageShapeOverlay ? (
+          <div className="activity-card-image activity-card-image-stack">
+            <div className="activity-card-image__frame">
+              <Image
+                src={imageSrc}
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="(min-width: 1024px) 560px, 100vw"
+              />
+            </div>
+            <SectionImageShape variant={imageShapeOverlay} />
+          </div>
+        ) : (
+          <div className="activity-card-image">
+            <Image
+              src={imageSrc}
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes="(min-width: 1024px) 560px, 100vw"
+            />
+          </div>
+        )
       ) : null}
 
       <div className="activity-card-body">

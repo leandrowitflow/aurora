@@ -1,3 +1,4 @@
+import { DecoratedPage } from "@/components/DecoratedPage";
 import { DiarioPostContent } from "@/components/DiarioPostContent";
 import { DiarioPostHero } from "@/components/DiarioPostHero";
 import { PageSection } from "@/components/PageSection";
@@ -99,6 +100,7 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
 
   return (
     <PageShell>
+      <DecoratedPage>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -128,6 +130,7 @@ export default async function DiarioPostPage({ params }: DiarioPostPageProps) {
           </Link>
         </div>
       </PageSection>
+      </DecoratedPage>
     </PageShell>
   );
 }

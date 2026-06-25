@@ -1,4 +1,5 @@
 ﻿import { Button } from "@/components/Button";
+import { SectionImageShape, type SectionImageShapeOverlay } from "@/components/PageDecorations";
 import { SECTION_IMAGES, type SectionImageKey } from "@/lib/section-images";
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
@@ -13,6 +14,7 @@ interface ContentSectionProps {
   buttonLabel: string;
   buttonHref: string;
   imagePosition?: "left" | "right";
+  imageShapeOverlay?: SectionImageShapeOverlay;
 }
 
 const TORN_WIDTH_CLASS: Partial<Record<SectionImageKey, string>> = {
@@ -31,6 +33,7 @@ export function ContentSection({
   buttonLabel,
   buttonHref,
   imagePosition = "left",
+  imageShapeOverlay,
 }: ContentSectionProps) {
   const config = SECTION_IMAGES[imageLayout];
   const { sectionHeight, imageWidth, imageHeight } = config;
@@ -79,7 +82,9 @@ export function ContentSection({
   return (
     <section
       id={id}
-      className="relative w-full overflow-hidden pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20"
+      className={`relative w-full pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20 ${
+        imageShapeOverlay ? "overflow-visible" : "overflow-hidden"
+      }`}
     >
       <div
         className={`site-container flex flex-col items-start gap-8 max-lg:items-center lg:flex-row lg:items-center ${
@@ -89,23 +94,30 @@ export function ContentSection({
         }`}
       >
         <div
-          className="rect-img relative overflow-hidden"
+          className="rect-img rect-img-stack"
           style={
             {
               "--rect-max-w": `${imageWidth}px`,
               "--rect-pct": imgPct,
               flexShrink: 0,
-              aspectRatio,
             } as CSSProperties
           }
         >
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            className="object-cover object-top"
-            sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 88vw"
-          />
+          <div
+            className="rect-img__frame relative overflow-hidden"
+            style={{ aspectRatio }}
+          >
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              className="object-cover object-top"
+              sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 88vw"
+            />
+          </div>
+          {imageShapeOverlay ? (
+            <SectionImageShape variant={imageShapeOverlay} />
+          ) : null}
         </div>
 
         <div className="flex flex-1 flex-col justify-center py-4 lg:py-0">

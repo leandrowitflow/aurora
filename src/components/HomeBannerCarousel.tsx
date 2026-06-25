@@ -1,3 +1,4 @@
+import { HeroBlobDecoration } from "@/components/PageDecorations";
 import { HomeBannerCarouselClient } from "@/components/HomeBannerCarouselClient";
 import { HomeCarouselSlideView } from "@/components/HomeCarouselSlideView";
 import { HOME_CAROUSEL_SLIDES } from "@/lib/home-banner-slides";
@@ -16,6 +17,7 @@ export function HomeBannerCarousel() {
           <HomeCarouselSlideView slide={firstSlide} isPriority />
         </div>
         <HomeBannerCarouselClient />
+        <HeroBlobDecoration />
       </div>
     </section>
   );

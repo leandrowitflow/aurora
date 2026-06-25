@@ -1,4 +1,5 @@
 import { CmsImage } from "@/components/CmsImage";
+import { HeroBlobDecoration } from "@/components/PageDecorations";
 
 interface DiarioPostHeroProps {
   imageSrc: string;
@@ -7,7 +8,7 @@ interface DiarioPostHeroProps {
 
 export function DiarioPostHero({ imageSrc, imageAlt }: DiarioPostHeroProps) {
   return (
-    <section className="site-hero diario-post-hero">
+    <section className="site-hero site-hero--decorated diario-post-hero">
       <div className="absolute inset-0 z-0">
         <CmsImage
           src={imageSrc}
@@ -18,6 +19,7 @@ export function DiarioPostHero({ imageSrc, imageAlt }: DiarioPostHeroProps) {
           sizes="100vw"
         />
       </div>
+      <HeroBlobDecoration />
     </section>
   );
 }

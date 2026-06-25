@@ -1,21 +1,24 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { HeroBlobDecoration } from "@/components/PageDecorations";
 
 interface PageHeroProps {
   title: ReactNode;
   subtitle?: ReactNode;
   imageSrc?: string;
+  showBlob?: boolean;
 }
 
 export function PageHero({
   title,
   subtitle,
   imageSrc,
+  showBlob = true,
 }: PageHeroProps) {
   const hasImage = Boolean(imageSrc);
 
   return (
-    <section className="site-hero">
+    <section className={`site-hero${hasImage && showBlob ? " site-hero--decorated" : ""}`}>
       {hasImage ? (
         <>
           <div className="absolute inset-0 z-0">
@@ -32,6 +35,7 @@ export function PageHero({
             className="absolute inset-0 z-[1] bg-gradient-to-r from-black/65 via-black/40 to-black/20"
             aria-hidden
           />
+          {showBlob ? <HeroBlobDecoration /> : null}
         </>
       ) : (
         <>
