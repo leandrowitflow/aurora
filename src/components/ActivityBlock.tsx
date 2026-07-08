@@ -3,7 +3,7 @@ import {
   SectionImageShape,
   type SectionImageShapeOverlay,
 } from "@/components/PageDecorations";
-import Image from "next/image";
+import { InViewImage } from "@/components/InViewImage";
 import type { ReactNode } from "react";
 
 interface ActivityBlockProps {
@@ -44,28 +44,24 @@ export function ActivityBlock({
         imageShapeOverlay ? (
           <div className="activity-card-image activity-card-image-stack">
             <div className="activity-card-image__frame">
-              <Image
+              <InViewImage
                 src={imageSrc}
                 alt=""
                 fill
                 className="object-cover object-center"
                 sizes="(min-width: 1024px) 560px, 100vw"
-                loading="lazy"
-                fetchPriority="low"
               />
             </div>
             <SectionImageShape variant={imageShapeOverlay} />
           </div>
         ) : (
           <div className="activity-card-image">
-            <Image
+            <InViewImage
               src={imageSrc}
               alt=""
               fill
               className="object-cover object-center"
               sizes="(min-width: 1024px) 560px, 100vw"
-              loading="lazy"
-              fetchPriority="low"
             />
           </div>
         )

@@ -1,5 +1,5 @@
-import { HeroBlobDecoration } from "@/components/PageDecorations";
-import { HomeBannerCarouselClient } from "@/components/HomeBannerCarouselClient";
+import { DeferredHeroBlob } from "@/components/DeferredHeroBlob";
+import { DeferredHomeBannerCarouselClient } from "@/components/DeferredHomeBannerCarouselClient";
 import { HomeCarouselSlideView } from "@/components/HomeCarouselSlideView";
 import { HOME_CAROUSEL_SLIDES } from "@/lib/home-banner-slides";
 
@@ -16,8 +16,23 @@ export function HomeBannerCarousel() {
         <div className="home-carousel__ssr-fallback">
           <HomeCarouselSlideView slide={firstSlide} isPriority />
         </div>
-        <HomeBannerCarouselClient />
-        <HeroBlobDecoration />
+        <div
+          className="home-carousel__controls home-carousel__controls--static"
+          aria-hidden="true"
+        >
+          <div className="home-carousel__dots">
+            {HOME_CAROUSEL_SLIDES.map((slide, slideIndex) => (
+              <span
+                key={slide.id ?? `ssr-dot-${slideIndex}`}
+                className={`home-carousel__dot rounded-full ${
+                  slideIndex === 0 ? "home-carousel__dot-active" : ""
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        <DeferredHomeBannerCarouselClient />
+        <DeferredHeroBlob />
       </div>
     </section>
   );

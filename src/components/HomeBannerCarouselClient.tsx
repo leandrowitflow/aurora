@@ -197,7 +197,7 @@ export function HomeBannerCarouselClient() {
 
       <div
         ref={controlsRef}
-        className="home-carousel__controls"
+        className="home-carousel__controls home-carousel__controls--client"
         onFocusCapture={() => setIsPaused(true)}
         onBlurCapture={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {

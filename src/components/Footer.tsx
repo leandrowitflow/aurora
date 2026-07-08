@@ -23,13 +23,14 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="bg-olive text-white">
+    <footer className="site-footer bg-olive text-white">
       <div className="site-container py-16">
         <nav className="flex flex-wrap gap-x-10 gap-y-3">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              prefetch={false}
               className="font-[family-name:var(--font-manrope)] text-xl font-bold text-white transition-opacity hover:opacity-70"
             >
               {link.label}
@@ -41,6 +42,7 @@ export function Footer() {
           <div className="footer-brand flex min-w-0 flex-col items-start gap-6">
             <Link
               href="/"
+              prefetch={false}
               className="footer-brand__logo inline-block transition-opacity hover:opacity-80"
             >
               <Image
@@ -88,10 +90,10 @@ export function Footer() {
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-base font-[family-name:var(--font-manrope)] sm:flex-row sm:items-center sm:justify-between">
           <p>Copyright © FlowProductions 2026</p>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
-            <Link href="/contactos" className="hover:opacity-70">Contactos</Link>
-            <Link href="/transparencia" className="hover:opacity-70">Transparência</Link>
-            <Link href="/transparencia" className="hover:opacity-70">Política de privacidade</Link>
-            <Link href="/transparencia" className="hover:opacity-70">Termos e condições</Link>
+            <Link href="/contactos" prefetch={false} className="hover:opacity-70">Contactos</Link>
+            <Link href="/transparencia" prefetch={false} className="hover:opacity-70">Transparência</Link>
+            <Link href="/transparencia" prefetch={false} className="hover:opacity-70">Política de privacidade</Link>
+            <Link href="/transparencia" prefetch={false} className="hover:opacity-70">Termos e condições</Link>
           </div>
         </div>
       </div>

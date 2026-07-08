@@ -1,3 +1,5 @@
+import { DecorativeShapeImage } from "@/components/DecorativeShapeImage";
+
 export const PAGE_SHAPES = {
   oliveLoop: "/Shapes/Camada_1.png",
   peachDots: "/Shapes/Camada_2.png",
@@ -81,27 +83,6 @@ export const SHAPE_GAPS = {
     sizes: "(min-width: 1280px) 631px, 320px",
   },
 };
-
-/** Static PNG decorations — native img avoids /_next/image optimizer round-trips. */
-function DecorativeShapeImage({
-  src,
-  className = "object-contain",
-}: {
-  src: string;
-  className?: string;
-}) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={src}
-      alt=""
-      decoding="async"
-      loading="lazy"
-      fetchPriority="low"
-      className={`absolute inset-0 size-full ${className}`}
-    />
-  );
-}
 
 export function SectionImageShape({
   variant,

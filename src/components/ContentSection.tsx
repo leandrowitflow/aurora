@@ -1,7 +1,7 @@
 ﻿import { Button } from "@/components/Button";
 import { SectionImageShape, type SectionImageShapeOverlay } from "@/components/PageDecorations";
 import { SECTION_IMAGES, type SectionImageKey } from "@/lib/section-images";
-import Image from "next/image";
+import { InViewImage } from "@/components/InViewImage";
 import type { CSSProperties, ReactNode } from "react";
 
 interface ContentSectionProps {
@@ -52,7 +52,7 @@ export function ContentSection({
           className={`torn-col ${tornClass}`}
           style={{ aspectRatio: `${imageWidth} / ${sectionHeight}` }}
         >
-          <Image
+          <InViewImage
             src={imageSrc}
             alt={imageAlt}
             fill
@@ -62,8 +62,6 @@ export function ContentSection({
                 imagePosition === "left" ? "left center" : "right center",
             }}
             sizes="(min-width: 1024px) 55vw, 100vw"
-            loading="lazy"
-            fetchPriority="low"
           />
         </div>
 
@@ -107,14 +105,12 @@ export function ContentSection({
             className="rect-img__frame relative overflow-hidden"
             style={{ aspectRatio }}
           >
-            <Image
+            <InViewImage
               src={imageSrc}
               alt={imageAlt}
               fill
               className="object-cover object-top"
               sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 88vw"
-              loading="lazy"
-              fetchPriority="low"
             />
           </div>
           {imageShapeOverlay ? (
