@@ -21,7 +21,7 @@ export function PageHero({
     <section className={`site-hero${hasImage && showBlob ? " site-hero--decorated" : ""}`}>
       {hasImage ? (
         <>
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-0 overflow-hidden">
             <Image
               src={imageSrc!}
               alt=""

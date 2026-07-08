@@ -9,7 +9,7 @@ interface DiarioPostHeroProps {
 export function DiarioPostHero({ imageSrc, imageAlt }: DiarioPostHeroProps) {
   return (
     <section className="site-hero site-hero--decorated diario-post-hero">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <CmsImage
           src={imageSrc}
           alt={imageAlt}

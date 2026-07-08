@@ -20,7 +20,15 @@ export function SectionFigure({
   if (!imageShapeOverlay) {
     return (
       <figure className="section-figure">
-        <Image src={src} alt={alt} fill className="object-cover" sizes={sizes} />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes={sizes}
+          loading="lazy"
+          fetchPriority="low"
+        />
       </figure>
     );
   }
@@ -28,7 +36,15 @@ export function SectionFigure({
   return (
     <figure className="section-figure section-figure-stack">
       <div className="section-figure__frame">
-        <Image src={src} alt={alt} fill className="object-cover" sizes={sizes} />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes={sizes}
+          loading="lazy"
+          fetchPriority="low"
+        />
       </div>
       <SectionImageShape variant={imageShapeOverlay} />
     </figure>

@@ -50,6 +50,8 @@ export function ActivityBlock({
                 fill
                 className="object-cover object-center"
                 sizes="(min-width: 1024px) 560px, 100vw"
+                loading="lazy"
+                fetchPriority="low"
               />
             </div>
             <SectionImageShape variant={imageShapeOverlay} />
@@ -62,6 +64,8 @@ export function ActivityBlock({
               fill
               className="object-cover object-center"
               sizes="(min-width: 1024px) 560px, 100vw"
+              loading="lazy"
+              fetchPriority="low"
             />
           </div>
         )

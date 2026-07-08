@@ -7,6 +7,44 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const AUTOPLAY_MS = 8000;
 const AUTOPLAY_START_DELAY_MS = 15000;
 const TRANSITION_MS = 900;
+const DESKTOP_PRELOAD_DELAY_MS = 25000;
+
+function preloadCarouselSlide(slideIndex: number) {
+  const slide = HOME_CAROUSEL_SLIDES[slideIndex];
+  if (!slide || slideIndex === 0) {
+    return;
+  }
+
+  const img = new window.Image();
+  img.src = slide.imageSrc;
+}
+
+function shouldIdlePreloadCarousel(): boolean {
+  if (window.matchMedia("(max-width: 1023px)").matches) {
+    return false;
+  }
+
+  const connection = (
+    navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    }
+  ).connection;
+
+  if (connection?.saveData) {
+    return false;
+  }
+
+  const effectiveType = connection?.effectiveType;
+  if (
+    effectiveType === "slow-2g" ||
+    effectiveType === "2g" ||
+    effectiveType === "3g"
+  ) {
+    return false;
+  }
+
+  return true;
+}
 
 export function HomeBannerCarouselClient() {
   const [index, setIndex] = useState(0);
@@ -30,6 +68,8 @@ export function HomeBannerCarouselClient() {
 
       setPrevIndex(indexRef.current);
       setIndex(normalized);
+      preloadCarouselSlide(normalized);
+      preloadCarouselSlide((normalized + 1) % slideCount);
     },
     [slideCount],
   );
@@ -57,29 +97,17 @@ export function HomeBannerCarouselClient() {
   }, [index, prevIndex]);
 
   useEffect(() => {
-    const preloadSlides = () => {
-      HOME_CAROUSEL_SLIDES.forEach((slide, slideIndex) => {
-        if (slideIndex === 0) {
-          return;
-        }
+    if (!shouldIdlePreloadCarousel()) {
+      return;
+    }
 
-        const img = new window.Image();
-        img.src = slide.imageSrc;
+    const timer = window.setTimeout(() => {
+      HOME_CAROUSEL_SLIDES.forEach((_, slideIndex) => {
+        preloadCarouselSlide(slideIndex);
       });
-    };
+    }, DESKTOP_PRELOAD_DELAY_MS);
 
-    const useIdleCallback = typeof window.requestIdleCallback === "function";
-    const idleId = useIdleCallback
-      ? window.requestIdleCallback(preloadSlides, { timeout: 12000 })
-      : window.setTimeout(preloadSlides, 12000);
-
-    return () => {
-      if (useIdleCallback) {
-        window.cancelIdleCallback(idleId);
-      } else {
-        window.clearTimeout(idleId);
-      }
-    };
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {

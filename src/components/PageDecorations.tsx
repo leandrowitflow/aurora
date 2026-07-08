@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export const PAGE_SHAPES = {
   oliveLoop: "/Shapes/Camada_1.png",
   peachDots: "/Shapes/Camada_2.png",
@@ -84,24 +82,37 @@ export const SHAPE_GAPS = {
   },
 };
 
+/** Static PNG decorations — native img avoids /_next/image optimizer round-trips. */
+function DecorativeShapeImage({
+  src,
+  className = "object-contain",
+}: {
+  src: string;
+  className?: string;
+}) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt=""
+      decoding="async"
+      loading="lazy"
+      fetchPriority="low"
+      className={`absolute inset-0 size-full ${className}`}
+    />
+  );
+}
+
 export function SectionImageShape({
   variant,
 }: {
   variant: SectionImageShapeOverlay;
 }) {
-  const { src, className, sizes } = SECTION_IMAGE_SHAPE_CONFIG[variant];
+  const { src, className } = SECTION_IMAGE_SHAPE_CONFIG[variant];
 
   return (
     <div className={className} aria-hidden="true">
-      <Image
-        src={src}
-        alt=""
-        fill
-        className="object-contain"
-        sizes={sizes}
-        loading="lazy"
-        decoding="async"
-      />
+      <DecorativeShapeImage src={src} />
     </div>
   );
 }
@@ -110,14 +121,9 @@ export function SectionImageShape({
 export function HeroBlobDecoration() {
   return (
     <div className="hero-blob-decoration" aria-hidden="true">
-      <Image
+      <DecorativeShapeImage
         src={PAGE_SHAPES.blueBlob}
-        alt=""
-        fill
         className="object-contain object-right-bottom"
-        sizes="(min-width: 1280px) 194px, 140px"
-        loading="lazy"
-        decoding="async"
       />
     </div>
   );
@@ -130,7 +136,7 @@ export function HomeHeroDecoration() {
 
 export function SectionShapeGap({
   src,
-  sizes,
+  sizes: _sizes,
   align,
   kind,
 }: SectionShapeGapProps) {
@@ -139,15 +145,7 @@ export function SectionShapeGap({
       <div
         className={`section-shape-gap__shape section-shape-gap__shape--${align} section-shape-gap__shape--${kind}`}
       >
-        <Image
-          src={src}
-          alt=""
-          fill
-          className="object-contain"
-          sizes={sizes}
-          loading="lazy"
-          decoding="async"
-        />
+        <DecorativeShapeImage src={src} />
       </div>
     </div>
   );

@@ -20,10 +20,13 @@ export function LazyCookieConsent() {
       }
     };
 
+    const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+    const idleTimeout = isMobile ? 8000 : 4000;
+
     const useIdleCallback = typeof window.requestIdleCallback === "function";
     const idleId = useIdleCallback
-      ? window.requestIdleCallback(load, { timeout: 4000 })
-      : window.setTimeout(load, 4000);
+      ? window.requestIdleCallback(load, { timeout: idleTimeout })
+      : window.setTimeout(load, idleTimeout);
 
     return () => {
       cancelled = true;

@@ -79,6 +79,10 @@ main > .site-hero:first-child {
   max-height: var(--hero-h);
 }
 
+.site-hero--decorated {
+  overflow: visible;
+}
+
 .site-hero__content {
   position: relative;
   z-index: 2;
@@ -115,12 +119,32 @@ main > .site-hero:first-child {
 .home-page,
 .decorated-page {
   position: relative;
-  overflow-x: clip;
+  overflow: visible;
+}
+
+.decorated-page > section:not(.site-hero),
+.home-page > section:not(.site-hero):not(.home-carousel) {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.decorated-page .grid:has(.section-figure-stack),
+.decorated-page .activity-card:has(.activity-card-image-stack) {
+  overflow: visible;
+}
+
+/* Defer layout/paint for below-fold homepage sections (mobile LCP). */
+.home-page .content-banner,
+.home-page > section:not(.home-carousel),
+.home-page .section-shape-gap {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
 }
 
 .section-shape-gap {
   position: relative;
-  z-index: 3;
+  z-index: 5;
   height: 0;
   pointer-events: none;
   overflow: visible;
@@ -133,12 +157,12 @@ main > .site-hero:first-child {
 }
 
 .section-shape-gap__shape--left {
-  left: clamp(-1rem, 3vw, 2.5rem);
+  left: max(0px, calc(var(--page-px) - 1.25rem));
   transform: translateY(-50%);
 }
 
 .section-shape-gap__shape--right {
-  right: clamp(-1rem, 3vw, 2.5rem);
+  right: max(0px, calc(var(--page-px) - 1.25rem));
   transform: translateY(-50%);
 }
 
@@ -408,6 +432,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), Manrope, sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -577,6 +606,7 @@ body {
 
 .section-figure-stack {
   overflow: visible;
+  margin-block: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .section-figure__frame {
@@ -668,6 +698,7 @@ body {
 
 .activity-card-image-stack {
   overflow: visible;
+  margin-block: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .activity-card-image__frame {
@@ -2181,6 +2212,7 @@ body.cookie-consent-visible .assistant-root {
 
 .rect-img-stack {
   overflow: visible;
+  margin-block: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .rect-img__frame {
@@ -2190,35 +2222,36 @@ body.cookie-consent-visible .assistant-root {
 
 .section-image-shape {
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   left: 50%;
   pointer-events: none;
-  width: 118%;
+  width: min(118%, 100vw);
+  max-width: 42rem;
   height: clamp(2rem, 4.5vw, 3.25rem);
 }
 
 .section-image-shape--wave-top {
   top: 0;
-  transform: translate(-50%, -58%);
+  transform: translate(-50%, -45%);
 }
 
 .section-image-shape--wave-bottom {
   bottom: 0;
   height: clamp(2.25rem, 5vw, 3.5rem);
-  transform: translate(-50%, 58%);
+  transform: translate(-50%, 45%);
 }
 
 @media (max-width: 767px) {
   .section-image-shape {
-    width: 108%;
+    width: min(108%, calc(100vw - 2 * var(--page-px)));
   }
 
   .section-image-shape--wave-top {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
   }
 
   .section-image-shape--wave-bottom {
-    transform: translate(-50%, 52%);
+    transform: translate(-50%, 40%);
   }
 }
 

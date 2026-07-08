@@ -62,6 +62,8 @@ export function ContentSection({
                 imagePosition === "left" ? "left center" : "right center",
             }}
             sizes="(min-width: 1024px) 55vw, 100vw"
+            loading="lazy"
+            fetchPriority="low"
           />
         </div>
 
@@ -82,9 +84,7 @@ export function ContentSection({
   return (
     <section
       id={id}
-      className={`relative w-full pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20 ${
-        imageShapeOverlay ? "overflow-visible" : "overflow-hidden"
-      }`}
+      className={`relative w-full pb-12 pt-0 lg:pb-14 lg:pt-0 xl:pb-16 2xl:pb-20 overflow-visible`}
     >
       <div
         className={`site-container flex flex-col items-start gap-8 max-lg:items-center lg:flex-row lg:items-center ${
@@ -113,6 +113,8 @@ export function ContentSection({
               fill
               className="object-cover object-top"
               sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 88vw"
+              loading="lazy"
+              fetchPriority="low"
             />
           </div>
           {imageShapeOverlay ? (
