@@ -49,10 +49,10 @@ const CONTACT_ITEMS = [
     label: "Telefone",
     value: (
       <a
-        href="https://wa.me/351918221881"
+        href="https://wa.me/351960289763"
         className="font-bold text-olive underline transition-opacity hover:opacity-70"
       >
-        +351 918 221 881
+        +351 960 289 763
       </a>
     ),
   },
