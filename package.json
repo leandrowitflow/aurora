@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "optimize:images": "node scripts/compress-images.mjs && node scripts/update-image-paths.mjs",
+    "generate:favicon": "node scripts/generate-favicon.mjs",
     "start": "next start",
     "lint": "eslint"
   },
@@ -27,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
+    "to-ico": "^1.1.5",
     "typescript": "^5"
   }
 }
