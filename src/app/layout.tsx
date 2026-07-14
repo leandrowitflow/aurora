@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Coletivo Aurora",
   description:
     "A antiga escola primária de Olhão está a transformar-se numa casa de encontro aberta ao mundo.",
+  icons: {
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
