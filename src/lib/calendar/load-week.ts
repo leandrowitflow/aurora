@@ -1,5 +1,5 @@
 import { getEventsForWeek } from "@/lib/calendar/events";
-import { isCalendarConfigured } from "@/lib/calendar/supabase";
+import { isCalendarAdminConfigured, isCalendarConfigured } from "@/lib/calendar/supabase";
 import { formatWeekStart, getMonday } from "@/lib/calendar/week";
 import type { CalendarEvent } from "@/lib/calendar/types";
 

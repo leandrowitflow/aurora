@@ -1,5 +1,5 @@
 import type { CalendarEvent, CalendarEventInput } from "@/lib/calendar/types";
-import { getCalendarAdminClient } from "@/lib/calendar/supabase";
+import { getCalendarAdminClient, getCalendarPublicClient } from "@/lib/calendar/supabase";
 
 function mapRow(row: Record<string, unknown>): CalendarEvent {
   return {
@@ -20,7 +20,7 @@ function mapRow(row: Record<string, unknown>): CalendarEvent {
 }
 
 export async function getEventsForWeek(weekStart: string): Promise<CalendarEvent[]> {
-  const supabase = getCalendarAdminClient();
+  const supabase = getCalendarPublicClient();
   const { data, error } = await supabase
     .from("calendar_events")
     .select("*")
