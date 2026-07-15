@@ -10,6 +10,7 @@ import {
   DEFAULT_CALENDAR_CATEGORIES,
   getCategoryColor,
 } from "@/lib/calendar/types";
+import { getCategorySurfaceStyles } from "@/lib/calendar/color";
 import {
   formatTimeLabel,
   formatWeekRangeLabel,
@@ -65,7 +66,7 @@ function eventBackgroundStyle(
   categories: CalendarCategoryRecord[],
   category: CalendarEvent["category"],
 ): React.CSSProperties {
-  return { backgroundColor: getCategoryColor(categories, category) };
+  return getCategorySurfaceStyles(getCategoryColor(categories, category));
 }
 
 type EventDensity = "ultra" | "compact" | "full";
@@ -506,7 +507,7 @@ export function WeeklyCalendar({
           <span
             key={category.slug}
             className="weekly-calendar__legend-item"
-            style={{ backgroundColor: category.color || CALENDAR_FALLBACK_COLOR }}
+            style={getCategorySurfaceStyles(category.color || CALENDAR_FALLBACK_COLOR)}
           >
             {category.label}
           </span>

@@ -2527,7 +2527,7 @@ button.weekly-calendar__event:hover:not(:disabled) {
 .weekly-calendar__event-recurrence {
   font-family: var(--font-manrope), Manrope, sans-serif;
   line-height: 1.25;
-  color: var(--olive);
+  color: var(--calendar-surface-text, var(--olive));
 }
 
 .weekly-calendar__event-time {
@@ -2555,7 +2555,7 @@ button.weekly-calendar__event:hover:not(:disabled) {
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--calendar-surface-text, var(--olive));
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -2670,7 +2670,7 @@ button.weekly-calendar__event--clickable:focus-visible:not(:disabled) {
   font-family: var(--font-manrope), Manrope, sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--olive);
+  color: var(--calendar-surface-text, var(--olive));
   border: 1px solid rgba(100, 95, 54, 0.12);
 }
 
