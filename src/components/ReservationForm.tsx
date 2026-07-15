@@ -22,7 +22,7 @@ interface ReservationFormProps {
 }
 
 const inputClass =
-  "w-full border-0 border-b border-olive/25 bg-transparent px-0 py-3 font-[family-name:var(--font-manrope)] text-base text-black outline-none transition-colors focus:border-olive";
+  "w-full border-0 border-b border-olive/25 bg-transparent px-0 py-3 font-[family-name:var(--font-manrope)] text-sm text-black outline-none transition-colors focus:border-olive";
 
 export function ReservationForm({
   formType,
@@ -102,7 +102,7 @@ export function ReservationForm({
           >
             <label
               htmlFor={field.name}
-              className="mb-2 block font-[family-name:var(--font-manrope)] text-sm font-bold text-olive"
+              className="mb-2 block font-[family-name:var(--font-manrope)] text-xs font-bold text-olive"
             >
               {field.label}
             </label>

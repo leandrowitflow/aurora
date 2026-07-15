@@ -51,7 +51,7 @@ export function NewsletterForm() {
 
   if (submitted) {
     return (
-      <p className="mt-6 font-[family-name:var(--font-roboto)] text-base text-white/90">
+      <p className="mt-6 font-[family-name:var(--font-roboto)] text-sm text-white/90">
         Obrigado pela subscrição.
       </p>
     );

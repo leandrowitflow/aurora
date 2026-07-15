@@ -111,17 +111,16 @@ export default function TecerGeracoesPage() {
               <SectionHeading
                 eyebrow="Agenda"
                 title="Calendário semanal"
-                description="Consulte as atividades desta semana, em breve com calendário interativo."
+                description="Consulte as atividades desta semana no calendário interativo."
               />
             </div>
             <aside className="schedule-panel-aside">
-              <p className="schedule-panel-badge">Em breve</p>
-              <p className="body-text mt-5">
-                O calendário estará disponível em breve. Entretanto, contacte-nos
-                para saber mais sobre as atividades desta semana.
+              <p className="body-text">
+                Veja a programação completa de ateliers, horta, dança e encontros
+                comunitários.
               </p>
               <div className="mt-8">
-                <Button href="/contactos" label="Contactar" />
+                <Button href="/calendario" label="Ver calendário" />
               </div>
             </aside>
           </div>

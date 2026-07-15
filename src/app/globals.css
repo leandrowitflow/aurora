@@ -18,6 +18,11 @@
   /* Full viewport — navbar is absolute and overlays the banner, not stacked above it */
   --banner-h: max(520px, 100svh);
   --hero-h: var(--banner-h);
+  --inner-hero-h: max(440px, 85svh);
+  --cal-meeting: #fff3a8;
+  --cal-dance: #b8dff5;
+  --cal-art: #f5c4d4;
+  --cal-garden: #c8e6b8;
 }
 
 @media (min-width: 1024px) {
@@ -25,6 +30,7 @@
     --site-header-h: 4.25rem;
     --banner-h: max(480px, 100svh);
     --hero-h: var(--banner-h);
+    --inner-hero-h: max(400px, 82svh);
   }
 }
 
@@ -33,6 +39,7 @@
     --site-header-h: 4.5rem;
     --banner-h: max(480px, 100svh);
     --hero-h: var(--banner-h);
+    --inner-hero-h: max(400px, 82svh);
     --page-px: clamp(1.5rem, 4.5vw, 5rem);
   }
 }
@@ -77,6 +84,12 @@ main > .site-hero:first-child {
   height: var(--hero-h);
   min-height: var(--hero-h);
   max-height: var(--hero-h);
+}
+
+.site-hero:not(.home-carousel) {
+  height: var(--inner-hero-h);
+  min-height: var(--inner-hero-h);
+  max-height: var(--inner-hero-h);
 }
 
 .site-hero--decorated {
@@ -452,7 +465,7 @@ html {
 @layer components {
   .heading-section {
     font-family: var(--font-epilogue), Epilogue, sans-serif;
-    font-size: 28px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 700;
     line-height: 100%;
@@ -461,25 +474,25 @@ html {
 
   @media (min-width: 1024px) {
     .heading-section {
-      font-size: 24px;
+      font-size: 22px;
     }
   }
 
   @media (min-width: 1280px) {
     .heading-section {
-      font-size: 28px;
+      font-size: 26px;
     }
   }
 
   @media (min-width: 1536px) {
     .heading-section {
-      font-size: 36px;
+      font-size: 34px;
     }
   }
 
   .body-text {
     font-family: var(--font-manrope), Manrope, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 1.6;
@@ -488,19 +501,19 @@ html {
 
   @media (min-width: 1024px) {
     .body-text {
-      font-size: 15px;
+      font-size: 13px;
     }
   }
 
   @media (min-width: 1280px) {
     .body-text {
-      font-size: 17px;
+      font-size: 15px;
     }
   }
 
   @media (min-width: 1536px) {
     .body-text {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 }
@@ -513,7 +526,7 @@ html {
   color: #645f36;
   text-align: center;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -522,7 +535,7 @@ html {
 .heading-page {
   color: #000;
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.875rem, 4vw, 3.375rem);
   font-weight: 700;
   line-height: 1.1;
 }
@@ -538,7 +551,7 @@ html {
 }
 
 .page-hero-content .heading-page {
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-size: clamp(1.625rem, 3vw, 2.625rem);
 }
 
 .page-hero-content .label-olive {
@@ -548,7 +561,7 @@ html {
 .heading-subsection {
   color: #000;
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.125rem, 2vw, 1.625rem);
   font-weight: 700;
   line-height: 1.2;
 }
@@ -556,7 +569,7 @@ html {
 .label-olive {
   color: var(--olive);
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+  font-size: clamp(0.75rem, 1.2vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -602,7 +615,7 @@ html {
 }
 
 .intro-quote-panel .pull-quote p {
-  font-size: clamp(1.375rem, 2.4vw, 2rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.875rem);
   line-height: 1.35;
 }
 
@@ -661,7 +674,7 @@ html {
   display: inline-block;
   padding: 0.375rem 0.75rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--olive);
@@ -742,7 +755,7 @@ html {
 }
 
 .activity-card-body .activity-card-tag {
-  font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
+  font-size: clamp(0.8125rem, 1.5vw, 1rem);
 }
 
 .topic-tag-list {
@@ -811,7 +824,7 @@ html {
 .topic-tag-card-index {
   flex-shrink: 0;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: rgba(100, 95, 54, 0.38);
@@ -824,7 +837,7 @@ html {
 
 .topic-tag-card-title {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  font-size: clamp(0.875rem, 1.35vw, 1rem);
   font-weight: 700;
   line-height: 1.35;
   color: var(--olive);
@@ -833,7 +846,7 @@ html {
 .topic-tag-card-desc {
   margin-top: 0.5rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
+  font-size: clamp(0.75rem, 1.2vw, 0.8125rem);
   font-weight: 400;
   line-height: 1.55;
   color: rgba(100, 95, 54, 0.72);
@@ -856,7 +869,7 @@ html {
   align-items: center;
   gap: 0.625rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: rgba(100, 95, 54, 0.45);
@@ -873,7 +886,7 @@ html {
   width: 1.75rem;
   height: 1.75rem;
   border: 1px solid currentColor;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
 }
 
 .registration-step-active .registration-step-num {
@@ -969,7 +982,7 @@ html {
 .registration-nav-index {
   flex-shrink: 0;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: rgba(100, 95, 54, 0.4);
@@ -995,7 +1008,7 @@ html {
 
 .registration-nav-label {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+  font-size: clamp(0.8125rem, 1.3vw, 0.9375rem);
   font-weight: 700;
   line-height: 1.3;
   color: var(--olive);
@@ -1003,7 +1016,7 @@ html {
 
 .registration-nav-desc {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   font-weight: 400;
   line-height: 1.4;
   color: rgba(100, 95, 54, 0.6);
@@ -1023,7 +1036,7 @@ html {
 
 .registration-aside-label {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--olive);
@@ -1032,9 +1045,24 @@ html {
 .registration-aside-text {
   margin-top: 0.625rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   line-height: 1.55;
   color: rgba(100, 95, 54, 0.7);
+}
+
+.registration-aside-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--olive);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.registration-aside-link:hover {
+  opacity: 0.75;
 }
 
 .registration-form-area {
@@ -1067,7 +1095,7 @@ html {
   display: inline-block;
   margin-left: 0.5rem;
   padding: 0.125rem 0.5rem;
-  font-size: 0.625rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   vertical-align: middle;
@@ -1087,7 +1115,7 @@ html {
 
 .support-detail-list dt {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--olive);
@@ -1096,7 +1124,7 @@ html {
 .support-detail-list dd {
   margin-top: 0.375rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
   font-weight: 700;
   color: #000;
 }
@@ -1104,7 +1132,7 @@ html {
 .support-detail-note {
   margin-top: 1.5rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   line-height: 1.55;
   color: rgba(100, 95, 54, 0.7);
 }
@@ -1112,7 +1140,7 @@ html {
 .support-quota {
   margin-top: 2rem;
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
   font-weight: 700;
   line-height: 1.1;
   color: var(--olive);
@@ -1131,7 +1159,7 @@ html {
   align-items: flex-start;
   gap: 0.75rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  font-size: clamp(0.875rem, 1.3vw, 1rem);
   line-height: 1.5;
   color: #000;
 }
@@ -1157,7 +1185,7 @@ html {
   align-items: center;
   gap: 0.625rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
   font-weight: 700;
   line-height: 1.4;
   color: var(--olive);
@@ -1216,7 +1244,7 @@ html {
 
 .pillar-link-label {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.9375rem, 1.5vw, 1.125rem);
   font-weight: 700;
   color: var(--olive);
 }
@@ -1278,7 +1306,7 @@ html {
 
 .diario-card-date {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.5625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1287,7 +1315,7 @@ html {
 
 .diario-card-title {
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-size: clamp(0.875rem, 1.4vw, 1rem);
   font-weight: 700;
   line-height: 1.3;
   color: var(--olive);
@@ -1299,13 +1327,9 @@ html {
 }
 
 .diario-post-hero {
-  min-height: max(420px, 55svh);
-}
-
-@media (min-width: 1024px) {
-  .diario-post-hero {
-    min-height: max(480px, 62svh);
-  }
+  height: var(--inner-hero-h);
+  min-height: var(--inner-hero-h);
+  max-height: var(--inner-hero-h);
 }
 
 .diario-article-section {
@@ -1326,7 +1350,7 @@ html {
 .diario-back-link {
   display: inline-block;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--olive);
   text-decoration: underline;
@@ -1346,7 +1370,7 @@ html {
 
 .diario-article-date {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1355,7 +1379,7 @@ html {
 
 .diario-prose {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.0625rem);
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem);
   line-height: 1.75;
   color: var(--olive);
 }
@@ -1374,12 +1398,12 @@ html {
 }
 
 .diario-prose h2 {
-  font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
   margin-top: 2.5rem;
 }
 
 .diario-prose h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
   margin-top: 2rem;
 }
 
@@ -1404,7 +1428,7 @@ html {
   padding-left: 1rem;
   border-left: 3px solid var(--mustard);
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   font-weight: 700;
   line-height: 1.45;
 }
@@ -1433,7 +1457,7 @@ html {
 
 .diario-author-name {
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--olive);
 }
@@ -1441,7 +1465,7 @@ html {
 .diario-author-role {
   margin-top: 0.25rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: rgba(100, 95, 54, 0.72);
 }
@@ -1449,7 +1473,7 @@ html {
 .diario-author-bio {
   margin-top: 0.75rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.6;
   color: rgba(100, 95, 54, 0.88);
 }
@@ -1653,7 +1677,7 @@ html {
 }
 
 .assistant-toggle-close {
-  font-size: 1.75rem;
+  font-size: 1.625rem;
   line-height: 1;
   font-weight: 400;
 }
@@ -1741,7 +1765,7 @@ html {
 
 .assistant-eyebrow {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.625rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--mustard);
@@ -1750,7 +1774,7 @@ html {
 .assistant-title {
   margin-top: 0.125rem;
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: 1.3125rem;
+  font-size: 1.1875rem;
   font-weight: 700;
   line-height: 1.1;
   color: #fff;
@@ -1765,7 +1789,7 @@ html {
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   line-height: 1;
   color: #fff;
   cursor: pointer;
@@ -1792,7 +1816,7 @@ html {
 
 .assistant-welcome-title {
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
   color: #000;
@@ -1809,7 +1833,7 @@ html {
 .assistant-welcome-text {
   margin-top: 0.875rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.6;
   color: rgba(0, 0, 0, 0.72);
 }
@@ -1817,7 +1841,7 @@ html {
 .assistant-suggestions-label {
   margin-top: 1.375rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.6875rem;
+  font-size: 0.5625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: rgba(100, 95, 54, 0.55);
@@ -1844,7 +1868,7 @@ html {
   background: rgba(255, 255, 255, 0.85);
   text-align: left;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   line-height: 1.4;
   color: var(--olive);
@@ -1928,7 +1952,7 @@ html {
 
 .assistant-bubble-label {
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.625rem;
+  font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   opacity: 0.65;
@@ -1937,7 +1961,7 @@ html {
 .assistant-bubble-text {
   margin-top: 0.25rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.55;
   white-space: pre-wrap;
 }
@@ -2014,7 +2038,7 @@ html {
   border-radius: 1rem;
   background: rgba(196, 92, 92, 0.08);
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   line-height: 1.5;
   color: #6b2f2f;
   box-shadow: inset 0 0 0 1px rgba(196, 92, 92, 0.15);
@@ -2052,7 +2076,7 @@ html {
   background: transparent;
   padding: 0.375rem 0;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   line-height: 1.45;
   color: #000;
   outline: none;
@@ -2160,7 +2184,7 @@ body.cookie-consent-visible .assistant-root {
 .cookie-consent-title {
   margin: 0;
   font-family: var(--font-epilogue), Epilogue, sans-serif;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--olive);
 }
@@ -2168,7 +2192,7 @@ body.cookie-consent-visible .assistant-root {
 .cookie-consent-text {
   margin: 0.375rem 0 0;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.78);
 }
@@ -2191,7 +2215,7 @@ body.cookie-consent-visible .assistant-root {
   background: var(--olive);
   padding: 0.625rem 1.5rem;
   font-family: var(--font-manrope), Manrope, sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: #fff;
   cursor: pointer;
@@ -2293,5 +2317,337 @@ body.cookie-consent-visible .assistant-root {
    */
   .rect-row-image-left {
     gap: calc(100% - min(589px, 37.756%) - min(626px, 40.128%));
+  }
+}
+
+/* Weekly calendar */
+.weekly-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.weekly-calendar__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.weekly-calendar__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weekly-calendar__nav-btn,
+.weekly-calendar__today-btn {
+  border: 1px solid rgba(100, 95, 54, 0.2);
+  background: #fff;
+  color: var(--olive);
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.5rem 0.875rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.weekly-calendar__nav-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
+
+.weekly-calendar__nav-btn:hover,
+.weekly-calendar__today-btn:hover {
+  background: var(--sand);
+}
+
+.weekly-calendar__week-label {
+  font-family: var(--font-epilogue), Epilogue, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 700;
+  color: var(--olive);
+  min-width: 12rem;
+  text-align: center;
+}
+
+.weekly-calendar__scroll {
+  overflow-x: auto;
+  border: 1px solid rgba(100, 95, 54, 0.15);
+  background: #fff;
+}
+
+.weekly-calendar__grid {
+  --hour-height: 64px;
+  display: grid;
+  grid-template-columns: 4.5rem repeat(6, minmax(8.5rem, 1fr));
+  min-width: 58rem;
+}
+
+.weekly-calendar__corner,
+.weekly-calendar__day-head {
+  background: var(--cream);
+  border-bottom: 1px solid rgba(100, 95, 54, 0.12);
+  border-right: 1px solid rgba(100, 95, 54, 0.12);
+  padding: 0.75rem 0.5rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--olive);
+}
+
+.weekly-calendar__time-col {
+  display: grid;
+  grid-template-rows: repeat(10, var(--hour-height));
+  border-right: 1px solid rgba(100, 95, 54, 0.12);
+}
+
+.weekly-calendar__time-label {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0.35rem 0.5rem 0 0;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(100, 95, 54, 0.7);
+  border-bottom: 1px solid rgba(100, 95, 54, 0.08);
+}
+
+.weekly-calendar__day-col {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(10, var(--hour-height));
+  border-right: 1px solid rgba(100, 95, 54, 0.12);
+}
+
+.weekly-calendar__hour-cell {
+  border-bottom: 1px solid rgba(100, 95, 54, 0.08);
+}
+
+.weekly-calendar__event {
+  position: absolute;
+  left: 0.25rem;
+  right: 0.25rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.4rem 0.45rem;
+  border: 1px solid rgba(100, 95, 54, 0.12);
+  text-align: left;
+  overflow: hidden;
+  cursor: default;
+}
+
+button.weekly-calendar__event:not(:disabled) {
+  cursor: pointer;
+}
+
+.weekly-calendar__event--meeting {
+  background: var(--cal-meeting);
+}
+
+.weekly-calendar__event--dance {
+  background: var(--cal-dance);
+}
+
+.weekly-calendar__event--art {
+  background: var(--cal-art);
+}
+
+.weekly-calendar__event--garden {
+  background: var(--cal-garden);
+}
+
+.weekly-calendar__event-time,
+.weekly-calendar__event-title,
+.weekly-calendar__event-subtitle,
+.weekly-calendar__event-price,
+.weekly-calendar__event-recurrence {
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  line-height: 1.25;
+  color: var(--olive);
+}
+
+.weekly-calendar__event-time {
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+.weekly-calendar__event-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.weekly-calendar__event-subtitle,
+.weekly-calendar__event-price,
+.weekly-calendar__event-recurrence {
+  font-size: 0.6875rem;
+}
+
+.weekly-calendar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.weekly-calendar__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.65rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--olive);
+  border: 1px solid rgba(100, 95, 54, 0.12);
+}
+
+.weekly-calendar__legend-item--meeting {
+  background: var(--cal-meeting);
+}
+
+.weekly-calendar__legend-item--dance {
+  background: var(--cal-dance);
+}
+
+.weekly-calendar__legend-item--art {
+  background: var(--cal-art);
+}
+
+.weekly-calendar__legend-item--garden {
+  background: var(--cal-garden);
+}
+
+.weekly-calendar__cta {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.weekly-calendar__notice,
+.weekly-calendar__error {
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+}
+
+.weekly-calendar__error {
+  color: #8b2f2f;
+}
+
+.calendar-admin-page {
+  padding-top: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.calendar-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.calendar-admin__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.calendar-admin__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.calendar-admin-login,
+.calendar-admin-form {
+  max-width: 48rem;
+}
+
+.calendar-admin-form__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.calendar-admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calendar-admin-input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(100, 95, 54, 0.25);
+  background: transparent;
+  padding: 0.65rem 0;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+  color: #000;
+  outline: none;
+}
+
+.calendar-admin-input:focus {
+  border-bottom-color: var(--olive);
+}
+
+.calendar-admin-btn {
+  border: 1px solid var(--olive);
+  background: var(--olive);
+  color: #fff;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.7rem 1.25rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.calendar-admin-btn:hover {
+  opacity: 0.9;
+}
+
+.calendar-admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.calendar-admin-btn--ghost {
+  background: transparent;
+  color: var(--olive);
+}
+
+.calendar-admin-btn--danger {
+  background: #8b2f2f;
+  border-color: #8b2f2f;
+}
+
+.calendar-admin-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.calendar-admin-status {
+  margin-top: 1rem;
+  font-family: var(--font-manrope), Manrope, sans-serif;
+  font-size: 0.875rem;
+  color: var(--olive);
+}
+
+.calendar-admin-status--error {
+  color: #8b2f2f;
+}
+
+@media (max-width: 767px) {
+  .calendar-admin-form__grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -7,6 +7,7 @@ const STATIC_ROUTES = [
   "/quem-somos",
   "/viver-o-coletivo",
   "/tecer-geracoes",
+  "/calendario",
   "/inscricoes",
   "/fazer-parte",
   "/contactos",

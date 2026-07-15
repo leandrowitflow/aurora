@@ -27,7 +27,7 @@ export function NavLink({ href, label, className = "", onClick }: NavLinkProps) 
       prefetch={false}
       onClick={onClick}
       aria-current={isActive ? "page" : undefined}
-      className={`font-[family-name:var(--font-manrope)] text-lg font-bold text-olive transition-opacity hover:opacity-70 ${
+      className={`font-[family-name:var(--font-manrope)] text-base font-bold text-olive transition-opacity hover:opacity-70 ${
         isActive ? "underline decoration-2 underline-offset-8" : ""
       } ${className}`}
     >

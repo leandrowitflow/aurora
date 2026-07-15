@@ -252,9 +252,11 @@ export function InscricoesContent() {
           <aside className="registration-aside">
             <p className="registration-aside-label">Agenda</p>
             <p className="registration-aside-text">
-              O calendário interativo estará disponível em breve. Entraremos em
-              contacto para confirmar a disponibilidade.
+              Consulte o calendário semanal com todas as atividades programadas.
             </p>
+            <a href="/calendario" className="registration-aside-link">
+              Ver calendário
+            </a>
           </aside>
         </nav>
 

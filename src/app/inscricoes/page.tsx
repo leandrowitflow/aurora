@@ -7,9 +7,9 @@ import { PageShell } from "@/components/PageShell";
 import { ShapeGap } from "@/components/PageDecorations";
 
 export const metadata: Metadata = {
-  title: "Calendário | Coletivo Aurora",
+  title: "Inscrições | Coletivo Aurora",
   description:
-    "Agenda e formulários de reserva para playgroups, ateliers, horta, férias e festas no Coletivo Aurora.",
+    "Formulários de reserva para playgroups, ateliers, horta, férias e festas no Coletivo Aurora.",
 };
 
 export default function InscricoesPage() {
@@ -17,7 +17,7 @@ export default function InscricoesPage() {
     <PageShell>
       <DecoratedPage>
         <PageHero
-          title="Calendário"
+          title="Inscrições"
           subtitle="Escolha o tipo de atividade e preencha o formulário. Entraremos em contacto para confirmar o seu lugar."
           imageSrc="/images/hero-inscricoes.webp"
         />

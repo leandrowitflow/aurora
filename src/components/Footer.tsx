@@ -31,7 +31,7 @@ export function Footer() {
               key={link.href}
               href={link.href}
               prefetch={false}
-              className="font-[family-name:var(--font-manrope)] text-xl font-bold text-white transition-opacity hover:opacity-70"
+              className="font-[family-name:var(--font-manrope)] text-lg font-bold text-white transition-opacity hover:opacity-70"
             >
               {link.label}
             </Link>
@@ -62,7 +62,7 @@ export function Footer() {
             <h3 className="font-[family-name:var(--font-manrope)] text-[21px] font-medium tracking-tight">
               Entre em contacto
             </h3>
-            <address className="mt-6 space-y-4 not-italic font-[family-name:var(--font-manrope)] text-base leading-[30px] text-[rgba(255,255,255,0.63)]">
+            <address className="mt-6 space-y-4 not-italic font-[family-name:var(--font-manrope)] text-sm leading-[28px] text-[rgba(255,255,255,0.63)]">
               <p>Sítio do Pereiro nº 400F, Moncarapacho, 8700-073 Olhão</p>
               <p>
                 <a href="mailto:somosaurora@gmail.com" className="hover:text-white">
@@ -87,7 +87,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-base font-[family-name:var(--font-manrope)] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm font-[family-name:var(--font-manrope)] sm:flex-row sm:items-center sm:justify-between">
           <p>Copyright © FlowProductions 2026</p>
           <div className="flex flex-wrap gap-x-8 gap-y-2">
             <Link href="/contactos" prefetch={false} className="hover:opacity-70">Contactos</Link>

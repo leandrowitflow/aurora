@@ -2,7 +2,7 @@ export const NAV_LINKS = [
   { label: "Quem somos", href: "/quem-somos" },
   { label: "Viver o coletivo", href: "/viver-o-coletivo" },
   { label: "Tecer gerações", href: "/tecer-geracoes" },
-  { label: "Calendário", href: "/inscricoes" },
+  { label: "Calendário", href: "/calendario" },
   { label: "Fazer parte", href: "/fazer-parte" },
   { label: "Diário", href: "/diario" },
 ] as const;
