@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function CalendarioAdminPage() {
   const { weekStart, events, categories, configured } = await loadCalendarWeek();
 

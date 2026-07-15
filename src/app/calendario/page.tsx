@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     "Consulte a agenda semanal e inscreva-se em ateliers, horta, dança e encontros no Coletivo Aurora.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function CalendarioPage() {
   const { weekStart, events, categories, configured } = await loadCalendarWeek();
 

@@ -150,10 +150,18 @@ export async function deleteCalendarCategory(slug: string): Promise<void> {
     throw new Error("Não é possível eliminar uma categoria com eventos associados.");
   }
 
-  const { error } = await supabase.from("calendar_categories").delete().eq("slug", slug);
+  const { data, error } = await supabase
+    .from("calendar_categories")
+    .delete()
+    .eq("slug", slug)
+    .select("slug");
 
   if (error) {
     throw new Error(error.message);
+  }
+
+  if (!data?.length) {
+    throw new Error("Categoria não encontrada.");
   }
 }
 

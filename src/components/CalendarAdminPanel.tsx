@@ -77,6 +77,30 @@ export function CalendarAdminPanel({
   }, []);
 
   useEffect(() => {
+    if (!authenticated || !configured) {
+      return;
+    }
+
+    fetch("/api/calendar/categories")
+      .then((response) => response.json())
+      .then((data: { categories?: CalendarCategoryRecord[] }) => {
+        if (!data.categories) {
+          return;
+        }
+
+        setCategories(data.categories);
+        setForm((current) => {
+          if (data.categories!.some((category) => category.slug === current.category)) {
+            return current;
+          }
+
+          return { ...current, category: defaultCategorySlug(data.categories!) };
+        });
+      })
+      .catch(() => undefined);
+  }, [authenticated, configured]);
+
+  useEffect(() => {
     if (!creating && !editingId) {
       return;
     }

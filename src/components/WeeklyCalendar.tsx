@@ -238,10 +238,7 @@ export function WeeklyCalendar({
         throw new Error(data.error ?? "Não foi possível carregar o calendário.");
       }
 
-      const nextCategories =
-        data.categories && data.categories.length > 0
-          ? data.categories
-          : DEFAULT_CALENDAR_CATEGORIES;
+      const nextCategories = data.categories ?? [];
 
       setWeekStart(nextWeekStart);
       setEvents(data.events ?? []);

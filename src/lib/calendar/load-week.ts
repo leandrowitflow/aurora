@@ -14,10 +14,9 @@ export async function loadCalendarCategories(): Promise<CalendarCategoryRecord[]
   }
 
   try {
-    const categories = await getCalendarCategories();
-    return categories.length > 0 ? categories : DEFAULT_CALENDAR_CATEGORIES;
+    return await getCalendarCategories();
   } catch {
-    return DEFAULT_CALENDAR_CATEGORIES;
+    return [];
   }
 }
 
