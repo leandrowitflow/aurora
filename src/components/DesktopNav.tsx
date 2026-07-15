@@ -5,7 +5,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 
 export function DesktopNav() {
   return (
-    <nav className="hidden items-center gap-8 xl:flex" aria-label="Principal">
+    <nav className="hidden items-center gap-5 lg:flex xl:gap-8" aria-label="Principal">
       {NAV_LINKS.map((link) => (
         <NavLink
           key={link.href}

@@ -2751,29 +2751,22 @@ button.weekly-calendar__event--clickable:focus-visible:not(:disabled) {
   color: var(--olive);
 }
 
+.calendario-event-panel-anchor {
+  scroll-margin-top: calc(var(--site-header-h) + 1rem);
+  margin-top: 0.5rem;
+}
+
 .calendario-event-panel--open {
   border-width: 2px;
   animation: calendario-panel-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.calendario-event-panel--meeting {
-  border-color: rgba(100, 95, 54, 0.35);
-  box-shadow: inset 4px 0 0 var(--cal-meeting);
+.calendario-event-panel--open .calendario-event-panel__header {
+  border-left: 4px solid var(--calendario-event-accent, var(--olive));
 }
 
-.calendario-event-panel--dance {
-  border-color: rgba(100, 95, 54, 0.35);
-  box-shadow: inset 4px 0 0 var(--cal-dance);
-}
-
-.calendario-event-panel--art {
-  border-color: rgba(100, 95, 54, 0.35);
-  box-shadow: inset 4px 0 0 var(--cal-art);
-}
-
-.calendario-event-panel--garden {
-  border-color: rgba(100, 95, 54, 0.35);
-  box-shadow: inset 4px 0 0 var(--cal-garden);
+.calendario-event-panel--open .calendario-event-panel__body {
+  padding-left: calc(clamp(1.25rem, 3vw, 1.75rem) + 0.75rem);
 }
 
 .calendario-event-panel__header {
@@ -2833,10 +2826,6 @@ button.weekly-calendar__event--clickable:focus-visible:not(:disabled) {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.calendario-event-panel-anchor {
-  scroll-margin-top: calc(var(--site-header-h) + 1rem);
 }
 
 .weekly-calendar__hint-mobile,
@@ -2973,24 +2962,12 @@ button.weekly-calendar__event--clickable:focus-visible:not(:disabled) {
     padding: 1rem;
   }
 
-  .calendario-event-panel--open {
-    box-shadow: inset 3px 0 0 currentColor;
+  .calendario-event-panel--open .calendario-event-panel__header {
+    border-left-width: 3px;
   }
 
-  .calendario-event-panel--meeting {
-    box-shadow: inset 3px 0 0 var(--cal-meeting);
-  }
-
-  .calendario-event-panel--dance {
-    box-shadow: inset 3px 0 0 var(--cal-dance);
-  }
-
-  .calendario-event-panel--art {
-    box-shadow: inset 3px 0 0 var(--cal-art);
-  }
-
-  .calendario-event-panel--garden {
-    box-shadow: inset 3px 0 0 var(--cal-garden);
+  .calendario-event-panel--open .calendario-event-panel__body {
+    padding-left: calc(1rem + 0.625rem);
   }
 
   .form-panel > button[type="submit"] {

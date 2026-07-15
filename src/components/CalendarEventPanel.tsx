@@ -64,7 +64,7 @@ export function CalendarEventPanel({
   return (
     <section
       className="calendario-event-panel calendario-event-panel--open"
-      style={{ boxShadow: `inset 4px 0 0 ${accentColor}` }}
+      style={{ "--calendario-event-accent": accentColor } as React.CSSProperties}
       aria-live="polite"
     >
       <header className="calendario-event-panel__header">

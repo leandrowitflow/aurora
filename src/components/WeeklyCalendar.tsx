@@ -262,8 +262,11 @@ export function WeeklyCalendar({
   useEffect(() => {
     setWeekStart(initialWeekStart);
     setEvents(initialEvents);
+  }, [initialWeekStart, initialEvents]);
+
+  useEffect(() => {
     setCategories(initialCategories);
-  }, [initialWeekStart, initialEvents, initialCategories]);
+  }, [initialCategories]);
 
   const hours = useMemo(
     () =>
@@ -336,6 +339,12 @@ export function WeeklyCalendar({
       {error ? (
         <p className="weekly-calendar__error" role="alert">
           {error}
+        </p>
+      ) : null}
+
+      {configured && !loading && !error && events.length === 0 ? (
+        <p className="weekly-calendar__notice body-text">
+          Sem atividades nesta semana. Use as setas para ver outras semanas.
         </p>
       ) : null}
 

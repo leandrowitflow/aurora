@@ -21,6 +21,8 @@ export function CalendarioInscricoesContent({
 }: CalendarioInscricoesContentProps) {
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   const [categories, setCategories] = useState(initialCategories);
+  const [weekStart, setWeekStart] = useState(initialWeekStart);
+  const [events, setEvents] = useState(initialEvents);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,18 +33,29 @@ export function CalendarioInscricoesContent({
     panelRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [selectedEvent]);
 
+  function handleWeekChange(nextWeekStart: string) {
+    setWeekStart(nextWeekStart);
+    setSelectedEvent(null);
+  }
+
+  function handleEventsLoaded(_nextWeekStart: string, nextEvents: CalendarEvent[]) {
+    setEvents(nextEvents);
+  }
+
   return (
     <div className="calendario-inscricoes-layout">
       <div className="calendario-inscricoes-calendar">
         <WeeklyCalendar
-          initialWeekStart={initialWeekStart}
-          initialEvents={initialEvents}
+          initialWeekStart={weekStart}
+          initialEvents={events}
           initialCategories={categories}
           configured={configured}
           onEventClick={setSelectedEvent}
           selectedEventId={selectedEvent?.id ?? null}
           showReservationCta={false}
           showClickHint
+          onWeekChange={handleWeekChange}
+          onEventsLoaded={handleEventsLoaded}
           onCategoriesLoaded={setCategories}
         />
       </div>
