@@ -1,4 +1,5 @@
 import { requireCalendarAdmin } from "@/lib/calendar/auth";
+import { categoryExists } from "@/lib/calendar/categories";
 import { createCalendarEvent } from "@/lib/calendar/events";
 import type { CalendarEventInput } from "@/lib/calendar/types";
 import { NextResponse } from "next/server";
@@ -23,6 +24,10 @@ export async function POST(request: Request) {
   }
 
   try {
+    if (!(await categoryExists(body.category))) {
+      return NextResponse.json({ error: "Categoria inválida." }, { status: 400 });
+    }
+
     const event = await createCalendarEvent(body);
     return NextResponse.json({ event });
   } catch (error) {

@@ -70,7 +70,7 @@ function assistantErrorMessage(error: unknown): string {
   }
 
   if (apiError?.statusCode === 401 || message.includes("api key")) {
-    return "Chave API Gemini inválida. Verifique GOOGLE_GENERATIVE_AI_API_KEY no .env.local.";
+    return "Chave API Gemini inválida. Verifique GOOGLE_GENERATIVE_AI_API_KEY no .env.";
   }
 
   if (message.includes("not found") || message.includes("is not supported")) {

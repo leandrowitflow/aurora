@@ -9,6 +9,7 @@ export const FORM_SUBJECTS: Record<string, string> = {
   "inscricao-aniversarios": "Inscrição — festa de aniversário",
   "inscricao-ferias": "Inscrição — Férias no Aurora",
   "inscricao-projeto": "Inscrição — Tecendo Gerações",
+  "inscricao-calendario": "Inscrição — Atividade do calendário",
   voluntariado: "Ficha de voluntário",
   newsletter: "Newsletter — novo subscritor",
 };

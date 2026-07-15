@@ -1,6 +1,20 @@
-export const CALENDAR_CATEGORIES = ["meeting", "dance", "art", "garden"] as const;
+export type CalendarCategory = string;
 
-export type CalendarCategory = (typeof CALENDAR_CATEGORIES)[number];
+export type CalendarCategoryRecord = {
+  slug: CalendarCategory;
+  label: string;
+  color: string;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type CalendarCategoryInput = {
+  label: string;
+  color: string;
+  slug?: string;
+  sort_order?: number;
+};
 
 export type CalendarEvent = {
   id: string;
@@ -40,12 +54,65 @@ export const CALENDAR_DAY_LABELS = [
   "Sábado",
 ] as const;
 
-export const CALENDAR_CATEGORY_LABELS: Record<CalendarCategory, string> = {
-  meeting: "Encontros e participação",
-  dance: "Dança e movimento",
-  art: "Ateliers expressivos",
-  garden: "Horta comunitária",
-};
+export const DEFAULT_CALENDAR_CATEGORIES: CalendarCategoryRecord[] = [
+  {
+    slug: "meeting",
+    label: "Encontros e participação",
+    color: "#fff3a8",
+    sort_order: 0,
+    created_at: "",
+    updated_at: "",
+  },
+  {
+    slug: "dance",
+    label: "Dança e movimento",
+    color: "#b8dff5",
+    sort_order: 1,
+    created_at: "",
+    updated_at: "",
+  },
+  {
+    slug: "art",
+    label: "Ateliers expressivos",
+    color: "#f5c4d4",
+    sort_order: 2,
+    created_at: "",
+    updated_at: "",
+  },
+  {
+    slug: "garden",
+    label: "Horta comunitária",
+    color: "#c8e6b8",
+    sort_order: 3,
+    created_at: "",
+    updated_at: "",
+  },
+];
+
+export const CALENDAR_FALLBACK_COLOR = "#f0efe8";
 
 export const CALENDAR_START_HOUR = 10;
 export const CALENDAR_END_HOUR = 20;
+
+export function getCategoryLabel(
+  categories: CalendarCategoryRecord[],
+  slug: CalendarCategory,
+): string {
+  return categories.find((category) => category.slug === slug)?.label ?? slug;
+}
+
+export function getCategoryColor(
+  categories: CalendarCategoryRecord[],
+  slug: CalendarCategory,
+): string {
+  return (
+    categories.find((category) => category.slug === slug)?.color ??
+    CALENDAR_FALLBACK_COLOR
+  );
+}
+
+export function buildCategoryMap(
+  categories: CalendarCategoryRecord[],
+): Map<CalendarCategory, CalendarCategoryRecord> {
+  return new Map(categories.map((category) => [category.slug, category]));
+}

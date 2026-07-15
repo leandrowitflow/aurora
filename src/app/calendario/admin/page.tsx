@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function CalendarioAdminPage() {
-  const { weekStart, events, configured } = await loadCalendarWeek();
+  const { weekStart, events, categories, configured } = await loadCalendarWeek();
 
   return (
     <PageShell>
@@ -21,6 +21,7 @@ export default async function CalendarioAdminPage() {
         <CalendarAdminPanel
           initialWeekStart={weekStart}
           initialEvents={events}
+          initialCategories={categories}
           configured={configured}
         />
       </PageSection>

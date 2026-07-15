@@ -1,37 +1,53 @@
 "use client";
 
-import { WeeklyCalendar } from "@/components/WeeklyCalendar";
-import type { CalendarEvent, CalendarEventInput } from "@/lib/calendar/types";
+import { CalendarCategoryManager } from "@/components/CalendarCategoryManager";
 import {
-  CALENDAR_CATEGORIES,
-  CALENDAR_CATEGORY_LABELS,
-  CALENDAR_DAY_LABELS,
+  WeeklyCalendar,
+  type CalendarDraftEvent,
+  type CalendarSlotClick,
+} from "@/components/WeeklyCalendar";
+import type {
+  CalendarCategoryRecord,
+  CalendarEvent,
+  CalendarEventInput,
 } from "@/lib/calendar/types";
+import { CALENDAR_DAY_LABELS, DEFAULT_CALENDAR_CATEGORIES } from "@/lib/calendar/types";
 import { formatWeekStart, shiftWeek } from "@/lib/calendar/week";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type CalendarAdminPanelProps = {
   initialWeekStart: string;
   initialEvents: CalendarEvent[];
+  initialCategories: CalendarCategoryRecord[];
   configured: boolean;
 };
 
-const EMPTY_FORM: CalendarEventInput = {
-  week_start: "",
-  day_of_week: 1,
-  start_time: "10:00",
-  end_time: "11:00",
-  title: "",
-  subtitle: "",
-  price_label: "",
-  recurrence_note: "",
-  category: "art",
-  sort_order: 0,
-};
+function defaultCategorySlug(categories: CalendarCategoryRecord[]): string {
+  return categories[0]?.slug ?? DEFAULT_CALENDAR_CATEGORIES[0].slug;
+}
+
+function buildEmptyForm(
+  weekStart: string,
+  categories: CalendarCategoryRecord[],
+): CalendarEventInput {
+  return {
+    week_start: weekStart,
+    day_of_week: 1,
+    start_time: "10:00",
+    end_time: "11:00",
+    title: "",
+    subtitle: "",
+    price_label: "",
+    recurrence_note: "",
+    category: defaultCategorySlug(categories),
+    sort_order: 0,
+  };
+}
 
 export function CalendarAdminPanel({
   initialWeekStart,
   initialEvents,
+  initialCategories,
   configured,
 }: CalendarAdminPanelProps) {
   const [authenticated, setAuthenticated] = useState(false);
@@ -39,13 +55,15 @@ export function CalendarAdminPanel({
   const [loginError, setLoginError] = useState<string | null>(null);
   const [weekStart, setWeekStart] = useState(initialWeekStart);
   const [events, setEvents] = useState(initialEvents);
-  const [form, setForm] = useState<CalendarEventInput>({
-    ...EMPTY_FORM,
-    week_start: initialWeekStart,
-  });
+  const [categories, setCategories] = useState(initialCategories);
+  const [form, setForm] = useState<CalendarEventInput>(() =>
+    buildEmptyForm(initialWeekStart, initialCategories),
+  );
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const editorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("/api/calendar/admin/session")
@@ -58,10 +76,32 @@ export function CalendarAdminPanel({
       .catch(() => undefined);
   }, []);
 
+  useEffect(() => {
+    if (!creating && !editingId) {
+      return;
+    }
+
+    editorRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [creating, editingId, form.day_of_week, form.start_time]);
+
   const sourceWeekStart = useMemo(
     () => formatWeekStart(shiftWeek(new Date(`${weekStart}T12:00:00`), -1)),
     [weekStart],
   );
+
+  const draftEvent: CalendarDraftEvent | null = creating
+    ? {
+        day_of_week: form.day_of_week,
+        start_time: form.start_time,
+        end_time: form.end_time,
+        title: form.title,
+        category: form.category,
+      }
+    : null;
+
+  const activeSlot = creating
+    ? { dayOfWeek: form.day_of_week, startTime: form.start_time }
+    : null;
 
   async function handleLogin(event: React.FormEvent) {
     event.preventDefault();
@@ -95,15 +135,46 @@ export function CalendarAdminPanel({
   async function handleLogout() {
     await fetch("/api/calendar/admin/logout", { method: "POST" });
     setAuthenticated(false);
+    resetForm();
   }
 
   function resetForm() {
     setEditingId(null);
-    setForm({ ...EMPTY_FORM, week_start: weekStart });
+    setCreating(false);
+    setForm(buildEmptyForm(weekStart, categories));
+    setStatus(null);
+  }
+
+  function startCreate(slot?: CalendarSlotClick) {
+    setEditingId(null);
+    setCreating(true);
+    setForm({
+      ...buildEmptyForm(weekStart, categories),
+      day_of_week: slot?.dayOfWeek ?? 1,
+      start_time: slot?.startTime ?? "10:00",
+      end_time: slot?.endTime ?? "11:00",
+    });
+    setStatus(null);
+  }
+
+  function handleCategoriesChange(nextCategories: CalendarCategoryRecord[]) {
+    setCategories(nextCategories);
+    setForm((current) => {
+      if (nextCategories.some((category) => category.slug === current.category)) {
+        return current;
+      }
+
+      return { ...current, category: defaultCategorySlug(nextCategories) };
+    });
+  }
+
+  function startCreateAtSlot(slot: CalendarSlotClick) {
+    startCreate(slot);
   }
 
   function startEdit(event: CalendarEvent) {
     setEditingId(event.id);
+    setCreating(false);
     setForm({
       week_start: event.week_start,
       day_of_week: event.day_of_week,
@@ -207,6 +278,7 @@ export function CalendarAdminPanel({
 
     setBusy(true);
     setStatus(null);
+    resetForm();
 
     try {
       const response = await fetch("/api/calendar/admin/copy-week", {
@@ -268,191 +340,244 @@ export function CalendarAdminPanel({
     );
   }
 
+  const editorOpen = creating || Boolean(editingId);
+
   return (
     <div className="calendar-admin">
       <div className="calendar-admin__header">
         <div>
           <h1 className="heading-section">Administração do calendário</h1>
           <p className="body-text mt-3 text-olive/80">
-            Adicione, edite ou copie eventos semana a semana.
+            Clique diretamente no calendário para criar ou editar eventos.
           </p>
         </div>
-        <button type="button" className="calendar-admin-btn calendar-admin-btn--ghost" onClick={handleLogout}>
+        <button
+          type="button"
+          className="calendar-admin-btn calendar-admin-btn--ghost"
+          onClick={handleLogout}
+        >
           Terminar sessão
         </button>
       </div>
 
       <div className="calendar-admin__actions">
-        <button type="button" className="calendar-admin-btn" onClick={resetForm} disabled={busy}>
+        <button
+          type="button"
+          className="calendar-admin-btn"
+          onClick={() => startCreate()}
+          disabled={busy}
+        >
           Novo evento
         </button>
         <button type="button" className="calendar-admin-btn" onClick={copyWeek} disabled={busy}>
           Copiar semana anterior
         </button>
+        {editorOpen ? (
+          <button
+            type="button"
+            className="calendar-admin-btn calendar-admin-btn--ghost"
+            onClick={resetForm}
+            disabled={busy}
+          >
+            Cancelar
+          </button>
+        ) : null}
       </div>
 
-      <WeeklyCalendar
-        initialWeekStart={weekStart}
-        initialEvents={events}
-        configured={configured}
-        adminMode
-        onEventClick={startEdit}
-        onWeekChange={(nextWeekStart) => {
-          setWeekStart(nextWeekStart);
-          setForm((current) => ({ ...current, week_start: nextWeekStart }));
-        }}
-        onEventsLoaded={(_nextWeekStart, nextEvents) => {
-          setEvents(nextEvents);
-        }}
+      {status ? <p className="calendar-admin-status">{status}</p> : null}
+
+      <CalendarCategoryManager
+        categories={categories}
+        onChange={handleCategoriesChange}
+        disabled={busy}
       />
 
-      <form className="calendar-admin-form form-panel" onSubmit={saveEvent}>
-        <h2 className="heading-subsection">
-          {editingId ? "Editar evento" : "Novo evento"}
-        </h2>
+      <div className="calendar-admin__workspace">
+        <WeeklyCalendar
+          initialWeekStart={weekStart}
+          initialEvents={events}
+          initialCategories={categories}
+          configured={configured}
+          adminMode
+          onEventClick={startEdit}
+          onSlotClick={startCreateAtSlot}
+          selectedEventId={editingId}
+          activeSlot={activeSlot}
+          draftEvent={draftEvent}
+          onWeekChange={(nextWeekStart) => {
+            setWeekStart(nextWeekStart);
+            resetForm();
+          }}
+          onEventsLoaded={(_nextWeekStart, nextEvents) => {
+            setEvents(nextEvents);
+          }}
+          onCategoriesLoaded={handleCategoriesChange}
+        />
 
-        <div className="calendar-admin-form__grid">
-          <label className="calendar-admin-field">
-            <span className="label-olive">Dia</span>
-            <select
-              value={form.day_of_week}
-              onChange={(event) =>
-                setForm((current) => ({
-                  ...current,
-                  day_of_week: Number(event.target.value),
-                }))
-              }
-              className="calendar-admin-input"
-            >
-              {CALENDAR_DAY_LABELS.map((label, index) => (
-                <option key={label} value={index + 1}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
+        <div
+          ref={editorRef}
+          className={`calendar-admin-editor${editorOpen ? " calendar-admin-editor--open" : ""}`}
+        >
+          {editorOpen ? (
+            <form className="calendar-admin-form form-panel" onSubmit={saveEvent}>
+              <h2 className="heading-subsection">
+                {editingId ? "Editar evento" : "Novo evento"}
+              </h2>
+              <p className="calendar-admin-editor__context body-text mt-3">
+                {editingId
+                  ? "A editar evento selecionado no calendário."
+                  : `${CALENDAR_DAY_LABELS[form.day_of_week - 1]}, ${form.start_time} – ${form.end_time}`}
+              </p>
 
-          <label className="calendar-admin-field">
-            <span className="label-olive">Categoria</span>
-            <select
-              value={form.category}
-              onChange={(event) =>
-                setForm((current) => ({
-                  ...current,
-                  category: event.target.value as CalendarEventInput["category"],
-                }))
-              }
-              className="calendar-admin-input"
-            >
-              {CALENDAR_CATEGORIES.map((category) => (
-                <option key={category} value={category}>
-                  {CALENDAR_CATEGORY_LABELS[category]}
-                </option>
-              ))}
-            </select>
-          </label>
+              <div className="calendar-admin-form__grid">
+                <label className="calendar-admin-field">
+                  <span className="label-olive">Dia</span>
+                  <select
+                    value={form.day_of_week}
+                    onChange={(event) =>
+                      setForm((current) => ({
+                        ...current,
+                        day_of_week: Number(event.target.value),
+                      }))
+                    }
+                    className="calendar-admin-input"
+                  >
+                    {CALENDAR_DAY_LABELS.map((label, index) => (
+                      <option key={label} value={index + 1}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
-          <label className="calendar-admin-field">
-            <span className="label-olive">Início</span>
-            <input
-              type="time"
-              value={form.start_time}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, start_time: event.target.value }))
-              }
-              className="calendar-admin-input"
-              required
-            />
-          </label>
+                <label className="calendar-admin-field">
+                  <span className="label-olive">Categoria</span>
+                  <select
+                    value={form.category}
+                    onChange={(event) =>
+                      setForm((current) => ({
+                        ...current,
+                        category: event.target.value,
+                      }))
+                    }
+                    className="calendar-admin-input"
+                  >
+                    {categories.map((category) => (
+                      <option key={category.slug} value={category.slug}>
+                        {category.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
-          <label className="calendar-admin-field">
-            <span className="label-olive">Fim</span>
-            <input
-              type="time"
-              value={form.end_time}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, end_time: event.target.value }))
-              }
-              className="calendar-admin-input"
-              required
-            />
-          </label>
+                <label className="calendar-admin-field">
+                  <span className="label-olive">Início</span>
+                  <input
+                    type="time"
+                    value={form.start_time}
+                    onChange={(event) =>
+                      setForm((current) => ({ ...current, start_time: event.target.value }))
+                    }
+                    className="calendar-admin-input"
+                    required
+                  />
+                </label>
+
+                <label className="calendar-admin-field">
+                  <span className="label-olive">Fim</span>
+                  <input
+                    type="time"
+                    value={form.end_time}
+                    onChange={(event) =>
+                      setForm((current) => ({ ...current, end_time: event.target.value }))
+                    }
+                    className="calendar-admin-input"
+                    required
+                  />
+                </label>
+              </div>
+
+              <label className="calendar-admin-field">
+                <span className="label-olive">Título</span>
+                <input
+                  type="text"
+                  value={form.title}
+                  onChange={(event) =>
+                    setForm((current) => ({ ...current, title: event.target.value }))
+                  }
+                  className="calendar-admin-input"
+                  required
+                  autoFocus={creating}
+                />
+              </label>
+
+              <label className="calendar-admin-field">
+                <span className="label-olive">Público / descrição curta</span>
+                <input
+                  type="text"
+                  value={form.subtitle}
+                  onChange={(event) =>
+                    setForm((current) => ({ ...current, subtitle: event.target.value }))
+                  }
+                  className="calendar-admin-input"
+                />
+              </label>
+
+              <div className="calendar-admin-form__grid">
+                <label className="calendar-admin-field">
+                  <span className="label-olive">Preço</span>
+                  <input
+                    type="text"
+                    value={form.price_label}
+                    onChange={(event) =>
+                      setForm((current) => ({ ...current, price_label: event.target.value }))
+                    }
+                    className="calendar-admin-input"
+                    placeholder="gratuito, €10"
+                  />
+                </label>
+
+                <label className="calendar-admin-field">
+                  <span className="label-olive">Recorrência</span>
+                  <input
+                    type="text"
+                    value={form.recurrence_note}
+                    onChange={(event) =>
+                      setForm((current) => ({
+                        ...current,
+                        recurrence_note: event.target.value,
+                      }))
+                    }
+                    className="calendar-admin-input"
+                    placeholder="quinzenal, mensal"
+                  />
+                </label>
+              </div>
+
+              <div className="calendar-admin-form__actions">
+                <button type="submit" className="calendar-admin-btn" disabled={busy}>
+                  {editingId ? "Guardar alterações" : "Criar evento"}
+                </button>
+                {editingId ? (
+                  <button
+                    type="button"
+                    className="calendar-admin-btn calendar-admin-btn--danger"
+                    onClick={deleteEvent}
+                    disabled={busy}
+                  >
+                    Eliminar
+                  </button>
+                ) : null}
+              </div>
+            </form>
+          ) : (
+            <p className="calendar-admin-editor__idle body-text">
+              Selecione uma hora vazia no calendário para começar, ou clique em
+              &ldquo;Novo evento&rdquo;.
+            </p>
+          )}
         </div>
-
-        <label className="calendar-admin-field">
-          <span className="label-olive">Título</span>
-          <input
-            type="text"
-            value={form.title}
-            onChange={(event) =>
-              setForm((current) => ({ ...current, title: event.target.value }))
-            }
-            className="calendar-admin-input"
-            required
-          />
-        </label>
-
-        <label className="calendar-admin-field">
-          <span className="label-olive">Público / descrição curta</span>
-          <input
-            type="text"
-            value={form.subtitle}
-            onChange={(event) =>
-              setForm((current) => ({ ...current, subtitle: event.target.value }))
-            }
-            className="calendar-admin-input"
-          />
-        </label>
-
-        <div className="calendar-admin-form__grid">
-          <label className="calendar-admin-field">
-            <span className="label-olive">Preço</span>
-            <input
-              type="text"
-              value={form.price_label}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, price_label: event.target.value }))
-              }
-              className="calendar-admin-input"
-              placeholder="gratuito, €10"
-            />
-          </label>
-
-          <label className="calendar-admin-field">
-            <span className="label-olive">Recorrência</span>
-            <input
-              type="text"
-              value={form.recurrence_note}
-              onChange={(event) =>
-                setForm((current) => ({
-                  ...current,
-                  recurrence_note: event.target.value,
-                }))
-              }
-              className="calendar-admin-input"
-              placeholder="quinzenal, mensal"
-            />
-          </label>
-        </div>
-
-        {status ? <p className="calendar-admin-status">{status}</p> : null}
-
-        <div className="calendar-admin-form__actions">
-          <button type="submit" className="calendar-admin-btn" disabled={busy}>
-            {editingId ? "Guardar alterações" : "Criar evento"}
-          </button>
-          {editingId ? (
-            <button
-              type="button"
-              className="calendar-admin-btn calendar-admin-btn--danger"
-              onClick={deleteEvent}
-              disabled={busy}
-            >
-              Eliminar
-            </button>
-          ) : null}
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

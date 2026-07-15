@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ConsentGoogleAnalytics } from "@/components/ConsentGoogleAnalytics";
-import { LazyAuroraAssistant } from "@/components/LazyAuroraAssistant";
+// import { LazyAuroraAssistant } from "@/components/LazyAuroraAssistant";
 import { LazyCookieConsent } from "@/components/LazyCookieConsent";
 import { epilogue, manrope } from "@/lib/fonts";
 import "./globals.css";
@@ -37,7 +37,9 @@ export default function RootLayout({
         ) : null}
         {children}
         <LazyCookieConsent />
+        {/* Aurora assistant disabled — uncomment to restore:
         <LazyAuroraAssistant />
+        */}
       </body>
     </html>
   );

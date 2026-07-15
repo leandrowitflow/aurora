@@ -1,4 +1,5 @@
 import { requireCalendarAdmin } from "@/lib/calendar/auth";
+import { categoryExists } from "@/lib/calendar/categories";
 import { deleteCalendarEvent, updateCalendarEvent } from "@/lib/calendar/events";
 import type { CalendarEventInput } from "@/lib/calendar/types";
 import { NextResponse } from "next/server";
@@ -16,6 +17,10 @@ export async function PATCH(request: Request, context: RouteContext) {
   const body = (await request.json()) as Partial<CalendarEventInput>;
 
   try {
+    if (body.category && !(await categoryExists(body.category))) {
+      return NextResponse.json({ error: "Categoria inválida." }, { status: 400 });
+    }
+
     const event = await updateCalendarEvent(id, body);
     return NextResponse.json({ event });
   } catch (error) {

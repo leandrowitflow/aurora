@@ -190,7 +190,7 @@ function hashToFormId(hash: string): FormId {
   return match?.id ?? "playgroups";
 }
 
-export function InscricoesContent() {
+export function InscricoesContent({ hideCalendarLink = false }: { hideCalendarLink?: boolean }) {
   const [active, setActive] = useState<FormId>("playgroups");
 
   useEffect(() => {
@@ -254,9 +254,11 @@ export function InscricoesContent() {
             <p className="registration-aside-text">
               Consulte o calendário semanal com todas as atividades programadas.
             </p>
-            <a href="/calendario" className="registration-aside-link">
-              Ver calendário
-            </a>
+            {!hideCalendarLink ? (
+              <a href="/calendario" className="registration-aside-link">
+                Ver calendário
+              </a>
+            ) : null}
           </aside>
         </nav>
 

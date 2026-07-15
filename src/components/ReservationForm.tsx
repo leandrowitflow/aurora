@@ -19,6 +19,7 @@ interface ReservationFormProps {
   description?: string;
   fields: FormField[];
   submitLabel?: string;
+  hiddenFields?: Record<string, string>;
 }
 
 const inputClass =
@@ -30,6 +31,7 @@ export function ReservationForm({
   description,
   fields,
   submitLabel = "Enviar",
+  hiddenFields,
 }: ReservationFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -93,6 +95,12 @@ export function ReservationForm({
         className="sr-only"
         aria-hidden
       />
+
+      {hiddenFields
+        ? Object.entries(hiddenFields).map(([name, value]) => (
+            <input key={name} type="hidden" name={name} value={value} />
+          ))
+        : null}
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
         {fields.map((field) => (
