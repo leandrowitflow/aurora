@@ -61,7 +61,8 @@ export default function QuemSomosPage() {
               </div>
             </div>
             <SectionFigure
-              src="/images/section-quem-somos.webp"
+              src="/images/prima.jpeg"
+              alt="Antigo edifício da Escola Primária em Olhão, onde o Coletivo Aurora encontrou morada."
               imageShapeOverlay="terracotta-wave-top"
             />
           </div>
