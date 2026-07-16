@@ -25,7 +25,7 @@ export default async function CalendarioPage() {
         <PageHero
           title="Calendário"
           subtitle="Consulte as atividades desta semana e inscreva-se diretamente no calendário."
-          imageSrc="/images/hero-inscricoes.webp"
+          imageSrc="/images/hero-calendario.webp"
         />
 
         <ShapeGap preset="dotsLeft" />

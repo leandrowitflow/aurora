@@ -9,6 +9,7 @@ import {
   CALENDAR_START_HOUR,
   DEFAULT_CALENDAR_CATEGORIES,
   getCategoryColor,
+  getEventPriceLabel,
 } from "@/lib/calendar/types";
 import { getCategorySurfaceStyles } from "@/lib/calendar/color";
 import {
@@ -91,14 +92,11 @@ function buildEventTooltip(event: CalendarEvent): string {
   const parts = [
     event.title,
     `${formatTimeLabel(event.start_time)} – ${formatTimeLabel(event.end_time)}`,
+    getEventPriceLabel(event.price_label),
   ];
 
   if (event.subtitle) {
     parts.push(event.subtitle);
-  }
-
-  if (event.price_label) {
-    parts.push(event.price_label);
   }
 
   if (event.recurrence_note) {
@@ -108,12 +106,17 @@ function buildEventTooltip(event: CalendarEvent): string {
   return parts.join(" · ");
 }
 
+function renderEventTimeLine(event: CalendarEvent): string {
+  const timeLabel = `${formatTimeLabel(event.start_time)} – ${formatTimeLabel(event.end_time)}`;
+  return `${timeLabel} · ${getEventPriceLabel(event.price_label)}`;
+}
+
 function renderEventContent(
   event: CalendarEvent,
   density: EventDensity,
   clickable: boolean,
 ) {
-  const timeLabel = `${formatTimeLabel(event.start_time)} – ${formatTimeLabel(event.end_time)}`;
+  const timeLine = renderEventTimeLine(event);
   const action = clickable ? (
     <span className="weekly-calendar__event-action">Inscrever</span>
   ) : null;
@@ -122,7 +125,9 @@ function renderEventContent(
     return (
       <>
         <div className="weekly-calendar__event-body">
-          <span className="weekly-calendar__event-time">{timeLabel}</span>
+          <span className="weekly-calendar__event-time weekly-calendar__event-time--clamp">
+            {timeLine}
+          </span>
           <span className="weekly-calendar__event-title weekly-calendar__event-title--clamp">
             {event.title}
           </span>
@@ -136,18 +141,15 @@ function renderEventContent(
     return (
       <>
         <div className="weekly-calendar__event-body">
-          <span className="weekly-calendar__event-time">{timeLabel}</span>
+          <span className="weekly-calendar__event-time weekly-calendar__event-time--clamp">
+            {timeLine}
+          </span>
           <span className="weekly-calendar__event-title weekly-calendar__event-title--clamp">
             {event.title}
           </span>
           {event.subtitle ? (
             <span className="weekly-calendar__event-subtitle weekly-calendar__event-subtitle--clamp">
               {event.subtitle}
-            </span>
-          ) : null}
-          {event.price_label ? (
-            <span className="weekly-calendar__event-price weekly-calendar__event-price--clamp">
-              {event.price_label}
             </span>
           ) : null}
         </div>
@@ -159,18 +161,15 @@ function renderEventContent(
   return (
     <>
       <div className="weekly-calendar__event-body">
-        <span className="weekly-calendar__event-time">{timeLabel}</span>
+        <span className="weekly-calendar__event-time weekly-calendar__event-time--clamp">
+          {timeLine}
+        </span>
         <span className="weekly-calendar__event-title weekly-calendar__event-title--clamp">
           {event.title}
         </span>
         {event.subtitle ? (
           <span className="weekly-calendar__event-subtitle weekly-calendar__event-subtitle--clamp">
             {event.subtitle}
-          </span>
-        ) : null}
-        {event.price_label ? (
-          <span className="weekly-calendar__event-price weekly-calendar__event-price--clamp">
-            ({event.price_label})
           </span>
         ) : null}
         {event.recurrence_note ? (

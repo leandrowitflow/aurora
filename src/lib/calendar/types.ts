@@ -90,6 +90,12 @@ export const DEFAULT_CALENDAR_CATEGORIES: CalendarCategoryRecord[] = [
 ];
 
 export const CALENDAR_FALLBACK_COLOR = "#f0efe8";
+export const DEFAULT_EVENT_PRICE_LABEL = "gratuito";
+
+export function getEventPriceLabel(priceLabel?: string | null): string {
+  const trimmed = priceLabel?.trim();
+  return trimmed || DEFAULT_EVENT_PRICE_LABEL;
+}
 
 export const CALENDAR_START_HOUR = 10;
 export const CALENDAR_END_HOUR = 20;

@@ -2562,6 +2562,7 @@ button.weekly-calendar__event:hover:not(:disabled) {
 
 .weekly-calendar__event-title--clamp,
 .weekly-calendar__event-subtitle--clamp,
+.weekly-calendar__event-time--clamp,
 .weekly-calendar__event-price--clamp,
 .weekly-calendar__event-recurrence--clamp {
   display: -webkit-box;
@@ -2575,6 +2576,7 @@ button.weekly-calendar__event:hover:not(:disabled) {
 }
 
 .weekly-calendar__event-subtitle--clamp,
+.weekly-calendar__event-time--clamp,
 .weekly-calendar__event-price--clamp,
 .weekly-calendar__event-recurrence--clamp {
   -webkit-line-clamp: 1;
@@ -2599,7 +2601,11 @@ button.weekly-calendar__event:hover:not(:disabled) {
 }
 
 .weekly-calendar__event--ultra .weekly-calendar__event-title--clamp {
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
+}
+
+.weekly-calendar__event--ultra .weekly-calendar__event-time--clamp {
+  font-weight: 800;
 }
 
 .weekly-calendar__event--ultra .weekly-calendar__event-action {
@@ -2815,6 +2821,12 @@ button.weekly-calendar__event--clickable:focus-visible:not(:disabled) {
 
 .calendario-event-panel__body {
   padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.calendario-event-panel__summary {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(100, 95, 54, 0.12);
 }
 
 @keyframes calendario-panel-in {

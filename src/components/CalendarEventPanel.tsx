@@ -2,7 +2,7 @@
 
 import { ReservationForm } from "@/components/ReservationForm";
 import type { CalendarCategoryRecord, CalendarEvent } from "@/lib/calendar/types";
-import { CALENDAR_DAY_LABELS, getCategoryColor, getCategoryLabel } from "@/lib/calendar/types";
+import { CALENDAR_DAY_LABELS, getCategoryColor, getCategoryLabel, getEventPriceLabel } from "@/lib/calendar/types";
 import { formatTimeLabel } from "@/lib/calendar/week";
 
 function formatEventDescription(event: CalendarEvent): string {
@@ -14,9 +14,7 @@ function formatEventDescription(event: CalendarEvent): string {
     parts.push(event.subtitle);
   }
 
-  if (event.price_label) {
-    parts.push(event.price_label);
-  }
+  parts.push(getEventPriceLabel(event.price_label));
 
   return parts.join(" · ");
 }
@@ -59,6 +57,7 @@ export function CalendarEventPanel({
   const activityLabel = event.subtitle
     ? `${event.title} — ${event.subtitle}`
     : event.title;
+  const priceLabel = getEventPriceLabel(event.price_label);
   const accentColor = getCategoryColor(categories, event.category);
 
   return (
@@ -83,6 +82,11 @@ export function CalendarEventPanel({
       </header>
 
       <div className="calendario-event-panel__body">
+        <div className="calendario-event-panel__summary">
+          <p className="label-olive">Preço</p>
+          <p className="body-text mt-1">{priceLabel}</p>
+        </div>
+
         <ReservationForm
           key={event.id}
           formType="inscricao-calendario"
@@ -94,7 +98,7 @@ export function CalendarEventPanel({
             horario: `${formatTimeLabel(event.start_time)} – ${formatTimeLabel(event.end_time)}`,
             semana: event.week_start,
             categoria: getCategoryLabel(categories, event.category),
-            ...(event.price_label ? { preco: event.price_label } : {}),
+            preco: priceLabel,
           }}
           fields={[
             { name: "nome", label: "Nome", required: true },
