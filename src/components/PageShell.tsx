@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { DeferredCopyPageAsMarkdown } from "@/components/DeferredCopyPageAsMarkdown";
 import type { ReactNode } from "react";
 
 interface PageShellProps {
@@ -12,6 +13,7 @@ export function PageShell({ children }: PageShellProps) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      <DeferredCopyPageAsMarkdown />
     </>
   );
 }

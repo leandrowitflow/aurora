@@ -1,0 +1,23 @@
+# Coletivo Aurora
+
+> Casa de encontro comunitário em Olhão — pedagogia Waldorf, horta, ateliers, dança, gerações e participação cívica num antigo edifício escolar.
+
+## Páginas principais
+
+- [Início](https://coletivoaurora.pt/): Apresentação do coletivo e dos eixos de atividade
+- [Quem somos](https://coletivoaurora.pt/quem-somos): História, equipa e valores
+- [Viver o coletivo](https://coletivoaurora.pt/viver-o-coletivo): Atividades, ateliers e vida no espaço
+- [Tecer gerações](https://coletivoaurora.pt/tecer-geracoes): Projeto social gratuito entre gerações
+- [Calendário](https://coletivoaurora.pt/calendario): Agenda semanal e inscrições em atividades
+- [Inscrições](https://coletivoaurora.pt/inscricoes): Formulários de inscrição e reserva
+- [Fazer parte](https://coletivoaurora.pt/fazer-parte): Voluntariado, parcerias e apoio
+- [Diário](https://coletivoaurora.pt/diario): Notícias e relatos do coletivo
+- [Transparência](https://coletivoaurora.pt/transparencia): Informação institucional
+- [Contactos](https://coletivoaurora.pt/contactos): Morada, telefone e e-mail
+
+## Opcional
+
+- [Sitemap](https://coletivoaurora.pt/sitemap.xml): Todas as páginas indexáveis
+- [Instagram](https://www.instagram.com/coletivoaurora/): Redes sociais
+
+Contacto: info@coletivoaurora.pt

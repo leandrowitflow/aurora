@@ -540,6 +540,32 @@ html {
   line-height: 1.1;
 }
 
+.copy-page-md-anchor {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+.copy-page-md-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: currentColor;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.copy-page-md-btn:hover,
+.copy-page-md-btn:focus-visible {
+  opacity: 0.9;
+  outline: none;
+}
+
 /* Hero banners — force white text over global heading/body colors */
 .page-hero-content {
   color: #fff;
