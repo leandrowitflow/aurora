@@ -1,5 +1,6 @@
 import { CMS_BLOG_BASE_PATH, getSiteUrl, isCmsConfigured } from "@/lib/cms/config";
 import { getSitemapEntries } from "@/lib/cms/posts";
+import { SHOW_PUBLIC_CALENDAR } from "@/lib/feature-flags";
 import type { MetadataRoute } from "next";
 
 const STATIC_ROUTES = [
@@ -7,7 +8,7 @@ const STATIC_ROUTES = [
   "/quem-somos",
   "/viver-o-coletivo",
   "/tecer-geracoes",
-  "/calendario",
+  ...(SHOW_PUBLIC_CALENDAR ? ["/calendario"] as const : []),
   "/inscricoes",
   "/fazer-parte",
   "/contactos",

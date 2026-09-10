@@ -2,6 +2,7 @@
 
 import { ReservationForm } from "@/components/ReservationForm";
 import type { ContactFormType } from "@/lib/email";
+import { SHOW_PUBLIC_CALENDAR } from "@/lib/feature-flags";
 import { useEffect, useState } from "react";
 
 type FormId =
@@ -249,17 +250,17 @@ export function InscricoesContent({ hideCalendarLink = false }: { hideCalendarLi
             ))}
           </ul>
 
-          <aside className="registration-aside">
-            <p className="registration-aside-label">Agenda</p>
-            <p className="registration-aside-text">
-              Consulte o calendário semanal com todas as atividades programadas.
-            </p>
-            {!hideCalendarLink ? (
+          {SHOW_PUBLIC_CALENDAR && !hideCalendarLink ? (
+            <aside className="registration-aside">
+              <p className="registration-aside-label">Agenda</p>
+              <p className="registration-aside-text">
+                Consulte o calendário semanal com todas as atividades programadas.
+              </p>
               <a href="/calendario" className="registration-aside-link">
                 Ver calendário
               </a>
-            ) : null}
-          </aside>
+            </aside>
+          ) : null}
         </nav>
 
         <div id={activeConfig.hash} className="registration-form-area">

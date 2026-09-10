@@ -10,6 +10,7 @@ import { SectionFigure } from "@/components/SectionFigure";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ShapeGap } from "@/components/PageDecorations";
 import { TopicTagList } from "@/components/TopicTagList";
+import { SHOW_PUBLIC_CALENDAR } from "@/lib/feature-flags";
 
 export const metadata: Metadata = {
   title: "Tecendo gerações | Coletivo Aurora",
@@ -105,28 +106,32 @@ export default function TecerGeracoesPage() {
           <TopicTagList items={ACTIVITIES} label="O que fazemos juntos" />
         </PageSection>
 
-        <PageSection>
-          <div className="schedule-panel">
-            <div className="schedule-panel-main">
-              <SectionHeading
-                eyebrow="Agenda"
-                title="Calendário semanal"
-                description="Consulte as atividades desta semana no calendário interativo."
-              />
-            </div>
-            <aside className="schedule-panel-aside">
-              <p className="body-text">
-                Veja a programação completa de ateliers, horta, dança e encontros
-                comunitários.
-              </p>
-              <div className="mt-8">
-                <Button href="/calendario" label="Ver calendário" />
+        {SHOW_PUBLIC_CALENDAR ? (
+          <>
+            <PageSection>
+              <div className="schedule-panel">
+                <div className="schedule-panel-main">
+                  <SectionHeading
+                    eyebrow="Agenda"
+                    title="Calendário semanal"
+                    description="Consulte as atividades desta semana no calendário interativo."
+                  />
+                </div>
+                <aside className="schedule-panel-aside">
+                  <p className="body-text">
+                    Veja a programação completa de ateliers, horta, dança e encontros
+                    comunitários.
+                  </p>
+                  <div className="mt-8">
+                    <Button href="/calendario" label="Ver calendário" />
+                  </div>
+                </aside>
               </div>
-            </aside>
-          </div>
-        </PageSection>
+            </PageSection>
 
-        <ShapeGap preset="waveCenter" />
+            <ShapeGap preset="waveCenter" />
+          </>
+        ) : null}
 
         <PageSection id="participar" className="pt-0 lg:pt-0">
           <SectionHeading

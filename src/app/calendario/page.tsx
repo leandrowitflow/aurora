@@ -6,7 +6,9 @@ import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ShapeGap } from "@/components/PageDecorations";
+import { notFound } from "next/navigation";
 import { loadCalendarWeek } from "@/lib/calendar/load-week";
+import { SHOW_PUBLIC_CALENDAR } from "@/lib/feature-flags";
 
 export const metadata: Metadata = {
   title: "Calendário | Coletivo Aurora",
@@ -17,6 +19,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function CalendarioPage() {
+  if (!SHOW_PUBLIC_CALENDAR) {
+    notFound();
+  }
+
   const { weekStart, events, categories, configured } = await loadCalendarWeek();
 
   return (

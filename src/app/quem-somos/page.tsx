@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DecoratedPage } from "@/components/DecoratedPage";
+import { LocationMap } from "@/components/LocationMap";
 import { PageHero } from "@/components/PageHero";
 import { PageSection } from "@/components/PageSection";
 import { PageShell } from "@/components/PageShell";
@@ -86,6 +87,18 @@ export default function QuemSomosPage() {
               </div>
             ))}
           </div>
+        </PageSection>
+
+        <ShapeGap preset="loopLeft" />
+
+        <PageSection>
+          <SectionHeading eyebrow="Localização" title="Onde estamos" />
+          <p className="body-text mt-6 max-w-[720px]">
+            O Coletivo Aurora encontra-se na antiga escola primária de Estiramantens,
+            em Moncarapacho, Olhão — o mesmo edifício que acolhe as nossas atividades
+            e encontros comunitários.
+          </p>
+          <LocationMap />
         </PageSection>
       </DecoratedPage>
     </PageShell>
