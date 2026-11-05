@@ -38,10 +38,10 @@ const CONTACT_ITEMS = [
     label: "E-mail",
     value: (
       <a
-        href="mailto:somosaurora@gmail.com"
+        href="mailto:somos@coletivoaurora.pt"
         className="font-bold text-olive underline transition-opacity hover:opacity-70"
       >
-        somosaurora@gmail.com
+        somos@coletivoaurora.pt
       </a>
     ),
   },

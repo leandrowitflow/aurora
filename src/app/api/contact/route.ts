@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     return Response.json(
       {
         error:
-          "Não foi possível enviar o pedido. Tente novamente ou escreva para somosaurora@gmail.com.",
+          "Não foi possível enviar o pedido. Tente novamente ou escreva para somos@coletivoaurora.pt.",
       },
       { status: 502 },
     );

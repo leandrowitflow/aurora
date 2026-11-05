@@ -23,7 +23,7 @@ Inspiram-se ritmos orgânicos, manifesto das cem linguagens, permacultura (cuida
 ## Morada e contactos
 - Morada: Sítio do Pereiro nº 400F, Moncarapacho, 8700-073 Olhão (antiga escola primária perto de Estiramantens)
 - Estado do espaço: em obras
-- E-mail: somosaurora@gmail.com
+- E-mail: somos@coletivoaurora.pt
 - Telefone/WhatsApp: +351 960 289 763
 - Instagram: @coletivoaurora_algarve
 - Facebook: coletivoaurora.algarve

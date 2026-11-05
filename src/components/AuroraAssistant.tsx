@@ -252,7 +252,7 @@ export function AuroraAssistant() {
                 <p className="assistant-error" role="alert">
                   {error.message || "Não foi possível obter resposta. Tente novamente ou escreva para "}
                   {!error.message ? (
-                    <a href="mailto:somosaurora@gmail.com">somosaurora@gmail.com</a>
+                    <a href="mailto:somos@coletivoaurora.pt">somos@coletivoaurora.pt</a>
                   ) : null}
                 </p>
               ) : null}

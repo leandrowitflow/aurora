@@ -1,4 +1,4 @@
-export const AURORA_INBOX_EMAIL = "somosaurora@gmail.com";
+export const AURORA_INBOX_EMAIL = "somos@coletivoaurora.pt";
 
 export const FORM_SUBJECTS: Record<string, string> = {
   contacto: "Contacto do site",
