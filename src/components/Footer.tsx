@@ -65,8 +65,8 @@ export function Footer() {
             <address className="mt-6 space-y-4 not-italic font-[family-name:var(--font-manrope)] text-sm leading-[28px] text-[rgba(255,255,255,0.63)]">
               <p>Sítio do Pereiro nº 400F, Moncarapacho, 8700-073 Olhão</p>
               <p>
-                <a href="mailto:somosaurora@gmail.com" className="hover:text-white">
-                  somosaurora@gmail.com
+                <a href="mailto:somos@coletivoaurora.pt" className="hover:text-white">
+                  somos@coletivoaurora.pt
                 </a>
               </p>
             </address>
